@@ -843,6 +843,242 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .price-card.is-featured .price-cta:hover { background: #ececec; }
 
+/* Volume pricing table */
+.volume-table-wrap {
+  width: 100%;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+.volume-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.volume-table thead th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.volume-table thead th.num-col { text-align: right; }
+.volume-table tbody td {
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: baseline;
+}
+.volume-table tbody tr:last-child td { border-bottom: none; }
+.volume-table .qty {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  color: var(--color-text);
+}
+.volume-table .price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  text-align: right;
+  color: var(--color-text);
+}
+.volume-table .price small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+.volume-table .discount {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-assess);
+  text-align: right;
+}
+.volume-table .discount.is-empty { color: var(--color-text-muted); }
+
+/* Welcome Pack — evidenziata ma non dominante */
+.welcome-pack {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-assess);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (min-width: 700px) {
+  .welcome-pack {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+.welcome-pack-text { flex: 1; }
+.welcome-pack-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--color-text);
+  margin: 8px 0 6px;
+}
+.welcome-pack-note {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* DISC Lab — full-width banner variant */
+.disc-lab-banner {
+  background: var(--color-assess);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 900px) {
+  .disc-lab-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 40px 48px;
+  }
+}
+.disc-lab-banner-text { flex: 1; }
+.disc-lab-banner .price-badge {
+  background-color: #fff;
+  color: var(--color-assess);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.disc-lab-banner-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 28px);
+  letter-spacing: -0.6px;
+  margin: 10px 0 8px;
+  color: #fff;
+}
+.disc-lab-banner-body {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 6px;
+}
+.disc-lab-banner-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.85);
+}
+.disc-lab-banner .btn {
+  background: #fff;
+  color: var(--color-assess);
+  border-color: #fff;
+  flex-shrink: 0;
+}
+.disc-lab-banner .btn:hover { background: #ececec; }
+
+/* =========================================================================
+   SECTION 6b — Materiali (dark)
+   ========================================================================= */
+.materials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 900px) {
+  .materials-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+.material-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 240ms var(--ease), background 240ms var(--ease), transform 240ms var(--ease);
+}
+.material-card:not(.is-disabled):hover {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+.material-card.is-disabled { opacity: 0.65; }
+.material-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  color: var(--color-on-dark);
+  margin: 6px 0 6px;
+}
+.material-card-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-on-dark-muted);
+  margin: 0;
+  flex: 1;
+}
+.material-card .badge-soon-dark {
+  align-self: flex-start;
+}
+.material-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  margin-top: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--color-on-dark);
+  color: var(--color-on-dark);
+  background: transparent;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+}
+.material-card-cta:hover { background: var(--color-on-dark); color: var(--color-dark); }
+.material-card-cta.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.badge-soon-dark {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
 /* =========================================================================
    SECTION 7 — FAQ (HTML <details>)
    ========================================================================= */
@@ -1353,63 +1589,97 @@ ul { list-style: none; padding: 0; margin: 0; }
     <div class="section-head reveal">
       <p class="eyebrow">Pricing</p>
       <h2 class="heading-section">Acquista i codici</h2>
-      <p class="lead">Codici singoli, bundle gruppo o l'intero DISC Lab combinato con You-Play e You-Cast.</p>
+      <p class="lead">Prezzo per codice a scaglioni di volume. Più ne acquisti, meno costa.</p>
     </div>
 
-    <div class="pricing-grid">
+    <!-- Volume pricing table -->
+    <div class="volume-table-wrap reveal">
+      <table class="volume-table" aria-label="Prezzi per scaglione di volume">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th class="num-col">Prezzo unitario</th>
+            <th class="num-col">Sconto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qty">1–9</td>
+            <td class="price">€30,00 <small>+ IVA</small></td>
+            <td class="discount is-empty">—</td>
+          </tr>
+          <tr>
+            <td class="qty">10–29</td>
+            <td class="price">€28,50 <small>+ IVA</small></td>
+            <td class="discount">−5%</td>
+          </tr>
+          <tr>
+            <td class="qty">30–49</td>
+            <td class="price">€27,00 <small>+ IVA</small></td>
+            <td class="discount">−10%</td>
+          </tr>
+          <tr>
+            <td class="qty">50–99</td>
+            <td class="price">€25,00 <small>+ IVA</small></td>
+            <td class="discount">−16,7%</td>
+          </tr>
+          <tr>
+            <td class="qty">100+</td>
+            <td class="price">€22,50 <small>+ IVA</small></td>
+            <td class="discount">−25%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <!-- Card 1: singolo -->
-      <article class="price-card reveal">
-        <span class="price-badge">You-DISC</span>
-        <div>
-          <div class="price-amount">€[TBD]</div>
-          <div class="price-amount-unit">per codice</div>
-        </div>
-        <p class="price-note">Un codice = un questionario + un report PDF.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Questionario online</li>
-          <li><span class="check">✓</span> Report PDF 17 pagine</li>
-          <li><span class="check">✓</span> Trilingue IT / FR / EN</li>
-          <li><span class="check">✓</span> Generazione immediata</li>
-          <li><span class="check">✓</span> Valido 90 giorni dall'attivazione</li>
-        </ul>
-        <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary price-cta">Acquista su disc.you-mans.com →</a>
-      </article>
+    <!-- Welcome Pack -->
+    <div class="welcome-pack reveal">
+      <div class="welcome-pack-text">
+        <span class="price-badge">Welcome Pack</span>
+        <h3 class="welcome-pack-title">2 report a €25,00 totali</h3>
+        <p class="welcome-pack-note">Solo alla prima registrazione. Per provare You-DISC senza impegno.</p>
+      </div>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary">Inizia con il Welcome Pack →</a>
+    </div>
 
-      <!-- Card 2: bundle 10+ -->
-      <article class="price-card reveal">
-        <span class="price-badge">You-DISC · Gruppo</span>
-        <div>
-          <div class="price-amount">€[TBD]</div>
-          <div class="price-amount-unit">per codice · da 10 in su</div>
-        </div>
-        <p class="price-note">Per acquisti da 10 codici in su. Sconto −10% sul singolo.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Questionario online</li>
-          <li><span class="check">✓</span> Report PDF 17 pagine</li>
-          <li><span class="check">✓</span> Trilingue IT / FR / EN</li>
-          <li><span class="check">✓</span> Generazione immediata</li>
-          <li><span class="check">✓</span> Valido 90 giorni dall'attivazione</li>
-        </ul>
-        <a href="index.html#contact" class="btn btn-primary price-cta">Contattaci per un preventivo →</a>
-      </article>
-
-      <!-- Card 3: DISC Lab (featured) -->
-      <article class="price-card is-featured reveal">
+    <!-- DISC Lab full-width banner -->
+    <div class="disc-lab-banner reveal">
+      <div class="disc-lab-banner-text">
         <span class="price-badge">DISC Lab</span>
-        <div>
-          <div class="price-amount">−15%</div>
-          <div class="price-amount-unit">rispetto agli Elements separati</div>
-        </div>
-        <p class="price-note">You-DISC + You-Play + You-Cast. Il sistema completo per il DISC in aula.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Assessment You-DISC</li>
-          <li><span class="check">✓</span> Roleplay You-Play in sessione</li>
-          <li><span class="check">✓</span> Contenuti audio You-Cast</li>
-          <li><span class="check">✓</span> Bundle dedicato per percorso</li>
-          <li><span class="check">✓</span> Sconto −15% bundle</li>
-        </ul>
-        <a href="index.html#labs" class="btn btn-primary price-cta">Scopri il DISC Lab →</a>
+        <h3 class="disc-lab-banner-title">You-DISC + You-Play + You-Cast. Il sistema completo.</h3>
+        <p class="disc-lab-banner-body">Assessment, roleplay e contenuti audio in un unico bundle, pensati per girare insieme in aula.</p>
+        <p class="disc-lab-banner-price">€[TBD] · sconto bundle rispetto agli Elements separati</p>
+      </div>
+      <a href="index.html#labs" class="btn">Scopri il DISC Lab →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 6b — Materiali (dark)
+     ========================================================================= -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-on-dark">Risorse</p>
+      <h2 class="heading-section">Materiali</h2>
+      <p class="lead lead-on-dark">Scarica un report di esempio o consulta i tutorial per portare You-DISC in aula.</p>
+    </div>
+
+    <div class="materials-grid">
+
+      <article class="material-card reveal">
+        <h3 class="material-card-title">Report di esempio</h3>
+        <p class="material-card-desc">Scarica un report anonimizzato per valutare You-DISC prima dell'acquisto.</p>
+        <a href="sample-report.pdf" class="material-card-cta" download>Scarica il PDF →</a>
+      </article>
+
+      <article class="material-card is-disabled reveal">
+        <span class="badge-soon-dark">Coming soon</span>
+        <h3 class="material-card-title">Tutorial</h3>
+        <p class="material-card-desc">Come usare You-DISC in aula: setup, debrief, casi d'uso.</p>
+        <span class="material-card-cta is-disabled" aria-disabled="true">Disponibile a breve</span>
       </article>
 
     </div>
