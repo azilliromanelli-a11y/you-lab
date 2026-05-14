@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You-Lab — Strumenti per la formazione professionale</title>
+<meta name="description" content="You-Lab è il sito umbrella di You-Mans: Elements e Labs per chi progetta formazione. Assessment, roleplay, contenuti audio, corsi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   TOKENS — You-Lab (brief) prevale su Runway dove in conflitto
+   ========================================================================= */
+:root {
+  --color-bg:          #F7F7F5;
+  --color-dark:        #0E0E0E;
+  --color-text:        #1A1A1A;
+  --color-text-muted:  #6B6B6B;
+  --color-border:      #E2E2DC;
+  --color-on-dark:     #FFFFFF;
+  --color-on-dark-muted: #A8A8A0;
+
+  --color-assess:      #8B3A2E;
+  --color-play:        #5BA3C7;
+  --color-cast:        #C47B2B;
+  --color-learn:       #5C3D8F;
+
+  --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'DM Mono', 'Menlo', monospace;
+
+  --container-max: 1200px;
+  --gutter: 5vw;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================================
+   RESET
+   ========================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; padding: 0; margin: 0; }
+
+/* =========================================================================
+   LAYOUT
+   ========================================================================= */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.section { padding: 100px 0; }
+@media (min-width: 1024px) { .section { padding: 120px 0; } }
+
+/* =========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================= */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -1.6px;
+  margin: 0;
+}
+.heading-section {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4.4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 16px;
+}
+.lead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+.lead-on-dark { color: var(--color-on-dark-muted); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 24px;
+}
+.eyebrow-on-dark { color: var(--color-on-dark-muted); }
+
+/* =========================================================================
+   BUTTONS
+   ========================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
+  border: 1px solid transparent;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary {
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+}
+.btn-primary:hover { background: #2a2a2a; }
+.btn-primary-on-dark {
+  background: var(--color-on-dark);
+  color: var(--color-dark);
+}
+.btn-primary-on-dark:hover { background: #ececec; }
+.btn-outline-on-dark {
+  background: transparent;
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark);
+}
+.btn-outline-on-dark:hover { background: var(--color-on-dark); color: var(--color-dark); }
+.btn-outline {
+  background: transparent;
+  color: var(--color-dark);
+  border-color: var(--color-dark);
+}
+.btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
+.btn-nav {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+.btn-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-dark);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 160ms var(--ease);
+}
+.btn-text-link:hover { border-bottom-color: var(--color-dark); }
+
+/* =========================================================================
+   NAV
+   ========================================================================= */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  transition: background 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-light {
+  background: var(--color-bg);
+  border-bottom-color: var(--color-border);
+}
+.nav-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--color-on-dark);
+  transition: color 220ms var(--ease);
+}
+.nav.is-light .nav-logo { color: var(--color-dark); }
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+@media (max-width: 900px) { .nav-menu { display: none; } }
+
+.nav-item {
+  position: relative;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-on-dark);
+  padding: 8px 0;
+  transition: color 220ms var(--ease), opacity 160ms var(--ease);
+}
+.nav.is-light .nav-link { color: var(--color-text); }
+.nav-link:hover { opacity: 0.7; }
+.nav-link .chev { width: 10px; height: 10px; transition: transform 180ms var(--ease); }
+.nav-item.is-open .nav-link .chev { transform: rotate(180deg); }
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -16px;
+  min-width: 220px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+  box-shadow: 0 10px 32px -16px rgba(0,0,0,0.25);
+}
+.nav-item:hover .nav-dropdown,
+.nav-item.is-open .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.nav-dropdown a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: background 140ms var(--ease);
+}
+.nav-dropdown a:hover { background: var(--color-border); }
+.nav-dropdown .soon {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+@media (max-width: 900px) { .nav-right .lang-switch { display: none; } }
+.lang-switch {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-on-dark);
+}
+.nav.is-light .lang-switch { color: var(--color-text-muted); }
+.lang-switch button {
+  padding: 4px 6px;
+  opacity: 0.55;
+  transition: opacity 140ms var(--ease);
+}
+.lang-switch button:hover { opacity: 1; }
+.lang-switch button.is-active { opacity: 1; }
+.lang-switch .sep { opacity: 0.35; }
+
+/* Mobile nav */
+.nav-burger {
+  display: none;
+  width: 40px; height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+@media (max-width: 900px) { .nav-burger { display: inline-flex; } }
+.nav-burger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--color-on-dark);
+  position: relative;
+  transition: background 220ms var(--ease);
+}
+.nav-burger span::before,
+.nav-burger span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px; height: 1.5px;
+  background: var(--color-on-dark);
+  transition: transform 200ms var(--ease), background 220ms var(--ease);
+}
+.nav-burger span::before { top: -7px; }
+.nav-burger span::after  { top:  7px; }
+.nav.is-light .nav-burger span,
+.nav.is-light .nav-burger span::before,
+.nav.is-light .nav-burger span::after { background: var(--color-text); }
+
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 99;
+  padding: 96px var(--gutter) 32px;
+  transform: translateY(-100%);
+  transition: transform 320ms var(--ease);
+  overflow-y: auto;
+}
+.mobile-drawer.is-open { transform: translateY(0); }
+.mobile-drawer .m-group { border-top: 1px solid var(--color-border); padding: 16px 0; }
+.mobile-drawer .m-group:last-of-type { border-bottom: 1px solid var(--color-border); }
+.mobile-drawer .m-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  color: var(--color-text);
+  padding: 12px 0;
+}
+.mobile-drawer .m-list { display: none; padding-bottom: 12px; }
+.mobile-drawer .m-group.is-open .m-list { display: block; }
+.mobile-drawer .m-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--color-text);
+}
+.mobile-drawer .m-list .soon {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.mobile-drawer .m-cta { margin-top: 24px; }
+
+/* =========================================================================
+   HERO
+   ========================================================================= */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.55;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
+}
+.hero-inner {
+  position: relative;
+  padding-top: 144px;
+  padding-bottom: 120px;
+  max-width: 1100px;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 40px;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -1.8px;
+  color: var(--color-on-dark);
+  margin: 0 0 32px;
+  max-width: 14ch;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.5;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 48px;
+  max-width: 38ch;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-tagline {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 32px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  opacity: 0.8;
+}
+
+/* =========================================================================
+   ELEMENTS GRID
+   ========================================================================= */
+.section-head {
+  margin-bottom: 64px;
+  max-width: 720px;
+}
+.elements-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 900px) {
+  .elements-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+.element-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
+  --accent: var(--color-text);
+}
+.element-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
+}
+.element-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 32px; bottom: 32px;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 260ms var(--ease);
+}
+.element-card:hover::before { opacity: 1; }
+
+.element-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.element-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  padding: 6px 10px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+}
+.badge-soon {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.element-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.8vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+  margin: 0;
+  color: var(--color-text);
+}
+.element-body {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+.element-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.element-tags span { white-space: nowrap; }
+.element-tags .dot { color: var(--color-border); }
+.element-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+.element-price {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text);
+}
+.element-price strong { font-weight: 400; color: var(--accent); }
+
+.element-card.is-assess { --accent: var(--color-assess); }
+.element-card.is-play   { --accent: var(--color-play); }
+.element-card.is-cast   { --accent: var(--color-cast); }
+.element-card.is-learn  { --accent: var(--color-learn); }
+
+/* =========================================================================
+   LABS — dark section
+   ========================================================================= */
+.section-dark {
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+}
+.section-dark .heading-section { color: var(--color-on-dark); }
+.section-dark .lead { color: var(--color-on-dark-muted); }
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 1024px) {
+  .labs-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+
+.lab-card {
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+}
+.lab-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+.lab-desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+}
+.lab-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.lab-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid currentColor;
+}
+.lab-pill.assess { color: #d68b81; }
+.lab-pill.play   { color: #a8d4e8; }
+.lab-pill.cast   { color: #e6b886; }
+.lab-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -0.6px;
+  margin: 0;
+  color: var(--color-on-dark);
+}
+.lab-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-on-dark-muted);
+  margin: 0;
+}
+.lab-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-on-dark);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.lab-foot {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.badge-soon-dark {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.lab-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-on-dark);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 160ms var(--ease);
+}
+.lab-text-link:hover { border-bottom-color: var(--color-on-dark); }
+
+/* =========================================================================
+   NUMERI / STATS
+   ========================================================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 24px;
+  margin-bottom: 56px;
+}
+@media (min-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(56px, 8vw, 88px);
+  line-height: 1;
+  letter-spacing: -2.4px;
+  color: var(--color-text);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+.stats-foot {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* =========================================================================
+   CONTACT — You-Mans
+   ========================================================================= */
+.contact-section {
+  border-top: 1px solid var(--color-border);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+}
+@media (min-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr 1fr; gap: 96px; }
+}
+.contact-text p { color: var(--color-text-muted); }
+.contact-text .external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-weight: 600;
+  color: var(--color-dark);
+  border-bottom: 1px solid var(--color-text-muted);
+  padding-bottom: 2px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.form-field label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.form-field input,
+.form-field textarea {
+  font: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 0;
+  color: var(--color-text);
+  transition: border-color 160ms var(--ease);
+  resize: vertical;
+}
+.form-field textarea { min-height: 96px; }
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-dark);
+}
+.form-field ::placeholder { color: #b8b8b2; }
+.form-note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin: 8px 0 0;
+}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+.footer {
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+  padding: 80px 0 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+@media (min-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.6px;
+  margin-bottom: 16px;
+}
+.footer-tag {
+  font-size: 14px;
+  color: var(--color-on-dark-muted);
+  max-width: 32ch;
+}
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 18px;
+}
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-size: 14px;
+  color: var(--color-on-dark);
+  opacity: 0.85;
+  transition: opacity 140ms var(--ease);
+}
+.footer-col ul li a:hover { opacity: 1; }
+.footer-col .soon {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin-left: 6px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 13px;
+  color: var(--color-on-dark-muted);
+}
+@media (min-width: 700px) { .footer-bottom { flex-direction: row; align-items: center; } }
+.footer-lang {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  display: flex;
+  gap: 6px;
+}
+.footer-lang button { color: var(--color-on-dark-muted); padding: 4px 6px; }
+.footer-lang button.is-active { color: var(--color-on-dark); }
+
+/* =========================================================================
+   SCROLL REVEAL
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 720ms var(--ease), transform 720ms var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn:hover, .element-card:hover, .lab-card:hover { transform: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================================
+     NAV
+     ========================================================================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
+
+    <nav class="nav-menu" aria-label="Primary">
+      <div class="nav-item" data-dropdown>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Labs
+          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="#labs" role="menuitem">DISC Lab</a>
+          <a href="#labs" role="menuitem">Leadership Lab <span class="soon">Coming soon</span></a>
+          <a href="#labs" role="menuitem">Team Lab <span class="soon">Coming soon</span></a>
+        </div>
+      </div>
+
+      <div class="nav-item" data-dropdown>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Elements
+          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="https://disc.you-mans.com" target="_blank" rel="noopener" role="menuitem">You-DISC</a>
+          <a href="#elements" role="menuitem">You-Play <span class="soon">Coming soon</span></a>
+          <a href="#elements" role="menuitem">You-Cast</a>
+          <a href="#elements" role="menuitem">You-Learn</a>
+        </div>
+      </div>
+
+      <a href="https://you-mans.com" target="_blank" rel="noopener" class="nav-link">You-Mans</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Lingua">
+        <button class="is-active" aria-pressed="true">IT</button>
+        <span class="sep">·</span>
+        <button aria-pressed="false">FR</button>
+        <span class="sep">·</span>
+        <button aria-pressed="false">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Inizia →</a>
+      <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="m-group" data-m-accordion>
+    <button class="m-head" aria-expanded="false">
+      Labs
+      <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+    <div class="m-list">
+      <a href="#labs">DISC Lab</a>
+      <a href="#labs">Leadership Lab <span class="soon">Soon</span></a>
+      <a href="#labs">Team Lab <span class="soon">Soon</span></a>
+    </div>
+  </div>
+  <div class="m-group" data-m-accordion>
+    <button class="m-head" aria-expanded="false">
+      Elements
+      <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+    <div class="m-list">
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener">You-DISC</a>
+      <a href="#elements">You-Play <span class="soon">Soon</span></a>
+      <a href="#elements">You-Cast</a>
+      <a href="#elements">You-Learn</a>
+    </div>
+  </div>
+  <div class="m-group">
+    <a class="m-head" href="https://you-mans.com" target="_blank" rel="noopener" style="cursor:pointer">You-Mans</a>
+  </div>
+  <a href="#contact" class="btn btn-primary m-cta">Inizia →</a>
+</div>
+
+<!-- =========================================================================
+     HERO
+     ========================================================================= -->
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">Elements · Labs · You-Mans</p>
+    <h1 class="hero-headline">Progetta esperienze di apprendimento che restano.</h1>
+    <p class="hero-sub">Strumenti professionali per chi forma. Sistemi integrati per chi vuole risultati.</p>
+    <div class="hero-ctas">
+      <a href="#elements" class="btn btn-outline-on-dark">Scopri gli Elements</a>
+      <a href="#labs" class="btn btn-primary-on-dark">Costruisci il tuo Lab</a>
+    </div>
+  </div>
+  <div class="hero-tagline">Explore our Elements. Build your Lab.</div>
+</section>
+
+<!-- =========================================================================
+     ELEMENTS
+     ========================================================================= -->
+<section class="section" id="elements">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Strumenti</p>
+      <h2 class="heading-section">Gli Elements</h2>
+      <p class="lead">Ogni Element è uno strumento autonomo, progettato per agire. Usali singolarmente o combinali in un Lab.</p>
+    </div>
+
+    <div class="elements-grid">
+
+      <!-- You-Assess -->
+      <article class="element-card is-assess reveal">
+        <div class="element-card-head">
+          <span class="element-badge">You-Assess</span>
+        </div>
+        <h3 class="element-title">Misura. Comprendi. Agisci.</h3>
+        <p class="element-body">Strumenti di assessment psicometrico per leggere le persone in profondità. Il primo prodotto è You-DISC, basato sul modello DISC a 4 stili comportamentali.</p>
+        <div class="element-tags">
+          <span>DISC</span><span class="dot">·</span>
+          <span>Lencioni ↗</span><span class="dot">·</span>
+          <span>SL ↗</span>
+        </div>
+        <div class="element-foot">
+          <span class="element-price">Da <strong>€[TBD]</strong> per codice</span>
+          <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn-text-link">Accedi a You-DISC →</a>
+        </div>
+      </article>
+
+      <!-- You-Play -->
+      <article class="element-card is-play reveal">
+        <div class="element-card-head">
+          <span class="element-badge">You-Play</span>
+          <span class="badge-soon">Coming soon</span>
+        </div>
+        <h3 class="element-title">Pratica prima di agire.</h3>
+        <p class="element-body">Roleplay e gamification per allenare le competenze relazionali in contesti sicuri. RolePlay AI, card game, quiz, wordcloud e molto altro.</p>
+        <div class="element-tags">
+          <span>Roleplay AI</span><span class="dot">·</span>
+          <span>Card Games</span><span class="dot">·</span>
+          <span>Quizzes</span><span class="dot">·</span>
+          <span>Wordcloud</span><span class="dot">·</span>
+          <span>Simulazioni</span>
+        </div>
+        <div class="element-foot">
+          <span class="element-price"><strong>€8</strong>/persona · €6 oltre 10 pax</span>
+          <a href="#contact" class="btn-text-link">Avvisami al lancio →</a>
+        </div>
+      </article>
+
+      <!-- You-Cast -->
+      <article class="element-card is-cast reveal">
+        <div class="element-card-head">
+          <span class="element-badge">You-Cast</span>
+        </div>
+        <h3 class="element-title">Ascolta. Guarda. Approfondisci.</h3>
+        <p class="element-body">100 episodi in 12 serie tematiche. Contenuti audio e video per il prima, il durante e il dopo della formazione. Accesso via QR code, 2 mesi di disponibilità rolling.</p>
+        <div class="element-tags">
+          <span>100 episodi</span><span class="dot">·</span>
+          <span>12 serie</span><span class="dot">·</span>
+          <span>Audio + Video</span><span class="dot">·</span>
+          <span>QR access</span>
+        </div>
+        <div class="element-foot">
+          <span class="element-price"><strong>€8</strong>/persona · €6 oltre 10 pax</span>
+          <a href="#" class="btn-text-link">Esplora You-Cast →</a>
+        </div>
+      </article>
+
+      <!-- You-Learn -->
+      <article class="element-card is-learn reveal">
+        <div class="element-card-head">
+          <span class="element-badge">You-Learn</span>
+        </div>
+        <h3 class="element-title">Impara a progettare formazione che funziona.</h3>
+        <p class="element-body">Learning 4.0 è il corso intensivo di 3 giornate per chi progetta e gestisce la formazione. Neuroscienze, AI e creatività applicata. Max 12 partecipanti.</p>
+        <div class="element-tags">
+          <span>3 giorni</span><span class="dot">·</span>
+          <span>Max 12 pax</span><span class="dot">·</span>
+          <span>Learning by Doing</span><span class="dot">·</span>
+          <span>FSE+ eligible</span>
+        </div>
+        <div class="element-foot">
+          <span class="element-price"><strong>€1.200</strong>/persona · Azienda: su richiesta</span>
+          <a href="#contact" class="btn-text-link">Scopri il programma →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     LABS
+     ========================================================================= -->
+<section class="section section-dark" id="labs">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-on-dark">Sistemi integrati</p>
+      <h2 class="heading-section">I Labs</h2>
+      <p class="lead lead-on-dark">Combina gli Elements in un sistema completo. Ogni Lab è un percorso integrato — assessment, pratica, contenuti — progettato intorno a un tema.</p>
+    </div>
+
+    <div class="labs-grid">
+
+      <!-- DISC Lab -->
+      <article class="lab-card reveal">
+        <p class="lab-desc">DISC Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3 class="lab-title">Il DISC, in sistema.</h3>
+        <p class="lab-body">Il sistema completo per portare il DISC in azienda. Dal profilo comportamentale al roleplay situazionale, fino ai contenuti audio di approfondimento.</p>
+        <div class="lab-price">Bundle con sconto <strong>15%</strong> rispetto agli Elements separati</div>
+        <div class="lab-foot">
+          <a href="#contact" class="lab-text-link">Costruisci il tuo DISC Lab →</a>
+        </div>
+      </article>
+
+      <!-- Leadership Lab -->
+      <article class="lab-card reveal">
+        <p class="lab-desc">Leadership Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess · SL</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3 class="lab-title">Leadership che adatta lo stile.</h3>
+        <p class="lab-body">Situational Leadership assessment, simulazioni di leadership situazionale e podcast dedicati. Per sviluppare leader che adattano lo stile al contesto.</p>
+        <div class="lab-foot">
+          <span class="badge-soon-dark">Coming soon</span>
+          <a href="#contact" class="lab-text-link">Avvisami →</a>
+        </div>
+      </article>
+
+      <!-- Team Lab -->
+      <article class="lab-card reveal">
+        <p class="lab-desc">Team Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess · Lencioni</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3 class="lab-title">Team che funzionano davvero.</h3>
+        <p class="lab-body">Assessment Lencioni sulle disfunzioni del team, gamification collaborativa e contenuti per la coesione. Il laboratorio per team che vogliono funzionare davvero.</p>
+        <div class="lab-foot">
+          <span class="badge-soon-dark">Coming soon</span>
+          <a href="#contact" class="lab-text-link">Avvisami →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     NUMERI / CREDENZIALI
+     ========================================================================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">In cifre</p>
+      <h2 class="heading-section">Ciò che You-Lab porta in aula.</h2>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Anni DISC<br>certificato</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Episodi<br>You-Cast</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Serie<br>tematiche</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Giornate<br>Learning 4.0</div>
+      </div>
+    </div>
+
+    <p class="stats-foot reveal">Dietro You-Lab c'è You-Mans — 20 anni di formazione, ricerca e psicologia organizzativa in Italia e Francia.</p>
+  </div>
+</section>
+
+<!-- =========================================================================
+     YOU-MANS / CONTATTO
+     ========================================================================= -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-text reveal">
+        <p class="eyebrow">Chi siamo</p>
+        <h2 class="heading-section">You-Mans</h2>
+        <p>You-Lab è il progetto di You-Mans Italia S.R.L. e You-Mans SAS — due aziende, un'unica missione: rendere la formazione professionale più efficace, più misurabile, più umana.</p>
+        <a class="external-link" href="https://you-mans.com" target="_blank" rel="noopener">you-mans.com ↗</a>
+      </div>
+
+      <form class="contact-form reveal" action="mailto:info@you-mans.com" method="post" enctype="text/plain">
+        <p class="eyebrow">Scrivici</p>
+        <h3 class="heading-section" style="font-size:28px;">Parliamone.</h3>
+
+        <div class="form-field">
+          <label for="f-name">Nome</label>
+          <input id="f-name" name="name" type="text" placeholder="Il tuo nome" required>
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" placeholder="email@azienda.it" required>
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Messaggio</label>
+          <textarea id="f-msg" name="message" placeholder="Cosa ti serve: acquisto, demo, info sui Labs…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Invia →</button>
+        <p class="form-note">Per acquisti, demo o informazioni sui Labs.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     FOOTER
+     ========================================================================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">You-Lab</div>
+        <p class="footer-tag">Strumenti e sistemi per chi forma. Un progetto You-Mans.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Elements</h4>
+        <ul>
+          <li><a href="#elements">You-Assess</a></li>
+          <li><a href="#elements">You-Play <span class="soon">Soon</span></a></li>
+          <li><a href="#elements">You-Cast</a></li>
+          <li><a href="#elements">You-Learn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Labs</h4>
+        <ul>
+          <li><a href="#labs">DISC Lab</a></li>
+          <li><a href="#labs">Leadership Lab <span class="soon">Soon</span></a></li>
+          <li><a href="#labs">Team Lab <span class="soon">Soon</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Azienda</h4>
+        <ul>
+          <li><a href="https://you-mans.com" target="_blank" rel="noopener">You-Mans</a></li>
+          <li><a href="#contact">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 You-Mans Italia S.R.L. — P.IVA [Da inserire]</div>
+      <div class="footer-lang" role="group" aria-label="Lingua">
+        <button class="is-active">IT</button>
+        <span>·</span>
+        <button>FR</button>
+        <span>·</span>
+        <button>EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // -------- Nav scroll state (dark hero → light on scroll) --------
+  var nav = document.getElementById('nav');
+  var heroH = function() {
+    var h = document.getElementById('hero');
+    return h ? h.offsetHeight : 600;
+  };
+  var navCtaDark = document.querySelector('.nav-cta-dark');
+
+  function updateNav() {
+    var scrolled = window.scrollY > (heroH() - 80);
+    nav.classList.toggle('is-light', scrolled);
+    if (navCtaDark) {
+      navCtaDark.classList.toggle('btn-outline-on-dark', !scrolled);
+      navCtaDark.classList.toggle('btn-outline', scrolled);
+    }
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav);
+
+  // -------- Desktop dropdowns: click-toggle (hover handled in CSS) --------
+  document.querySelectorAll('[data-dropdown]').forEach(function(item) {
+    var trigger = item.querySelector('.nav-link');
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      var open = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      // close others
+      document.querySelectorAll('[data-dropdown]').forEach(function(other) {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          var t = other.querySelector('.nav-link');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('[data-dropdown]')) {
+      document.querySelectorAll('[data-dropdown].is-open').forEach(function(item) {
+        item.classList.remove('is-open');
+        var t = item.querySelector('.nav-link');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // -------- Mobile drawer --------
+  var burger = document.getElementById('navBurger');
+  var drawer = document.getElementById('mobileDrawer');
+  burger.addEventListener('click', function() {
+    var open = drawer.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      drawer.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+  // Mobile accordions
+  drawer.querySelectorAll('[data-m-accordion]').forEach(function(group) {
+    var head = group.querySelector('.m-head');
+    head.addEventListener('click', function() {
+      var open = group.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // -------- Scroll reveal (staggered) --------
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          // stagger by index within parent
+          var parent = entry.target.parentElement;
+          var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
+          var idx = Array.prototype.indexOf.call(siblings, entry.target);
+          setTimeout(function() {
+            entry.target.classList.add('is-visible');
+          }, Math.max(0, idx) * 90);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('is-visible'); });
+  }
+
+  // -------- Lang switch (placeholder, non-functional v1) --------
+  function bindLang(buttons) {
+    buttons.forEach(function(b) {
+      b.addEventListener('click', function() {
+        buttons.forEach(function(x) { x.classList.remove('is-active'); x.setAttribute('aria-pressed', 'false'); });
+        b.classList.add('is-active');
+        b.setAttribute('aria-pressed', 'true');
+      });
+    });
+  }
+  bindLang(Array.prototype.slice.call(document.querySelectorAll('.lang-switch button')));
+  bindLang(Array.prototype.slice.call(document.querySelectorAll('.footer-lang button')));
+
+})();
+</script>
+
+</body>
+</html>
