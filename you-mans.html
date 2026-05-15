@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You-Play — La formazione che si pratica | You-Lab</title>
-<meta name="description" content="You-Play: roleplay AI, card game, quiz, wordcloud e simulazioni per trasformare l'aula in un campo di allenamento. In arrivo.">
+<title>You-Mans — Chi siamo | You-Lab</title>
+<meta name="description" content="You-Mans: 20 anni di formazione, ricerca e psicologia organizzativa in Italia e Francia. Formiamo chi forma. You-Mans Italia S.R.L. e You-Mans SAS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -59,8 +59,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 ul { list-style: none; padding: 0; margin: 0; }
 
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
-.section { padding: 100px 0; }
-@media (min-width: 1024px) { .section { padding: 120px 0; } }
+.section { padding: 80px 0; }
+@media (min-width: 1024px) { .section { padding: 100px 0; } }
 .section-dark { background: var(--color-dark); color: var(--color-on-dark); }
 .section-dark .heading-section { color: var(--color-on-dark); }
 .section-dark .lead { color: var(--color-on-dark-muted); }
@@ -120,8 +120,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn-outline { background: transparent; color: var(--color-dark); border-color: var(--color-dark); }
 .btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-nav { height: 36px; padding: 0 16px; font-size: 13px; }
-.btn-play { background: var(--color-play); color: #fff; }
-.btn-play:hover { background: #468ba8; }
 
 /* =========================================================================
    NAV
@@ -133,11 +131,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   height: 72px;
   display: flex;
   align-items: center;
-  transition: background 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
-  background: transparent;
-  border-bottom: 1px solid transparent;
+  transition: background 220ms var(--ease), border-color 220ms var(--ease);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
 }
-.nav.is-light { background: var(--color-bg); border-bottom-color: var(--color-border); }
 .nav-inner {
   width: 100%;
   max-width: var(--container-max);
@@ -153,10 +150,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.5px;
-  color: var(--color-on-dark);
-  transition: color 220ms var(--ease);
+  color: var(--color-dark);
 }
-.nav.is-light .nav-logo { color: var(--color-dark); }
 .nav-menu { display: flex; align-items: center; gap: 32px; }
 @media (max-width: 900px) { .nav-menu { display: none; } }
 
@@ -167,12 +162,23 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-on-dark);
+  color: var(--color-text);
   padding: 8px 0;
-  transition: color 220ms var(--ease), opacity 160ms var(--ease);
+  transition: opacity 160ms var(--ease);
 }
-.nav.is-light .nav-link { color: var(--color-text); }
 .nav-link:hover { opacity: 0.7; }
+.nav-link.is-active {
+  position: relative;
+  font-weight: 600;
+}
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1.5px;
+  background: currentColor;
+}
 .nav-link .chev { width: 10px; height: 10px; transition: transform 180ms var(--ease); }
 .nav-item.is-open .nav-link .chev { transform: rotate(180deg); }
 
@@ -208,11 +214,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   transition: background 140ms var(--ease);
 }
 .nav-dropdown a:hover { background: var(--color-border); }
-.nav-dropdown a.is-active {
-  background: var(--color-border);
-  color: var(--color-play);
-  font-weight: 600;
-}
 .nav-dropdown .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -227,9 +228,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--color-on-dark);
+  color: var(--color-text-muted);
 }
-.nav.is-light .lang-switch { color: var(--color-text-muted); }
 .lang-switch button { padding: 4px 6px; opacity: 0.55; transition: opacity 140ms var(--ease); }
 .lang-switch button:hover { opacity: 1; }
 .lang-switch button.is-active { opacity: 1; }
@@ -246,7 +246,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .nav-burger span {
   display: block;
   width: 22px; height: 1.5px;
-  background: var(--color-on-dark);
+  background: var(--color-text);
   position: relative;
 }
 .nav-burger span::before,
@@ -255,13 +255,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   position: absolute;
   left: 0;
   width: 22px; height: 1.5px;
-  background: var(--color-on-dark);
+  background: var(--color-text);
 }
 .nav-burger span::before { top: -7px; }
 .nav-burger span::after  { top:  7px; }
-.nav.is-light .nav-burger span,
-.nav.is-light .nav-burger span::before,
-.nav.is-light .nav-burger span::after { background: var(--color-text); }
 
 .mobile-drawer {
   position: fixed;
@@ -288,6 +285,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text);
   padding: 12px 0;
 }
+.mobile-drawer .m-head.is-active { font-weight: 700; }
 .mobile-drawer .m-list { display: none; padding-bottom: 12px; }
 .mobile-drawer .m-group.is-open .m-list { display: block; }
 .mobile-drawer .m-list a {
@@ -298,7 +296,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: 16px;
   color: var(--color-text);
 }
-.mobile-drawer .m-list a.is-active { color: var(--color-play); font-weight: 600; }
 .mobile-drawer .m-list .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -309,235 +306,112 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
 /* =========================================================================
-   HERO (dark, 80vh)
+   HERO (light)
    ========================================================================= */
-.hero {
-  position: relative;
-  min-height: 80vh;
-  background: var(--color-dark);
-  color: var(--color-on-dark);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+.hero-light {
+  padding: 144px 0 64px;
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.5;
-  pointer-events: none;
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
-}
-.hero-inner {
-  position: relative;
-  padding-top: 144px;
-  padding-bottom: 96px;
-  max-width: 980px;
-}
-.hero-eyebrow {
+.hero-light .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-play);
-  margin: 0 0 32px;
+  color: var(--color-text-muted);
+  margin: 0 0 28px;
 }
-.hero-headline {
+.hero-light h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(40px, 7vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -1.5px;
-  color: var(--color-on-dark);
+  font-size: clamp(40px, 7vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -1.4px;
   margin: 0 0 24px;
+  color: var(--color-text);
   max-width: 16ch;
 }
-.hero-sub {
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.55;
-  color: var(--color-on-dark-muted);
-  margin: 0 0 40px;
-  max-width: 56ch;
-}
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-.hero-tagrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-}
-
-/* =========================================================================
-   FILOSOFIA (centered)
-   ========================================================================= */
-.philosophy {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-.philosophy h2 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(28px, 4vw, 36px);
-  letter-spacing: -0.9px;
-  line-height: 1.1;
-  margin: 0 0 32px;
-  color: var(--color-text);
-}
-.philosophy p {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-  margin: 0 0 20px;
-  text-align: left;
-}
-.philosophy p:last-child { margin-bottom: 0; }
-
-/* =========================================================================
-   GRID STRUMENTI (5 card, 3+2 centered)
-   ========================================================================= */
-.play-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 900px) {
-  .play-grid {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 28px;
-  }
-  .play-grid .play-card { grid-column: span 2; }
-  .play-grid .play-card:nth-child(4) { grid-column: 2 / span 2; }
-  .play-grid .play-card:nth-child(5) { grid-column: 4 / span 2; }
-}
-.play-card {
-  position: relative;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-play);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
-}
-.play-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-play);
-  border-top-color: var(--color-play);
-  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
-}
-.play-card-badge {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #FFFFFF;
-  background-color: var(--color-play);
-  padding: 4px 12px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.play-card-soon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-}
-.play-card h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.4vw, 24px);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 4px 0 0;
-  color: var(--color-text);
-}
-.play-card p {
-  font-size: 15px;
-  line-height: 1.55;
+.hero-light .hero-sub-light {
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.5;
   color: var(--color-text-muted);
   margin: 0;
-  flex: 1;
-}
-.play-card-tags {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
-  padding-top: 14px;
-  border-top: 1px solid var(--color-border);
+  max-width: 60ch;
 }
 
 /* =========================================================================
-   INTEGRAZIONE LABS (dark, 3 card)
+   LA STORIA (split text + 4 stat)
    ========================================================================= */
-.labs-grid {
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (min-width: 900px) { .story-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; } }
+.story-text h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 3.4vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 24px;
+  color: var(--color-text);
+}
+.story-text p { color: var(--color-text-muted); margin: 0 0 20px; }
+
+.story-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
+}
+.stat-block { display: flex; flex-direction: column; gap: 8px; }
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -1.6px;
+  color: var(--color-text);
+}
+.stat-cap {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* =========================================================================
+   COSA FACCIAMO (dark)
+   ========================================================================= */
+.services-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
-@media (min-width: 1024px) {
-  .labs-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-}
-.lab-card {
+@media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.service-card {
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
   border-radius: var(--radius-lg);
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+  gap: 14px;
+  transition: transform 240ms var(--ease), border-color 240ms var(--ease), background 240ms var(--ease);
 }
-.lab-card:hover {
+.service-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.05);
 }
-.lab-desc {
+.service-num {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   color: var(--color-on-dark-muted);
-  margin: 0;
 }
-.lab-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.lab-pill {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
-  border: 1px solid currentColor;
-}
-.lab-pill.assess { color: #d68b81; }
-.lab-pill.play   { color: #a8d4e8; }
-.lab-pill.cast   { color: #e6b886; }
-.lab-card h3 {
+.service-card h3 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 22px;
@@ -546,202 +420,178 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0;
   color: var(--color-on-dark);
 }
-.lab-card p {
+.service-card p {
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--color-on-dark-muted);
   margin: 0;
-  flex: 1;
 }
-.lab-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 8px;
-}
-.badge-soon-dark {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  padding: 5px 9px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-.lab-text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--color-on-dark);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: border-color 160ms var(--ease);
-}
-.lab-text-link:hover { border-bottom-color: var(--color-on-dark); }
 
 /* =========================================================================
-   PRICING (table + bundle card)
+   ENTITÀ (2 card)
    ========================================================================= */
-.pricing-table-wrap { width: 100%; margin-bottom: 32px; overflow-x: auto; }
-.pricing-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-.pricing-table thead th {
+.entities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 700px) { .entities-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.entity-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.entity-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.entity-row {
+  display: grid;
+  grid-template-columns: minmax(96px, auto) 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+.entity-row .key {
   font-family: var(--font-mono);
-  font-weight: 400;
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  text-align: left;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--color-border);
 }
-.pricing-table thead th.num-col { text-align: right; }
-.pricing-table tbody td {
-  padding: 22px 16px;
-  border-bottom: 1px solid var(--color-border);
-  vertical-align: baseline;
-}
-.pricing-table tbody tr:last-child td { border-bottom: none; }
-.pricing-table .qty {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
+.entity-row .val {
+  font-size: 15px;
+  line-height: 1.4;
   color: var(--color-text);
 }
-.pricing-table .price {
+
+/* =========================================================================
+   CONTATTO (split text + form)
+   ========================================================================= */
+.contact-section { border-top: 1px solid var(--color-border); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+}
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+.contact-text h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
-  text-align: right;
+  font-size: clamp(26px, 3.4vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 16px;
   color: var(--color-text);
 }
-.pricing-table .price small {
-  display: block;
+.contact-text p { color: var(--color-text-muted); }
+.contact-direct {
   font-family: var(--font-mono);
-  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-direct a {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-text-muted);
+  padding-bottom: 1px;
+  display: inline-block;
+  transition: border-color 160ms var(--ease);
+}
+.contact-direct a:hover { border-bottom-color: var(--color-text); }
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.form-field label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+  font: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 0;
+  color: var(--color-text);
+  transition: border-color 160ms var(--ease);
+  resize: vertical;
+}
+.form-field textarea { min-height: 96px; }
+.form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 4l3 3 3-3' fill='none' stroke='%231A1A1A' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  background-size: 12px;
+  padding-right: 24px;
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-bottom-color: var(--color-dark);
+}
+.form-field ::placeholder { color: #b8b8b2; }
+.form-note {
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
-  margin-top: 4px;
+  margin: 16px 0 0;
 }
-.pricing-note {
-  text-align: center;
-  color: var(--color-text-muted);
-  max-width: 60ch;
-  margin: 8px auto 48px;
-}
-
-.bundle-card {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-play);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-@media (min-width: 700px) {
-  .bundle-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-}
-.bundle-text { flex: 1; }
-.bundle-badge {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #FFFFFF;
-  background-color: var(--color-play);
-  padding: 4px 12px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.bundle-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 22px;
-  letter-spacing: -0.5px;
-  color: var(--color-text);
-  margin: 10px 0 6px;
-}
-.bundle-note { font-size: 14px; color: var(--color-text-muted); margin: 0; }
 
 /* =========================================================================
-   CTA FINALE — waitlist form
+   LINK A YOU-LAB (dark, 5 pill outline)
    ========================================================================= */
-.final-cta { text-align: center; max-width: 720px; margin: 0 auto; }
-.final-cta h2 {
+.relink-section { text-align: center; padding: 80px 0; }
+.relink-text {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(36px, 5vw, 48px);
-  line-height: 1.05;
-  letter-spacing: -1.2px;
+  font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.6px;
   color: var(--color-on-dark);
-  margin: 0 0 20px;
+  margin: 0 0 32px;
 }
-.final-cta p {
-  color: var(--color-on-dark-muted);
-  font-size: 18px;
-  margin: 0 0 36px;
-}
-.waitlist-form {
+.relink-pills {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 12px;
-  max-width: 480px;
-  margin: 0 auto 24px;
+  justify-content: center;
 }
-@media (min-width: 600px) { .waitlist-form { flex-direction: row; } }
-.waitlist-form input[type="email"] {
-  flex: 1;
-  height: 48px;
-  padding: 0 18px;
-  font: inherit;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: var(--radius-pill);
+.relink-pill {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   color: var(--color-on-dark);
-  transition: border-color 160ms var(--ease);
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: var(--radius-pill);
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
 }
-.waitlist-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
-.waitlist-form input[type="email"]:focus {
-  outline: none;
-  border-color: var(--color-on-dark);
-}
-.waitlist-form button {
-  height: 48px;
-  padding: 0 26px;
+.relink-pill:hover {
   background: var(--color-on-dark);
   color: var(--color-dark);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  transition: background 180ms var(--ease);
-}
-.waitlist-form button:hover { background: #ececec; }
-.final-note {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  margin: 0;
+  border-color: var(--color-on-dark);
 }
 
 /* =========================================================================
@@ -758,9 +608,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 48px;
   margin-bottom: 64px;
 }
-@media (min-width: 900px) {
-  .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; }
-}
+@media (min-width: 900px) { .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; } }
 .footer-logo {
   font-family: var(--font-display);
   font-weight: 700;
@@ -827,7 +675,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .play-card:hover, .lab-card:hover { transform: none; }
+  .btn:hover, .service-card:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
 </style>
@@ -835,24 +683,14 @@ ul { list-style: none; padding: 0; margin: 0; }
 <body>
 
 <!-- =========================================================================
-     NAV (You-Play active in Elements dropdown)
+     NAV
      ========================================================================= -->
-<header class="nav" id="nav">
+<header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
 
     <nav class="nav-menu" aria-label="Primary">
-      <div class="nav-item" data-dropdown>
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-          Labs
-          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <a href="labs.html#disc-lab" role="menuitem">DISC Lab</a>
-          <a href="labs.html#leadership-lab" role="menuitem">Leadership Lab <span class="soon">Coming soon</span></a>
-          <a href="labs.html#team-lab" role="menuitem">Team Lab <span class="soon">Coming soon</span></a>
-        </div>
-      </div>
+      <a href="labs.html" class="nav-link">Labs</a>
 
       <div class="nav-item" data-dropdown>
         <button class="nav-link" aria-haspopup="true" aria-expanded="false">
@@ -861,13 +699,13 @@ ul { list-style: none; padding: 0; margin: 0; }
         </button>
         <div class="nav-dropdown" role="menu">
           <a href="you-disc.html" role="menuitem">You-DISC</a>
-          <a href="you-play.html" class="is-active" role="menuitem" aria-current="page">You-Play <span class="soon">Coming soon</span></a>
+          <a href="you-play.html" role="menuitem">You-Play <span class="soon">Coming soon</span></a>
           <a href="you-cast.html" role="menuitem">You-Cast</a>
           <a href="you-learn.html" role="menuitem">You-Learn</a>
         </div>
       </div>
 
-      <a href="you-mans.html" class="nav-link">You-Mans</a>
+      <a href="you-mans.html" class="nav-link is-active" aria-current="page">You-Mans</a>
     </nav>
 
     <div class="nav-right">
@@ -878,7 +716,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="#waitlist" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Avvisami →</a>
+      <a href="#contact" class="btn btn-outline btn-nav">Scrivici →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -888,16 +726,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 <!-- Mobile drawer -->
 <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="m-group" data-m-accordion>
-    <button class="m-head" aria-expanded="false">
-      Labs
-      <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-    </button>
-    <div class="m-list">
-      <a href="labs.html#disc-lab">DISC Lab</a>
-      <a href="labs.html#leadership-lab">Leadership Lab <span class="soon">Soon</span></a>
-      <a href="labs.html#team-lab">Team Lab <span class="soon">Soon</span></a>
-    </div>
+  <div class="m-group">
+    <a class="m-head" href="labs.html" style="cursor:pointer">Labs</a>
   </div>
   <div class="m-group" data-m-accordion>
     <button class="m-head" aria-expanded="false">
@@ -906,224 +736,195 @@ ul { list-style: none; padding: 0; margin: 0; }
     </button>
     <div class="m-list">
       <a href="you-disc.html">You-DISC</a>
-      <a href="you-play.html" class="is-active">You-Play <span class="soon">Soon</span></a>
+      <a href="you-play.html">You-Play <span class="soon">Soon</span></a>
       <a href="you-cast.html">You-Cast</a>
       <a href="you-learn.html">You-Learn</a>
     </div>
   </div>
   <div class="m-group">
-    <a class="m-head" href="you-mans.html" style="cursor:pointer">You-Mans</a>
+    <a class="m-head is-active" href="you-mans.html" style="cursor:pointer" aria-current="page">You-Mans</a>
   </div>
-  <a href="#waitlist" class="btn btn-primary m-cta">Avvisami →</a>
+  <a href="#contact" class="btn btn-primary m-cta">Scrivici →</a>
 </div>
 
 <!-- =========================================================================
      SEZIONE 1 — HERO
      ========================================================================= -->
-<section class="hero">
-  <div class="container hero-inner">
-    <p class="hero-eyebrow">You-Play · Coming Soon</p>
-    <h1 class="hero-headline">La formazione<br>che si pratica.</h1>
-    <p class="hero-sub">Roleplay AI, card game, quiz e simulazioni per trasformare l'aula in un campo di allenamento. You-Play arriva presto.</p>
-    <div class="hero-ctas">
-      <a href="mailto:info@you-mans.com?subject=Waitlist%20You-Play" class="btn btn-outline-on-dark">Avvisami al lancio →</a>
-    </div>
-    <div class="hero-tagrow">Progettato per gruppi · €8/persona · €6 oltre 10 pax</div>
+<section class="hero-light">
+  <div class="container">
+    <p class="eyebrow">You-Mans · Chi siamo</p>
+    <h1>Formiamo chi forma.</h1>
+    <p class="hero-sub-light">You-Mans è una società di consulenza e formazione specializzata in psicologia organizzativa, sviluppo delle competenze e progettazione dell'apprendimento. Operiamo in Italia e Francia.</p>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 2 — FILOSOFIA
+     SEZIONE 2 — LA STORIA
      ========================================================================= -->
 <section class="section">
   <div class="container">
-    <div class="philosophy reveal">
-      <h2>Sapere non basta. Bisogna fare.</h2>
-      <p>La ricerca sulle neuroscienze dell'apprendimento è chiara: le competenze si consolidano attraverso la pratica, il feedback e la riflessione. Non attraverso le slide.</p>
-      <p>You-Play porta in aula strumenti che fanno agire i partecipanti — in contesti sicuri, con regole chiare e debriefing integrato. Ogni strumento è progettato per un obiettivo specifico e funziona sia in presenza che online.</p>
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <p class="eyebrow">La storia</p>
+        <h2>20 anni di formazione applicata.</h2>
+        <p>You-Mans nasce dalla convinzione che la formazione professionale funzioni solo quando è progettata con rigore metodologico e consegnata con autenticità. Non slide da leggere. Non concetti da memorizzare. Esperienze che lasciano qualcosa.</p>
+        <p>You-Lab è il passo successivo: gli stessi strumenti che abbiamo usato in aula per 20 anni, resi accessibili a chiunque voglia formare meglio.</p>
+      </div>
+
+      <div class="story-stats reveal" aria-label="Numeri You-Mans">
+        <div class="stat-block">
+          <div class="stat-num">20+</div>
+          <div class="stat-cap">Anni di<br>esperienza</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">2</div>
+          <div class="stat-cap">Paesi<br>IT · FR</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3</div>
+          <div class="stat-cap">Lingue<br>IT · FR · EN</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">50M+</div>
+          <div class="stat-cap">Persone hanno<br>completato il DISC nel mondo</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 3 — GLI STRUMENTI
-     ========================================================================= -->
-<section class="section" style="padding-top: 0;">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Strumenti</p>
-      <h2 class="heading-section">Gli strumenti You-Play</h2>
-      <p class="lead">Cinque categorie di attività per ogni fase della formazione.</p>
-    </div>
-
-    <div class="play-grid">
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Roleplay AI</span>
-        <h3>Simula conversazioni reali</h3>
-        <p>Personaggi AI con profili comportamentali definiti (DISC, Leadership, Team). Il partecipante allena le proprie competenze relazionali in scenari realistici, senza rischio.</p>
-        <div class="play-card-tags">Individuale · Online · DISC-ready</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Card Game</span>
-        <h3>Gioca per riflettere</h3>
-        <p>Mazzi di carte tematici per stimolare discussione, prendere decisioni in gruppo e lavorare su bias, stili di comunicazione e dinamiche di team.</p>
-        <div class="play-card-tags">Gruppo · Presenza · Online</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Quiz</span>
-        <h3>Misura quello che sai</h3>
-        <p>Quiz rapidi per verificare la comprensione, attivare la memoria o aprire una sessione con un kick-start interattivo. Risultati in tempo reale.</p>
-        <div class="play-card-tags">Gruppo · Individuale · Tempo reale</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Wordcloud</span>
-        <h3>La voce del gruppo in un colpo d'occhio</h3>
-        <p>Raccogli le parole chiave del gruppo in tempo reale. Utile per aprire, chiudere o monitorare una sessione. Immediato, visivo, inclusivo.</p>
-        <div class="play-card-tags">Gruppo · Apertura · Chiusura</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Simulazioni</span>
-        <h3>Scenari complessi, decisioni reali</h3>
-        <p>Situazioni simulate con variabili, ruoli e conseguenze. I partecipanti affrontano contesti lavorativi realistici e imparano attraverso le proprie scelte.</p>
-        <div class="play-card-tags">Gruppo · Team · Avanzato</div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================================
-     SEZIONE 4 — INTEGRAZIONE LABS (dark)
+     SEZIONE 3 — COSA FACCIAMO (dark)
      ========================================================================= -->
 <section class="section section-dark">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow eyebrow-on-dark">Nei Labs</p>
-      <h2 class="heading-section">You-Play nei Labs</h2>
-      <p class="lead lead-on-dark">You-Play è il motore di pratica di ogni Lab. Combinato con You-Assess e You-Cast, completa il ciclo assess → practice → reflect.</p>
+      <p class="eyebrow eyebrow-on-dark">Attività</p>
+      <h2 class="heading-section">Oltre You-Lab</h2>
+      <p class="lead lead-on-dark">You-Lab è il nostro hub di strumenti digitali. La nostra attività copre anche:</p>
     </div>
 
-    <div class="labs-grid">
-
-      <article class="lab-card reveal">
-        <p class="lab-desc">DISC Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Il DISC, in pratica.</h3>
-        <p>Roleplay con profili DISC, card game sugli stili comportamentali, scenari di comunicazione adattiva.</p>
-        <div class="lab-foot">
-          <a href="labs.html#disc-lab" class="lab-text-link">Scopri il DISC Lab →</a>
-        </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <span class="service-num">01</span>
+        <h3>Consulenza organizzativa</h3>
+        <p>Diagnosi, progettazione e accompagnamento nei processi di cambiamento e sviluppo.</p>
       </article>
-
-      <article class="lab-card reveal">
-        <p class="lab-desc">Leadership Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess · SL</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Leadership in azione.</h3>
-        <p>Simulazioni di leadership situazionale, role-play con il team.</p>
-        <div class="lab-foot">
-          <span class="badge-soon-dark">Coming soon</span>
-          <a href="labs.html#leadership-lab" class="lab-text-link">Avvisami →</a>
-        </div>
+      <article class="service-card reveal">
+        <span class="service-num">02</span>
+        <h3>Formazione in aula</h3>
+        <p>Programmi su misura per aziende e istituzioni. DISC, Leadership, Team, Well-being, Comunicazione.</p>
       </article>
-
-      <article class="lab-card reveal">
-        <p class="lab-desc">Team Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess · Lencioni</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Team in movimento.</h3>
-        <p>Gamification per la coesione, simulazioni di decision-making collettivo.</p>
-        <div class="lab-foot">
-          <span class="badge-soon-dark">Coming soon</span>
-          <a href="labs.html#team-lab" class="lab-text-link">Avvisami →</a>
-        </div>
+      <article class="service-card reveal">
+        <span class="service-num">03</span>
+        <h3>Docenza universitaria</h3>
+        <p>Corsi di psicologia organizzativa e HR presso Université Paris II Assas e business school.</p>
       </article>
-
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 5 — PRICING
+     SEZIONE 4 — LE ENTITÀ
      ========================================================================= -->
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Pricing</p>
-      <h2 class="heading-section">Prezzi</h2>
-      <p class="lead">You-Play si paga per persona per sessione. Pensato per gruppi.</p>
+      <p class="eyebrow">Le entità</p>
+      <h2 class="heading-section">Due aziende, un'unica missione.</h2>
     </div>
 
-    <div class="pricing-table-wrap reveal">
-      <table class="pricing-table" aria-label="Prezzi per persona">
-        <thead>
-          <tr>
-            <th>Quantità</th>
-            <th class="num-col">Prezzo per persona</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="qty">Fino a 9 persone</td>
-            <td class="price">€8,00 <small>+ IVA</small></td>
-          </tr>
-          <tr>
-            <td class="qty">10 persone e oltre</td>
-            <td class="price">€6,00 <small>+ IVA</small></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="entities-grid">
+      <article class="entity-card reveal">
+        <div class="entity-name">You-Mans Italia S.R.L.</div>
+        <div class="entity-row">
+          <div class="key">Sede</div>
+          <div class="val">Italia</div>
+        </div>
+        <div class="entity-row">
+          <div class="key">Attività</div>
+          <div class="val">Formazione aziendale, consulenza HR, psicometria</div>
+        </div>
+      </article>
 
-    <p class="pricing-note reveal">Il prezzo include accesso completo agli strumenti della sessione. La sessione è configurata dal formatore prima dell'evento.</p>
-
-    <div class="bundle-card reveal">
-      <div class="bundle-text">
-        <span class="bundle-badge">DISC Lab</span>
-        <h3 class="bundle-title">Combina You-Play con You-Assess e You-Cast</h3>
-        <p class="bundle-note">Sconto 15% rispetto agli Elements separati.</p>
-      </div>
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-play">Ordina →</a>
+      <article class="entity-card reveal">
+        <div class="entity-name">You-Mans SAS</div>
+        <div class="entity-row">
+          <div class="key">Sede</div>
+          <div class="val">Francia</div>
+        </div>
+        <div class="entity-row">
+          <div class="key">Attività</div>
+          <div class="val">Formazione, consulenza organizzativa, docenza universitaria</div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 6 — CTA FINALE (waitlist)
+     SEZIONE 5 — CONTATTO
      ========================================================================= -->
-<section class="section section-dark" id="waitlist">
+<section class="section contact-section" id="contact">
   <div class="container">
-    <div class="final-cta reveal">
-      <h2>You-Play arriva presto.</h2>
-      <p>Lascia la tua email e ti avvisiamo al lancio. Nessuno spam — solo la notizia che conta.</p>
+    <div class="contact-grid">
 
-      <form class="waitlist-form" action="mailto:info@you-mans.com" method="get" enctype="text/plain" aria-label="Waitlist You-Play">
-        <input type="hidden" name="subject" value="Waitlist You-Play">
-        <input type="email" name="body" placeholder="La tua email" required aria-label="Email">
-        <button type="submit">Avvisami →</button>
+      <div class="contact-text reveal">
+        <p class="eyebrow">Contatto</p>
+        <h2>Parliamoci.</h2>
+        <p>Per informazioni su You-Lab, sui Labs, sulla formazione su misura o su qualsiasi cosa ti stia chiedendo.</p>
+        <div class="contact-direct">
+          <a href="mailto:info@you-mans.com">info@you-mans.com</a>
+          <a href="https://you-mans.com" target="_blank" rel="noopener">you-mans.com ↗</a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" action="mailto:info@you-mans.com" method="post" enctype="text/plain">
+        <div class="form-field">
+          <label for="f-name">Nome</label>
+          <input id="f-name" name="name" type="text" placeholder="Il tuo nome" required>
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" placeholder="email@azienda.it" required>
+        </div>
+        <div class="form-field">
+          <label for="f-subject">Oggetto</label>
+          <select id="f-subject" name="subject" required>
+            <option value="" disabled selected>Seleziona un oggetto…</option>
+            <option value="You-DISC">You-DISC</option>
+            <option value="You-Play">You-Play</option>
+            <option value="You-Cast">You-Cast</option>
+            <option value="You-Learn">You-Learn</option>
+            <option value="Labs">Labs</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Messaggio</label>
+          <textarea id="f-msg" name="message" placeholder="Dimmi cosa ti serve…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Invia →</button>
+        <p class="form-note">Risposta entro 24h · Nessuno spam</p>
       </form>
 
-      <p class="final-note">Disponibile per IT · FR · EN</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 6 — LINK A YOU-LAB (dark)
+     ========================================================================= -->
+<section class="section-dark relink-section">
+  <div class="container">
+    <p class="relink-text">Torna agli strumenti.</p>
+    <div class="relink-pills">
+      <a href="you-disc.html" class="relink-pill">You-DISC</a>
+      <a href="you-play.html" class="relink-pill">You-Play</a>
+      <a href="you-cast.html" class="relink-pill">You-Cast</a>
+      <a href="you-learn.html" class="relink-pill">You-Learn</a>
+      <a href="labs.html" class="relink-pill">Labs</a>
     </div>
   </div>
 </section>
@@ -1159,7 +960,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <h4>Azienda</h4>
         <ul>
           <li><a href="you-mans.html">You-Mans</a></li>
-          <li><a href="index.html#contact">Contatti</a></li>
+          <li><a href="#contact">Contatti</a></li>
           <li><a href="materiali.html">Materiali →</a></li>
         </ul>
       </div>
@@ -1181,25 +982,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 <script>
 (function() {
   'use strict';
-
-  var nav = document.getElementById('nav');
-  function heroH() {
-    var h = document.querySelector('.hero');
-    return h ? h.offsetHeight : 480;
-  }
-  var navCtaDark = document.querySelector('.nav-cta-dark');
-
-  function updateNav() {
-    var scrolled = window.scrollY > (heroH() - 80);
-    nav.classList.toggle('is-light', scrolled);
-    if (navCtaDark) {
-      navCtaDark.classList.toggle('btn-outline-on-dark', !scrolled);
-      navCtaDark.classList.toggle('btn-outline', scrolled);
-    }
-  }
-  updateNav();
-  window.addEventListener('scroll', updateNav, { passive: true });
-  window.addEventListener('resize', updateNav);
 
   // Desktop dropdowns
   document.querySelectorAll('[data-dropdown]').forEach(function(item) {
@@ -1261,7 +1043,7 @@ ul { list-style: none; padding: 0; margin: 0; }
           var parent = entry.target.parentElement;
           var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
           var idx = Array.prototype.indexOf.call(siblings, entry.target);
-          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 90);
+          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 80);
           io.unobserve(entry.target);
         }
       });
