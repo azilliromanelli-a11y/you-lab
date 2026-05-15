@@ -939,146 +939,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0;
 }
 
-/* DISC Lab — full-width banner variant */
-.disc-lab-banner {
-  background: var(--color-assess);
-  color: #fff;
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-@media (min-width: 900px) {
-  .disc-lab-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-    padding: 40px 48px;
-  }
-}
-.disc-lab-banner-text { flex: 1; }
-.disc-lab-banner .price-badge {
-  background-color: #fff;
-  color: var(--color-assess);
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  padding: 4px 12px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.disc-lab-banner-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(24px, 3vw, 28px);
-  letter-spacing: -0.6px;
-  margin: 10px 0 8px;
-  color: #fff;
-}
-.disc-lab-banner-body {
-  font-size: 15px;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.9);
-  margin: 0 0 6px;
-}
-.disc-lab-banner-price {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.85);
-}
-.disc-lab-banner .btn {
-  background: #fff;
-  color: var(--color-assess);
-  border-color: #fff;
-  flex-shrink: 0;
-}
-.disc-lab-banner .btn:hover { background: #ececec; }
-
-/* =========================================================================
-   SECTION 6b — Materiali (dark)
-   ========================================================================= */
-.materials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-@media (min-width: 900px) {
-  .materials-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-}
-.material-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: border-color 240ms var(--ease), background 240ms var(--ease), transform 240ms var(--ease);
-}
-.material-card:not(.is-disabled):hover {
-  border-color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-4px);
-}
-.material-card.is-disabled { opacity: 0.65; }
-.material-card-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: -0.5px;
-  color: var(--color-on-dark);
-  margin: 6px 0 6px;
-}
-.material-card-desc {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-on-dark-muted);
-  margin: 0;
-  flex: 1;
-}
-.material-card .badge-soon-dark {
-  align-self: flex-start;
-}
-.material-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  align-self: flex-start;
-  margin-top: 8px;
-  height: 40px;
-  padding: 0 18px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid var(--color-on-dark);
-  color: var(--color-on-dark);
-  background: transparent;
-  transition: background 180ms var(--ease), color 180ms var(--ease);
-}
-.material-card-cta:hover { background: var(--color-on-dark); color: var(--color-dark); }
-.material-card-cta.is-disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.badge-soon-dark {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  padding: 5px 9px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
 /* =========================================================================
    SECTION 7 — FAQ (HTML <details>)
    ========================================================================= */
@@ -1338,7 +1198,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     <h1 class="hero-headline">Non è un test.<br>È uno specchio.</h1>
     <p class="hero-sub">Lo strumento psicometrico basato sul modello DISC di Marston per leggere i comportamenti, comunicare meglio e costruire team che funzionano davvero.</p>
     <div class="hero-ctas">
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Acquista i codici →</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
       <a href="#report" class="btn btn-outline-on-dark">Vedi un report demo</a>
     </div>
     <div class="hero-tagrow">50M+ persone · DISC Marston 1928 · IT · FR · EN</div>
@@ -1636,53 +1496,12 @@ ul { list-style: none; padding: 0; margin: 0; }
     <div class="welcome-pack reveal">
       <div class="welcome-pack-text">
         <span class="price-badge">Welcome Pack</span>
-        <h3 class="welcome-pack-title">2 report a €25,00 totali</h3>
-        <p class="welcome-pack-note">Solo alla prima registrazione. Per provare You-DISC senza impegno.</p>
+        <h3 class="welcome-pack-title">2 report · €25,00 totali</h3>
+        <p class="welcome-pack-note">Solo alla prima registrazione.</p>
       </div>
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary">Inizia con il Welcome Pack →</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary">Ordina →</a>
     </div>
 
-    <!-- DISC Lab full-width banner -->
-    <div class="disc-lab-banner reveal">
-      <div class="disc-lab-banner-text">
-        <span class="price-badge">DISC Lab</span>
-        <h3 class="disc-lab-banner-title">You-DISC + You-Play + You-Cast. Il sistema completo.</h3>
-        <p class="disc-lab-banner-body">Assessment, roleplay e contenuti audio in un unico bundle, pensati per girare insieme in aula.</p>
-        <p class="disc-lab-banner-price">€[TBD] · sconto bundle rispetto agli Elements separati</p>
-      </div>
-      <a href="index.html#labs" class="btn">Scopri il DISC Lab →</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- =========================================================================
-     SEZIONE 6b — Materiali (dark)
-     ========================================================================= -->
-<section class="section section-dark">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow eyebrow-on-dark">Risorse</p>
-      <h2 class="heading-section">Materiali</h2>
-      <p class="lead lead-on-dark">Scarica un report di esempio o consulta i tutorial per portare You-DISC in aula.</p>
-    </div>
-
-    <div class="materials-grid">
-
-      <article class="material-card reveal">
-        <h3 class="material-card-title">Report di esempio</h3>
-        <p class="material-card-desc">Scarica un report anonimizzato per valutare You-DISC prima dell'acquisto.</p>
-        <a href="sample-report.pdf" class="material-card-cta" download>Scarica il PDF →</a>
-      </article>
-
-      <article class="material-card is-disabled reveal">
-        <span class="badge-soon-dark">Coming soon</span>
-        <h3 class="material-card-title">Tutorial</h3>
-        <p class="material-card-desc">Come usare You-DISC in aula: setup, debrief, casi d'uso.</p>
-        <span class="material-card-cta is-disabled" aria-disabled="true">Disponibile a breve</span>
-      </article>
-
-    </div>
   </div>
 </section>
 
@@ -1748,7 +1567,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     <h2>Pronti a iniziare?</h2>
     <p>Accedi alla piattaforma You-DISC e acquista i tuoi primi codici.</p>
     <div class="ctas">
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Vai a disc.you-mans.com →</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
       <a href="mailto:info@you-mans.com" class="link-muted">Hai domande? Scrivici →</a>
     </div>
   </div>
@@ -1786,6 +1605,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <ul>
           <li><a href="https://you-mans.com" target="_blank" rel="noopener">You-Mans</a></li>
           <li><a href="index.html#contact">Contatti</a></li>
+          <li><a href="materiali.html">Materiali →</a></li>
         </ul>
       </div>
     </div>
