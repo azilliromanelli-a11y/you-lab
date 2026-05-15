@@ -622,77 +622,29 @@ ul { list-style: none; padding: 0; margin: 0; }
 /* =========================================================================
    PRICING (table + bundle)
    ========================================================================= */
-.pricing-table-wrap { width: 100%; margin-bottom: 24px; overflow-x: auto; }
-.pricing-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-.pricing-table thead th {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  text-align: left;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--color-border);
-}
-.pricing-table thead th.num-col { text-align: right; }
-.pricing-table tbody td {
-  padding: 22px 16px;
-  border-bottom: 1px solid var(--color-border);
-  vertical-align: baseline;
-}
-.pricing-table tbody tr:last-child td { border-bottom: none; }
-.pricing-table .qty {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
-  color: var(--color-text);
-}
-.pricing-table .price {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
-  text-align: right;
-  color: var(--color-text);
-}
-.pricing-table .price small {
-  display: block;
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
-  margin-top: 4px;
-}
-.pricing-note {
+.pricing-intro {
   text-align: center;
+  max-width: 64ch;
+  margin: 0 auto 40px;
   color: var(--color-text-muted);
-  max-width: 60ch;
-  margin: 0 auto 48px;
+  font-size: 17px;
+  line-height: 1.6;
 }
-
-.bundle-card {
+.credit-card {
+  max-width: 560px;
+  margin: 0 auto;
   background: #fff;
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-cast);
+  border-top: 3px solid var(--color-cast);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+  text-align: center;
+  align-items: center;
 }
-@media (min-width: 700px) {
-  .bundle-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-}
-.bundle-text { flex: 1; }
-.bundle-badge {
+.credit-badge {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
@@ -705,15 +657,37 @@ ul { list-style: none; padding: 0; margin: 0; }
   border-radius: 4px;
   text-transform: uppercase;
 }
-.bundle-title {
+.credit-price {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 22px;
-  letter-spacing: -0.5px;
+  font-size: clamp(48px, 7vw, 64px);
+  line-height: 1;
+  letter-spacing: -1.8px;
   color: var(--color-text);
-  margin: 10px 0 6px;
+  margin: 4px 0 0;
 }
-.bundle-note { font-size: 14px; color: var(--color-text-muted); margin: 0; }
+.credit-unit {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+.credit-sub {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 4px 0 0;
+}
+.credit-card .btn { margin-top: 16px; }
+.credit-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 64ch;
+  margin: 32px auto 0;
+  line-height: 1.6;
+}
 
 /* =========================================================================
    CTA FINALE
@@ -927,7 +901,7 @@ ul { list-style: none; padding: 0; margin: 0; }
       <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
       <a href="#serie" class="btn btn-outline-on-dark">Esplora le serie ↓</a>
     </div>
-    <div class="hero-tagrow">oltre 100 episodi · 13 serie · Audio · QR access · 2 mesi rolling</div>
+    <div class="hero-tagrow">0,5 crediti · €16 + IVA · con You-Play · sconti volume per registrati</div>
   </div>
 </section>
 
@@ -1166,43 +1140,22 @@ ul { list-style: none; padding: 0; margin: 0; }
      ========================================================================= -->
 <section class="section">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
       <p class="eyebrow">Pricing</p>
-      <h2 class="heading-section">Prezzi</h2>
-      <p class="lead">You-Cast si acquista per persona. Ogni QR code dà accesso a tutta la libreria per 2 mesi dall'ultimo episodio caricato.</p>
+      <h2 class="heading-section">Prezzo</h2>
     </div>
 
-    <div class="pricing-table-wrap reveal">
-      <table class="pricing-table" aria-label="Prezzi per persona">
-        <thead>
-          <tr>
-            <th>Quantità</th>
-            <th class="num-col">Prezzo per persona</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="qty">Fino a 9 persone</td>
-            <td class="price">€8,00 <small>+ IVA</small></td>
-          </tr>
-          <tr>
-            <td class="qty">10 persone e oltre</td>
-            <td class="price">€6,00 <small>+ IVA</small></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="pricing-intro reveal">You-Cast si acquista insieme a You-Play: i due Elements insieme costano <strong>0,5 crediti per persona</strong>. Un credito vale €32 + IVA.</p>
 
-    <p class="pricing-note reveal">Il QR code è nominale. Un codice = un partecipante = 2 mesi di accesso completo.</p>
-
-    <div class="bundle-card reveal">
-      <div class="bundle-text">
-        <span class="bundle-badge">DISC Lab</span>
-        <h3 class="bundle-title">You-Cast incluso nel DISC Lab con You-Assess e You-Play</h3>
-        <p class="bundle-note">Sconto 15% rispetto agli Elements separati.</p>
-      </div>
+    <div class="credit-card reveal">
+      <span class="credit-badge">You-Cast + You-Play · 0,5 crediti</span>
+      <div class="credit-price">€16 <small style="font-size:0.4em; letter-spacing:0.04em; font-family:var(--font-mono); color:var(--color-text-muted); font-weight:400;">+ IVA</small></div>
+      <div class="credit-unit">per persona</div>
+      <p class="credit-sub">(You-Cast + You-Play insieme)</p>
       <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-cast">Ordina →</a>
     </div>
+
+    <p class="credit-note reveal">Sconti volume disponibili dopo la registrazione — si applicano sul totale crediti acquistati.</p>
   </div>
 </section>
 
