@@ -533,67 +533,67 @@ ul { list-style: none; padding: 0; margin: 0; }
 /* =========================================================================
    DETTAGLI PRATICI (4 stat + 2 info block)
    ========================================================================= */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px 24px;
-  margin-bottom: 40px;
-}
-@media (min-width: 900px) { .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
-.stat { display: flex; flex-direction: column; gap: 10px; }
-.stat-num {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(48px, 7vw, 72px);
-  line-height: 1;
-  letter-spacing: -2px;
-  color: var(--color-text);
-}
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-.stats-note {
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto;
-  color: var(--color-text-muted);
-  padding: 24px 0 56px;
-}
-
-.info-blocks {
+.modalita-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 48px;
 }
-@media (min-width: 700px) { .info-blocks { grid-template-columns: 1fr 1fr; gap: 32px; } }
-.info-block {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
+@media (min-width: 900px) {
+  .modalita-grid { grid-template-columns: 1fr 1fr; gap: 0; }
+  .modalita-block:first-child {
+    border-right: 1px solid var(--color-border);
+    padding-right: 56px;
+  }
+  .modalita-block:last-child { padding-left: 56px; }
 }
-.info-block h3 {
+.modalita-label {
   font-family: var(--font-mono);
   font-weight: 400;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin: 0 0 18px;
+  margin: 0 0 32px;
 }
-.info-block ul li {
-  font-size: 15px;
-  line-height: 1.55;
+.modalita-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: minmax(96px, auto) 1fr;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.6px;
   color: var(--color-text);
-  padding: 8px 0;
-  border-top: 1px solid var(--color-border);
+  white-space: nowrap;
 }
-.info-block ul li:first-child { border-top: none; padding-top: 0; }
+.stat-row .stat-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-text-muted);
+}
+.modalita-note {
+  text-align: center;
+  max-width: 70ch;
+  margin: 48px auto 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
 
 /* =========================================================================
    PRICING (dark, 2 card)
@@ -900,7 +900,7 @@ ul { list-style: none; padding: 0; margin: 0; }
       <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-primary-on-dark">Prenota il tuo posto →</a>
       <a href="mailto:info@you-mans.com?subject=You-Learn%20Azienda" class="btn btn-outline-on-dark">Richiedi info per la tua azienda</a>
     </div>
-    <div class="hero-tagrow">3 giorni · Max 12 pax · In presenza + Online · FSE+ eligible · €1.200/persona</div>
+    <div class="hero-tagrow">3 giorni · 7 sessioni a distanza · Max 12 pax · Remote Desktop · FSE+ · €1.200/persona</div>
   </div>
 </section>
 
@@ -1033,45 +1033,30 @@ ul { list-style: none; padding: 0; margin: 0; }
       <h2 class="heading-section">Come funziona</h2>
     </div>
 
-    <div class="stats-grid reveal">
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Giornate<br>in presenza</div>
+    <div class="modalita-grid">
+      <div class="modalita-block reveal">
+        <h3 class="modalita-label">In presenza</h3>
+        <div class="modalita-stats">
+          <div class="stat-row"><div class="stat-value">3</div><div class="stat-label">Giornate</div></div>
+          <div class="stat-row"><div class="stat-value">12</div><div class="stat-label">Partecipanti max</div></div>
+          <div class="stat-row"><div class="stat-value">100%</div><div class="stat-label">Learning by doing</div></div>
+          <div class="stat-row"><div class="stat-value">FSE+</div><div class="stat-label">Finanziabile</div></div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-num">12</div>
-        <div class="stat-label">Partecipanti<br>max</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Learning<br>by doing</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">FSE+</div>
-        <div class="stat-label">Finanziabile</div>
+
+      <div class="modalita-block reveal">
+        <h3 class="modalita-label">A distanza</h3>
+        <div class="modalita-stats">
+          <div class="stat-row"><div class="stat-value">7</div><div class="stat-label">Sessioni</div></div>
+          <div class="stat-row"><div class="stat-value">3h</div><div class="stat-label">Per sessione</div></div>
+          <div class="stat-row"><div class="stat-value">12</div><div class="stat-label">Partecipanti max</div></div>
+          <div class="stat-row"><div class="stat-value">Remote</div><div class="stat-label">Desktop</div></div>
+          <div class="stat-row"><div class="stat-value">FSE+</div><div class="stat-label">Finanziabile</div></div>
+        </div>
       </div>
     </div>
 
-    <p class="stats-note reveal">Ogni giornata include almeno 3 ore di laboratorio pratico su casi reali. Niente slide da leggere — solo progettazione, feedback e sperimentazione.</p>
-
-    <div class="info-blocks">
-      <div class="info-block reveal">
-        <h3>Formato in presenza</h3>
-        <ul>
-          <li>3 giornate consecutive o distribuite</li>
-          <li>Location: da concordare</li>
-          <li>Materiali e template inclusi</li>
-        </ul>
-      </div>
-      <div class="info-block reveal">
-        <h3>Formato online</h3>
-        <ul>
-          <li>8 sessioni × 2h</li>
-          <li>Zoom / Teams</li>
-          <li>Stessa struttura, stesso materiale</li>
-        </ul>
-      </div>
-    </div>
+    <p class="modalita-note reveal">Lavoriamo in remote desktop — nessun dato aziendale esce dai vostri sistemi. Compatibile con le policy IT più restrittive.</p>
   </div>
 </section>
 
