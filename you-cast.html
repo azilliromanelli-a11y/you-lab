@@ -481,12 +481,15 @@ ul { list-style: none; padding: 0; margin: 0; }
 .series-title {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.3;
   letter-spacing: -0.2px;
   margin: 0;
   color: var(--color-text);
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .series-meta {
   display: flex;
@@ -522,6 +525,101 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text-muted);
   text-align: center;
   margin: 40px 0 0;
+}
+
+/* Spotify link */
+.spotify-row {
+  text-align: center;
+  margin: -16px 0 48px;
+}
+.spotify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-text);
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms var(--ease);
+  padding-bottom: 2px;
+}
+.spotify-link:hover { border-bottom-color: var(--color-text); }
+.spotify-link svg { flex-shrink: 0; display: block; }
+
+/* Formula grid (2 card affiancate) */
+.formula-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+@media (min-width: 900px) {
+  .formula-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+.formula-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-cast);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+.formula-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-cast);
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,0.22);
+}
+.formula-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  background-color: var(--color-cast);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.formula-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 2.6vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 4px 0 0;
+  color: var(--color-text);
+}
+.formula-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  flex: 1;
+}
+.formula-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1;
+  letter-spacing: -0.6px;
+  color: var(--color-text);
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+.formula-card .btn { margin-top: 8px; align-self: flex-start; }
+.formula-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 8px 0 0;
 }
 
 /* =========================================================================
@@ -911,32 +1009,31 @@ ul { list-style: none; padding: 0; margin: 0; }
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Accesso</p>
-      <h2 class="heading-section">Un accesso semplice. Un impatto che dura.</h2>
+      <p class="eyebrow">Offerta</p>
+      <h2 class="heading-section">Due modi per portare You-Cast in aula.</h2>
     </div>
 
-    <div class="flow">
-      <div class="flow-step reveal">
-        <div class="num">1</div>
-        <div class="step-label">Acquisto</div>
-        <h3>Acquisti i QR code</h3>
-        <p>Compri il numero di codici che ti serve per i tuoi partecipanti. Un codice = un partecipante.</p>
-      </div>
-      <div class="flow-step reveal">
-        <div class="num">2</div>
-        <div class="step-label">Distribuzione</div>
-        <h3>Distribuisci via mail, slide o stampa</h3>
-        <p>Inserisci il QR code nei tuoi materiali. Il partecipante lo scansiona quando vuole.</p>
-      </div>
-      <div class="flow-step reveal">
-        <div class="num">3</div>
-        <div class="step-label">Accesso rolling</div>
-        <h3>I partecipanti accedono a tutti i contenuti per 2 mesi</h3>
-        <p>Accesso completo alla libreria. La finestra si ricalcola dall'ultimo episodio caricato.</p>
-      </div>
+    <div class="formula-grid">
+
+      <article class="formula-card reveal">
+        <span class="formula-badge">You-Cast · Selezione</span>
+        <h3 class="formula-title">2 episodi a scelta</h3>
+        <p class="formula-body">Scegli 2 episodi da qualsiasi serie. Accesso via QR code per 2 mesi.</p>
+        <div class="formula-price">€[TBD] + IVA</div>
+        <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-cast">Ordina →</a>
+      </article>
+
+      <article class="formula-card reveal">
+        <span class="formula-badge">You-Cast · Catalogo</span>
+        <h3 class="formula-title">Catalogo completo</h3>
+        <p class="formula-body">Accesso all'intera libreria — oltre 100 episodi, 13 serie. QR code per 6 mesi.</p>
+        <div class="formula-price">0,5 crediti · €16 + IVA <small style="font-family:var(--font-mono); font-size:12px; font-weight:400; color:var(--color-text-muted); letter-spacing:0.04em;">per persona</small></div>
+        <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-cast">Ordina →</a>
+      </article>
+
     </div>
 
-    <p class="flow-note reveal">La finestra di 2 mesi si calcola dall'ultimo episodio caricato — non dalla data di acquisto. I contenuti crescono, il valore cresce con loro.</p>
+    <p class="formula-note reveal">Acquistabile anche senza You-Play</p>
   </div>
 </section>
 
@@ -951,10 +1048,19 @@ ul { list-style: none; padding: 0; margin: 0; }
       <p class="lead">Ogni serie esplora un tema della formazione e dello sviluppo professionale. Episodi da 15 a 30 minuti — pensati per essere usati prima, durante o dopo una sessione.</p>
     </div>
 
+    <p class="spotify-row reveal">
+      <a class="spotify-link" href="https://open.spotify.com/show/0NOuyyfZdMSPeQ5SxTKF9l" target="_blank" rel="noopener">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1DB954" aria-hidden="true">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+        Ascolta su Spotify
+      </a>
+    </p>
+
     <div class="series-grid">
       <article class="series-card is-disc-linked reveal">
         <div class="series-num">01</div>
-        <h3 class="series-title">DISC — Stili Comportamentali</h3>
+        <h3 class="series-title">DISC Personalità</h3>
         <div class="series-meta">
           <span class="episodes">4 episodi</span>
           <span class="format-pill">Audio</span>
@@ -972,7 +1078,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 
       <article class="series-card reveal">
         <div class="series-num">03</div>
-        <h3 class="series-title">Trappole — Decision Making</h3>
+        <h3 class="series-title">Decision Making</h3>
         <div class="series-meta">
           <span class="episodes">6 episodi</span>
           <span class="format-pill">Audio</span>
@@ -1035,7 +1141,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 
       <article class="series-card reveal">
         <div class="series-num">10</div>
-        <h3 class="series-title">Apprendere ad Apprendere</h3>
+        <h3 class="series-title">Learning How to Learn</h3>
         <div class="series-meta">
           <span class="episodes">9 episodi</span>
           <span class="format-pill">Audio</span>
