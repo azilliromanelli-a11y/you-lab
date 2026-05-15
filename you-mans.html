@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>You-Mans — Chi siamo | You-Lab</title>
-<meta name="description" content="You-Mans: 20 anni di formazione, ricerca e psicologia organizzativa in Italia e Francia. Formiamo chi forma. You-Mans Italia S.R.L. e You-Mans SAS.">
+<meta name="description" content="You-Mans è fondata da Andrea Zilli Romanelli — PhD, VP HR ventennale, docente Business School di Parigi, DISC certified expert. You-Lab è il nostro hub digitale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -59,8 +59,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 ul { list-style: none; padding: 0; margin: 0; }
 
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
-.section { padding: 80px 0; }
-@media (min-width: 1024px) { .section { padding: 100px 0; } }
+.section { padding: 100px 0; }
+@media (min-width: 1024px) { .section { padding: 120px 0; } }
 .section-dark { background: var(--color-dark); color: var(--color-on-dark); }
 .section-dark .heading-section { color: var(--color-on-dark); }
 .section-dark .lead { color: var(--color-on-dark-muted); }
@@ -131,10 +131,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   height: 72px;
   display: flex;
   align-items: center;
-  transition: background 220ms var(--ease), border-color 220ms var(--ease);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  transition: background 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+  background: transparent;
+  border-bottom: 1px solid transparent;
 }
+.nav.is-light { background: var(--color-bg); border-bottom-color: var(--color-border); }
 .nav-inner {
   width: 100%;
   max-width: var(--container-max);
@@ -150,8 +151,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.5px;
-  color: var(--color-dark);
+  color: var(--color-on-dark);
+  transition: color 220ms var(--ease);
 }
+.nav.is-light .nav-logo { color: var(--color-dark); }
 .nav-menu { display: flex; align-items: center; gap: 32px; }
 @media (max-width: 900px) { .nav-menu { display: none; } }
 
@@ -162,10 +165,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-on-dark);
   padding: 8px 0;
-  transition: opacity 160ms var(--ease);
+  transition: color 220ms var(--ease), opacity 160ms var(--ease);
 }
+.nav.is-light .nav-link { color: var(--color-text); }
 .nav-link:hover { opacity: 0.7; }
 .nav-link.is-active {
   position: relative;
@@ -228,8 +232,9 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--color-text-muted);
+  color: var(--color-on-dark);
 }
+.nav.is-light .lang-switch { color: var(--color-text-muted); }
 .lang-switch button { padding: 4px 6px; opacity: 0.55; transition: opacity 140ms var(--ease); }
 .lang-switch button:hover { opacity: 1; }
 .lang-switch button.is-active { opacity: 1; }
@@ -246,7 +251,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .nav-burger span {
   display: block;
   width: 22px; height: 1.5px;
-  background: var(--color-text);
+  background: var(--color-on-dark);
   position: relative;
 }
 .nav-burger span::before,
@@ -255,10 +260,13 @@ ul { list-style: none; padding: 0; margin: 0; }
   position: absolute;
   left: 0;
   width: 22px; height: 1.5px;
-  background: var(--color-text);
+  background: var(--color-on-dark);
 }
 .nav-burger span::before { top: -7px; }
 .nav-burger span::after  { top:  7px; }
+.nav.is-light .nav-burger span,
+.nav.is-light .nav-burger span::before,
+.nav.is-light .nav-burger span::after { background: var(--color-text); }
 
 .mobile-drawer {
   position: fixed;
@@ -306,83 +314,185 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
 /* =========================================================================
-   HERO (light)
+   HERO (dark 80vh)
    ========================================================================= */
-.hero-light {
-  padding: 144px 0 64px;
+.hero {
+  position: relative;
+  min-height: 80vh;
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
-.hero-light .eyebrow {
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+}
+.hero-inner {
+  position: relative;
+  padding-top: 144px;
+  padding-bottom: 96px;
+  max-width: 1000px;
+}
+.hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0 0 28px;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 32px;
 }
-.hero-light h1 {
+.hero-headline {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(40px, 7vw, 56px);
-  line-height: 1.05;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.06;
   letter-spacing: -1.4px;
-  margin: 0 0 24px;
-  color: var(--color-text);
-  max-width: 16ch;
+  color: var(--color-on-dark);
+  margin: 0 0 28px;
+  max-width: 18ch;
 }
-.hero-light .hero-sub-light {
-  font-size: clamp(17px, 2.4vw, 20px);
-  line-height: 1.5;
-  color: var(--color-text-muted);
+.hero-sub {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.55;
+  color: var(--color-on-dark-muted);
   margin: 0;
   max-width: 60ch;
 }
 
 /* =========================================================================
-   LA STORIA (split text + 4 stat)
+   CREDENZIALI (6 card 3x2)
    ========================================================================= */
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-  align-items: start;
+.credentials-header {
+  margin-bottom: 56px;
+  max-width: 720px;
 }
-@media (min-width: 900px) { .story-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; } }
-.story-text h2 {
+.credentials-header h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(26px, 3.4vw, 32px);
+  font-size: clamp(28px, 4.4vw, 36px);
+  letter-spacing: -0.9px;
   line-height: 1.1;
-  letter-spacing: -0.8px;
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   color: var(--color-text);
 }
-.story-text p { color: var(--color-text-muted); margin: 0 0 20px; }
-
-.story-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px 24px;
+.credentials-header .credentials-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin: 0;
 }
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 700px) { .credentials-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+@media (min-width: 1024px) { .credentials-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+.credential-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+.credential-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-dark);
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,0.22);
+}
+.credential-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+}
+.credential-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  color: var(--color-text);
+  margin: 0;
+}
+.credential-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* =========================================================================
+   YOU-MANS (dark, centered text + 3 stat)
+   ========================================================================= */
+.youmans-block {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.youmans-block h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 4.4vw, 36px);
+  letter-spacing: -0.9px;
+  line-height: 1.1;
+  color: var(--color-on-dark);
+  margin: 0 0 24px;
+}
+.youmans-block p {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.65;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 20px;
+  text-align: left;
+}
+.youmans-block p:last-child { margin-bottom: 0; }
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+@media (min-width: 700px) { .stats-row { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
 .stat-block { display: flex; flex-direction: column; gap: 8px; }
 .stat-num {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(40px, 5vw, 56px);
+  font-size: clamp(32px, 4.4vw, 44px);
   line-height: 1;
-  letter-spacing: -1.6px;
-  color: var(--color-text);
+  letter-spacing: -1.2px;
+  color: var(--color-on-dark);
 }
 .stat-cap {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-on-dark-muted);
   line-height: 1.4;
 }
 
 /* =========================================================================
-   COSA FACCIAMO (dark)
+   OLTRE YOU-LAB (light, 3 service-card)
    ========================================================================= */
 .services-grid {
   display: grid;
@@ -391,86 +501,40 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
 .service-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: #fff;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: transform 240ms var(--ease), border-color 240ms var(--ease), background 240ms var(--ease);
+  transition: transform 240ms var(--ease), border-color 240ms var(--ease), box-shadow 240ms var(--ease);
 }
 .service-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.05);
+  border-color: var(--color-dark);
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,0.18);
 }
 .service-num {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: var(--color-on-dark-muted);
+  color: var(--color-text-muted);
 }
 .service-card h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.15;
   letter-spacing: -0.4px;
   margin: 0;
-  color: var(--color-on-dark);
+  color: var(--color-text);
 }
 .service-card p {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--color-on-dark-muted);
-  margin: 0;
-}
-
-/* =========================================================================
-   ENTITÀ (2 card)
-   ========================================================================= */
-.entities-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 700px) { .entities-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-.entity-card {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.entity-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--color-border);
-}
-.entity-row {
-  display: grid;
-  grid-template-columns: minmax(96px, auto) 1fr;
-  gap: 16px;
-  align-items: baseline;
-}
-.entity-row .key {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--color-text-muted);
-}
-.entity-row .val {
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--color-text);
+  margin: 0;
 }
 
 /* =========================================================================
@@ -561,24 +625,24 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* =========================================================================
-   LINK A YOU-LAB (dark, 5 pill outline)
+   LINK AGLI STRUMENTI (dark)
    ========================================================================= */
-.relink-section { text-align: center; padding: 80px 0; }
-.relink-text {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(22px, 3vw, 28px);
-  letter-spacing: -0.6px;
-  color: var(--color-on-dark);
-  margin: 0 0 32px;
+.tools-section { padding: 80px 0; text-align: center; }
+.tools-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 28px;
 }
-.relink-pills {
+.tools-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
 }
-.relink-pill {
+.tools-pill {
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.06em;
@@ -588,7 +652,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   border-radius: var(--radius-pill);
   transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
 }
-.relink-pill:hover {
+.tools-pill:hover {
   background: var(--color-on-dark);
   color: var(--color-dark);
   border-color: var(--color-on-dark);
@@ -675,7 +739,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .service-card:hover { transform: none; }
+  .btn:hover, .credential-card:hover, .service-card:hover, .tools-pill:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
 </style>
@@ -685,7 +749,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 <!-- =========================================================================
      NAV
      ========================================================================= -->
-<header class="nav">
+<header class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
 
@@ -716,7 +780,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="#contact" class="btn btn-outline btn-nav">Scrivici →</a>
+      <a href="#contact" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Scrivici →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -748,115 +812,115 @@ ul { list-style: none; padding: 0; margin: 0; }
 </div>
 
 <!-- =========================================================================
-     SEZIONE 1 — HERO
+     SEZIONE 1 — HERO (dark 80vh)
      ========================================================================= -->
-<section class="hero-light">
-  <div class="container">
-    <p class="eyebrow">You-Mans · Chi siamo</p>
-    <h1>Formiamo chi forma.</h1>
-    <p class="hero-sub-light">You-Mans è una società di consulenza e formazione specializzata in psicologia organizzativa, sviluppo delle competenze e progettazione dell'apprendimento. Operiamo in Italia e Francia.</p>
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">You-Mans · Chi siamo</p>
+    <h1 class="hero-headline">Non vendiamo strumenti. Sappiamo come funziona l'apprendimento.</h1>
+    <p class="hero-sub">You-Lab è la sintesi di 20 anni di pratica organizzativa, ricerca sull'apprendimento e sperimentazione tecnologica.</p>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 2 — LA STORIA
+     SEZIONE 2 — LE CREDENZIALI
      ========================================================================= -->
 <section class="section">
   <div class="container">
-    <div class="story-grid">
-      <div class="story-text reveal">
-        <p class="eyebrow">La storia</p>
-        <h2>20 anni di formazione applicata.</h2>
-        <p>You-Mans nasce dalla convinzione che la formazione professionale funzioni solo quando è progettata con rigore metodologico e consegnata con autenticità. Non slide da leggere. Non concetti da memorizzare. Esperienze che lasciano qualcosa.</p>
-        <p>You-Lab è il passo successivo: gli stessi strumenti che abbiamo usato in aula per 20 anni, resi accessibili a chiunque voglia formare meglio.</p>
-      </div>
+    <div class="credentials-header reveal">
+      <p class="eyebrow">Chi c'è dietro</p>
+      <h2>Andrea Zilli Romanelli</h2>
+      <p class="credentials-sub">Fondatore di You-Mans · Creatore di You-Lab</p>
+    </div>
 
-      <div class="story-stats reveal" aria-label="Numeri You-Mans">
-        <div class="stat-block">
-          <div class="stat-num">20+</div>
-          <div class="stat-cap">Anni di<br>esperienza</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">2</div>
-          <div class="stat-cap">Paesi<br>IT · FR</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">3</div>
-          <div class="stat-cap">Lingue<br>IT · FR · EN</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">50M+</div>
-          <div class="stat-cap">Persone hanno<br>completato il DISC nel mondo</div>
-        </div>
+    <div class="credentials-grid">
+      <article class="credential-card reveal">
+        <span class="credential-num">01</span>
+        <h3 class="credential-title">VP HR · 20+ anni</h3>
+        <p>Vent'anni come responsabile HR e direttore della formazione in organizzazioni italiane e francesi.</p>
+      </article>
+      <article class="credential-card reveal">
+        <span class="credential-num">02</span>
+        <h3 class="credential-title">PhD · Motivation to Learn</h3>
+        <p>Dottorato di ricerca sulla motivazione all'apprendimento — la base scientifica dietro ogni scelta di design formativo.</p>
+      </article>
+      <article class="credential-card reveal">
+        <span class="credential-num">03</span>
+        <h3 class="credential-title">Docente · 2 Business School Parigi</h3>
+        <p>Docenza in psicologia organizzativa e HR presso due business school parigine, inclusa Université Paris II Assas.</p>
+      </article>
+      <article class="credential-card reveal">
+        <span class="credential-num">04</span>
+        <h3 class="credential-title">DISC Certified Expert · 20+ anni</h3>
+        <p>Tra i professionisti DISC con maggiore anzianità certificata in Europa. Esperto di assessment ipsativi e profili comportamentali.</p>
+      </article>
+      <article class="credential-card reveal">
+        <span class="credential-num">05</span>
+        <h3 class="credential-title">Giornalista &amp; Podcaster</h3>
+        <p>Oltre 100 episodi prodotti su formazione, leadership e sviluppo professionale. You-Cast nasce da qui.</p>
+      </article>
+      <article class="credential-card reveal">
+        <span class="credential-num">06</span>
+        <h3 class="credential-title">EdTech Expert</h3>
+        <p>Progettazione e lancio di strumenti digitali per la formazione professionale. You-Lab è il risultato di anni di sperimentazione.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 3 — YOU-MANS (dark, testo centrato + 3 stat)
+     ========================================================================= -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="youmans-block reveal">
+      <h2>You-Mans</h2>
+      <p>You-Mans è la società di consulenza e formazione fondata da Andrea Zilli Romanelli. Operiamo in Italia e Francia con un approccio che integra psicologia organizzativa, neuroscienze dell'apprendimento e tecnologia.</p>
+      <p>You-Lab è il nostro hub di strumenti digitali: gli stessi metodi che usiamo in aula da 20 anni, resi accessibili e scalabili.</p>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-block">
+        <div class="stat-num">IT · FR</div>
+        <div class="stat-cap">Due paesi</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">3 lingue</div>
+        <div class="stat-cap">IT · FR · EN</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">20+</div>
+        <div class="stat-cap">Anni di aula</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 3 — COSA FACCIAMO (dark)
+     SEZIONE 4 — OLTRE YOU-LAB (light)
      ========================================================================= -->
-<section class="section section-dark">
+<section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow eyebrow-on-dark">Attività</p>
+      <p class="eyebrow">Attività</p>
       <h2 class="heading-section">Oltre You-Lab</h2>
-      <p class="lead lead-on-dark">You-Lab è il nostro hub di strumenti digitali. La nostra attività copre anche:</p>
     </div>
 
     <div class="services-grid">
       <article class="service-card reveal">
         <span class="service-num">01</span>
-        <h3>Consulenza organizzativa</h3>
-        <p>Diagnosi, progettazione e accompagnamento nei processi di cambiamento e sviluppo.</p>
-      </article>
-      <article class="service-card reveal">
-        <span class="service-num">02</span>
         <h3>Formazione in aula</h3>
         <p>Programmi su misura per aziende e istituzioni. DISC, Leadership, Team, Well-being, Comunicazione.</p>
       </article>
       <article class="service-card reveal">
+        <span class="service-num">02</span>
+        <h3>Consulenza organizzativa</h3>
+        <p>Diagnosi, progettazione e accompagnamento nei processi di sviluppo e cambiamento.</p>
+      </article>
+      <article class="service-card reveal">
         <span class="service-num">03</span>
-        <h3>Docenza universitaria</h3>
-        <p>Corsi di psicologia organizzativa e HR presso Université Paris II Assas e business school.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================================
-     SEZIONE 4 — LE ENTITÀ
-     ========================================================================= -->
-<section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Le entità</p>
-      <h2 class="heading-section">Due aziende, un'unica missione.</h2>
-    </div>
-
-    <div class="entities-grid">
-      <article class="entity-card reveal">
-        <div class="entity-name">You-Mans Italia S.R.L.</div>
-        <div class="entity-row">
-          <div class="key">Sede</div>
-          <div class="val">Italia</div>
-        </div>
-        <div class="entity-row">
-          <div class="key">Attività</div>
-          <div class="val">Formazione aziendale, consulenza HR, psicometria</div>
-        </div>
-      </article>
-
-      <article class="entity-card reveal">
-        <div class="entity-name">You-Mans SAS</div>
-        <div class="entity-row">
-          <div class="key">Sede</div>
-          <div class="val">Francia</div>
-        </div>
-        <div class="entity-row">
-          <div class="key">Attività</div>
-          <div class="val">Formazione, consulenza organizzativa, docenza universitaria</div>
-        </div>
+        <h3>Docenza e ricerca</h3>
+        <p>Corsi universitari, pubblicazioni e ricerca applicata sulla progettazione dell'apprendimento.</p>
       </article>
     </div>
   </div>
@@ -872,7 +936,7 @@ ul { list-style: none; padding: 0; margin: 0; }
       <div class="contact-text reveal">
         <p class="eyebrow">Contatto</p>
         <h2>Parliamoci.</h2>
-        <p>Per informazioni su You-Lab, sui Labs, sulla formazione su misura o su qualsiasi cosa ti stia chiedendo.</p>
+        <p>Per informazioni su You-Lab, sui Labs, sulla formazione su misura o qualsiasi altra cosa.</p>
         <div class="contact-direct">
           <a href="mailto:info@you-mans.com">info@you-mans.com</a>
           <a href="https://you-mans.com" target="_blank" rel="noopener">you-mans.com ↗</a>
@@ -897,6 +961,7 @@ ul { list-style: none; padding: 0; margin: 0; }
             <option value="You-Cast">You-Cast</option>
             <option value="You-Learn">You-Learn</option>
             <option value="Labs">Labs</option>
+            <option value="Formazione su misura">Formazione su misura</option>
             <option value="Altro">Altro</option>
           </select>
         </div>
@@ -906,7 +971,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         </div>
 
         <button type="submit" class="btn btn-primary">Invia →</button>
-        <p class="form-note">Risposta entro 24h · Nessuno spam</p>
+        <p class="form-note">Risposta entro 24h</p>
       </form>
 
     </div>
@@ -914,17 +979,17 @@ ul { list-style: none; padding: 0; margin: 0; }
 </section>
 
 <!-- =========================================================================
-     SEZIONE 6 — LINK A YOU-LAB (dark)
+     SEZIONE 6 — LINK AGLI STRUMENTI (dark)
      ========================================================================= -->
-<section class="section-dark relink-section">
+<section class="section-dark tools-section">
   <div class="container">
-    <p class="relink-text">Torna agli strumenti.</p>
-    <div class="relink-pills">
-      <a href="you-disc.html" class="relink-pill">You-DISC</a>
-      <a href="you-play.html" class="relink-pill">You-Play</a>
-      <a href="you-cast.html" class="relink-pill">You-Cast</a>
-      <a href="you-learn.html" class="relink-pill">You-Learn</a>
-      <a href="labs.html" class="relink-pill">Labs</a>
+    <p class="tools-label">Gli strumenti You-Lab</p>
+    <div class="tools-pills">
+      <a href="you-disc.html" class="tools-pill">You-DISC</a>
+      <a href="you-play.html" class="tools-pill">You-Play</a>
+      <a href="you-cast.html" class="tools-pill">You-Cast</a>
+      <a href="you-learn.html" class="tools-pill">You-Learn</a>
+      <a href="labs.html" class="tools-pill">Labs</a>
     </div>
   </div>
 </section>
@@ -982,6 +1047,25 @@ ul { list-style: none; padding: 0; margin: 0; }
 <script>
 (function() {
   'use strict';
+
+  var nav = document.getElementById('nav');
+  function heroH() {
+    var h = document.querySelector('.hero');
+    return h ? h.offsetHeight : 480;
+  }
+  var navCtaDark = document.querySelector('.nav-cta-dark');
+
+  function updateNav() {
+    var scrolled = window.scrollY > (heroH() - 80);
+    nav.classList.toggle('is-light', scrolled);
+    if (navCtaDark) {
+      navCtaDark.classList.toggle('btn-outline-on-dark', !scrolled);
+      navCtaDark.classList.toggle('btn-outline', scrolled);
+    }
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav);
 
   // Desktop dropdowns
   document.querySelectorAll('[data-dropdown]').forEach(function(item) {
@@ -1043,7 +1127,7 @@ ul { list-style: none; padding: 0; margin: 0; }
           var parent = entry.target.parentElement;
           var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
           var idx = Array.prototype.indexOf.call(siblings, entry.target);
-          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 80);
+          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 70);
           io.unobserve(entry.target);
         }
       });
