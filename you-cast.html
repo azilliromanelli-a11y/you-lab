@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You-Cast — 100 episodi, 12 serie | You-Lab</title>
-<meta name="description" content="You-Cast: contenuti audio e video per estendere l'impatto della formazione. 100 episodi in 12 serie, accesso via QR code, 2 mesi rolling.">
+<title>You-Cast — 102 episodi, 13 serie | You-Lab</title>
+<meta name="description" content="You-Cast: contenuti audio per estendere l'impatto della formazione. 102 episodi in 13 serie, accesso via QR code, 2 mesi rolling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -463,11 +463,14 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 12px;
   transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
 }
+.series-card.is-disc-linked { border-left-color: var(--color-assess); }
+.series-card.is-disc-linked .series-num { color: var(--color-assess); }
 .series-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-cast);
   box-shadow: 0 14px 32px -22px rgba(0,0,0,0.25);
 }
+.series-card.is-disc-linked:hover { border-color: var(--color-assess); }
 .series-num {
   font-family: var(--font-mono);
   font-size: 22px;
@@ -918,13 +921,13 @@ ul { list-style: none; padding: 0; margin: 0; }
 <section class="hero">
   <div class="container hero-inner">
     <p class="hero-eyebrow">You-Cast · Disponibile</p>
-    <h1 class="hero-headline">100 episodi. 12 serie. Il prima, il durante e il dopo della formazione.</h1>
-    <p class="hero-sub">Contenuti audio e video progettati per estendere l'impatto della formazione oltre l'aula. Accesso via QR code. Sempre aggiornati.</p>
+    <h1 class="hero-headline">102 episodi. 13 serie. Il prima, il durante e il dopo della formazione.</h1>
+    <p class="hero-sub">Contenuti audio progettati per estendere l'impatto della formazione oltre l'aula. Accesso via QR code. Sempre aggiornati.</p>
     <div class="hero-ctas">
       <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
       <a href="#serie" class="btn btn-outline-on-dark">Esplora le serie ↓</a>
     </div>
-    <div class="hero-tagrow">100 episodi · 12 serie · Audio + Video · QR access · 2 mesi rolling</div>
+    <div class="hero-tagrow">102 episodi · 13 serie · oltre 100 episodi · Audio · QR access · 2 mesi rolling</div>
   </div>
 </section>
 
@@ -970,121 +973,130 @@ ul { list-style: none; padding: 0; margin: 0; }
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Catalogo</p>
-      <h2 class="heading-section">Le 12 serie</h2>
+      <h2 class="heading-section">Le 13 serie</h2>
       <p class="lead">Ogni serie esplora un tema della formazione e dello sviluppo professionale. Episodi da 15 a 30 minuti — pensati per essere usati prima, durante o dopo una sessione.</p>
     </div>
 
     <div class="series-grid">
-      <article class="series-card reveal">
+      <article class="series-card is-disc-linked reveal">
         <div class="series-num">01</div>
-        <h3 class="series-title">DISC e Stili Comportamentali</h3>
+        <h3 class="series-title">DISC — Stili Comportamentali</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">4 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">02</div>
-        <h3 class="series-title">Leadership Situazionale</h3>
+        <h3 class="series-title">Creatività</h3>
         <div class="series-meta">
           <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">03</div>
-        <h3 class="series-title">Team e Disfunzioni</h3>
+        <h3 class="series-title">Trappole — Decision Making</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">6 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">04</div>
-        <h3 class="series-title">Comunicazione Efficace</h3>
+        <h3 class="series-title">Feedback</h3>
         <div class="series-meta">
           <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">05</div>
-        <h3 class="series-title">Gestione del Conflitto</h3>
+        <h3 class="series-title">Fondamenti di Vendita</h3>
         <div class="series-meta">
           <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">06</div>
-        <h3 class="series-title">Feedback e Performance</h3>
+        <h3 class="series-title">Digitali si Diventa</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">11 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">07</div>
-        <h3 class="series-title">Formazione 4.0</h3>
+        <h3 class="series-title">Chiedimi se Sono Felice</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">10 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">08</div>
-        <h3 class="series-title">Neuroscienze dell'Apprendimento</h3>
+        <h3 class="series-title">Non Piccole Donne</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">6 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">09</div>
-        <h3 class="series-title">Intelligenza Emotiva</h3>
+        <h3 class="series-title">Io Sono Leggenda</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">7 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">10</div>
-        <h3 class="series-title">Diversity &amp; Inclusion</h3>
+        <h3 class="series-title">Apprendere ad Apprendere</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">9 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">11</div>
-        <h3 class="series-title">Benessere Organizzativo</h3>
+        <h3 class="series-title">Lezioni di Volo</h3>
         <div class="series-meta">
           <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
 
       <article class="series-card reveal">
         <div class="series-num">12</div>
-        <h3 class="series-title">Coaching e Sviluppo</h3>
+        <h3 class="series-title">La Biblioteca di Babele</h3>
         <div class="series-meta">
-          <span class="episodes">8 episodi</span>
-          <span class="format-pill">Audio + Video</span>
+          <span class="episodes">10 episodi</span>
+          <span class="format-pill">Audio</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">13</div>
+        <h3 class="series-title">Intelligenza Emotiva</h3>
+        <div class="series-meta">
+          <span class="episodes">7 episodi</span>
+          <span class="format-pill">Audio</span>
         </div>
       </article>
     </div>
 
-    <p class="series-foot reveal">100 episodi totali · Nuovi contenuti aggiunti regolarmente</p>
+    <p class="series-foot reveal">102 episodi attivi · 2 serie in arrivo · Nuovi contenuti aggiunti regolarmente</p>
   </div>
 </section>
 
@@ -1109,7 +1121,7 @@ ul { list-style: none; padding: 0; margin: 0; }
           <span class="lab-pill cast">You-Cast</span>
         </div>
         <h3>Approfondimento DISC.</h3>
-        <p>4 episodi selezionati dalla serie DISC e Stili Comportamentali. Per approfondire dopo la sessione.</p>
+        <p>4 episodi dalla serie DISC — Stili Comportamentali. Per approfondire dopo la sessione.</p>
         <div class="lab-foot">
           <a href="index.html#labs" class="lab-text-link">Scopri il DISC Lab →</a>
         </div>
