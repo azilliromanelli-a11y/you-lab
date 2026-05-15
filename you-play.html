@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materiali — You-Lab</title>
-<meta name="description" content="Report di esempio, tutorial e risorse per valutare gli Elements You-Lab senza impegno.">
+<title>You-Play — La formazione che si pratica | You-Lab</title>
+<meta name="description" content="You-Play: roleplay AI, card game, quiz, wordcloud e simulazioni per trasformare l'aula in un campo di allenamento. In arrivo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 /* =========================================================================
-   TOKENS (shared with index.html / you-disc.html)
+   TOKENS
    ========================================================================= */
 :root {
   --color-bg:          #F7F7F5;
@@ -59,8 +59,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 ul { list-style: none; padding: 0; margin: 0; }
 
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
-.section { padding: 80px 0; }
-@media (min-width: 1024px) { .section { padding: 100px 0; } }
+.section { padding: 100px 0; }
+@media (min-width: 1024px) { .section { padding: 120px 0; } }
+.section-dark { background: var(--color-dark); color: var(--color-on-dark); }
+.section-dark .heading-section { color: var(--color-on-dark); }
+.section-dark .lead { color: var(--color-on-dark-muted); }
+.section-head { margin-bottom: 56px; max-width: 720px; }
 
 .heading-section {
   font-family: var(--font-display);
@@ -79,7 +83,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0 0 24px;
 }
 .eyebrow-on-dark { color: var(--color-on-dark-muted); }
-.eyebrow-accent { color: var(--color-assess); }
 .lead {
   font-size: 18px;
   line-height: 1.55;
@@ -110,16 +113,18 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-primary:hover { background: #2a2a2a; }
+.btn-primary-on-dark { background: var(--color-on-dark); color: var(--color-dark); }
+.btn-primary-on-dark:hover { background: #ececec; }
 .btn-outline-on-dark { background: transparent; color: var(--color-on-dark); border-color: var(--color-on-dark); }
 .btn-outline-on-dark:hover { background: var(--color-on-dark); color: var(--color-dark); }
 .btn-outline { background: transparent; color: var(--color-dark); border-color: var(--color-dark); }
 .btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-nav { height: 36px; padding: 0 16px; font-size: 13px; }
-.btn-assess { background: var(--color-assess); color: #fff; }
-.btn-assess:hover { background: #6f2d23; }
+.btn-play { background: var(--color-play); color: #fff; }
+.btn-play:hover { background: #468ba8; }
 
 /* =========================================================================
-   NAV (identical to index.html)
+   NAV
    ========================================================================= */
 .nav {
   position: fixed;
@@ -128,10 +133,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   height: 72px;
   display: flex;
   align-items: center;
-  transition: background 220ms var(--ease), border-color 220ms var(--ease);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  transition: background 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+  background: transparent;
+  border-bottom: 1px solid transparent;
 }
+.nav.is-light { background: var(--color-bg); border-bottom-color: var(--color-border); }
 .nav-inner {
   width: 100%;
   max-width: var(--container-max);
@@ -147,8 +153,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.5px;
-  color: var(--color-dark);
+  color: var(--color-on-dark);
+  transition: color 220ms var(--ease);
 }
+.nav.is-light .nav-logo { color: var(--color-dark); }
 .nav-menu { display: flex; align-items: center; gap: 32px; }
 @media (max-width: 900px) { .nav-menu { display: none; } }
 
@@ -159,10 +167,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-on-dark);
   padding: 8px 0;
-  transition: opacity 160ms var(--ease);
+  transition: color 220ms var(--ease), opacity 160ms var(--ease);
 }
+.nav.is-light .nav-link { color: var(--color-text); }
 .nav-link:hover { opacity: 0.7; }
 .nav-link .chev { width: 10px; height: 10px; transition: transform 180ms var(--ease); }
 .nav-item.is-open .nav-link .chev { transform: rotate(180deg); }
@@ -199,6 +208,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   transition: background 140ms var(--ease);
 }
 .nav-dropdown a:hover { background: var(--color-border); }
+.nav-dropdown a.is-active {
+  background: var(--color-border);
+  color: var(--color-play);
+  font-weight: 600;
+}
 .nav-dropdown .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -213,8 +227,9 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--color-text-muted);
+  color: var(--color-on-dark);
 }
+.nav.is-light .lang-switch { color: var(--color-text-muted); }
 .lang-switch button { padding: 4px 6px; opacity: 0.55; transition: opacity 140ms var(--ease); }
 .lang-switch button:hover { opacity: 1; }
 .lang-switch button.is-active { opacity: 1; }
@@ -231,7 +246,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .nav-burger span {
   display: block;
   width: 22px; height: 1.5px;
-  background: var(--color-text);
+  background: var(--color-on-dark);
   position: relative;
 }
 .nav-burger span::before,
@@ -240,10 +255,13 @@ ul { list-style: none; padding: 0; margin: 0; }
   position: absolute;
   left: 0;
   width: 22px; height: 1.5px;
-  background: var(--color-text);
+  background: var(--color-on-dark);
 }
 .nav-burger span::before { top: -7px; }
 .nav-burger span::after  { top:  7px; }
+.nav.is-light .nav-burger span,
+.nav.is-light .nav-burger span::before,
+.nav.is-light .nav-burger span::after { background: var(--color-text); }
 
 .mobile-drawer {
   position: fixed;
@@ -280,6 +298,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: 16px;
   color: var(--color-text);
 }
+.mobile-drawer .m-list a.is-active { color: var(--color-play); font-weight: 600; }
 .mobile-drawer .m-list .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -290,53 +309,121 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
 /* =========================================================================
-   HERO (light)
+   HERO (dark, 80vh)
    ========================================================================= */
-.hero-light {
-  padding: 144px 0 64px;
+.hero {
+  position: relative;
+  min-height: 80vh;
+  background: var(--color-dark);
+  color: var(--color-on-dark);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
-.hero-light .eyebrow {
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+}
+.hero-inner {
+  position: relative;
+  padding-top: 144px;
+  padding-bottom: 96px;
+  max-width: 980px;
+}
+.hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-assess);
-  margin: 0 0 28px;
+  color: var(--color-play);
+  margin: 0 0 32px;
 }
-.hero-light h1 {
+.hero-headline {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(36px, 6vw, 48px);
-  line-height: 1.05;
-  letter-spacing: -1.2px;
-  margin: 0 0 20px;
-  color: var(--color-text);
-  max-width: 18ch;
+  font-size: clamp(40px, 7vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+  color: var(--color-on-dark);
+  margin: 0 0 24px;
+  max-width: 16ch;
 }
-.hero-light p {
+.hero-sub {
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.55;
-  color: var(--color-text-muted);
-  margin: 0;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 40px;
   max-width: 56ch;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.hero-tagrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
 }
 
 /* =========================================================================
-   MATERIALS GRID
+   FILOSOFIA (centered)
    ========================================================================= */
-.materials-section { padding-top: 0; }
-.materials-grid {
+.philosophy {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.philosophy h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: -0.9px;
+  line-height: 1.1;
+  margin: 0 0 32px;
+  color: var(--color-text);
+}
+.philosophy p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
+  text-align: left;
+}
+.philosophy p:last-child { margin-bottom: 0; }
+
+/* =========================================================================
+   GRID STRUMENTI (5 card, 3+2 centered)
+   ========================================================================= */
+.play-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
 @media (min-width: 900px) {
-  .materials-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .play-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 28px;
+  }
+  .play-grid .play-card { grid-column: span 2; }
+  .play-grid .play-card:nth-child(4) { grid-column: 2 / span 2; }
+  .play-grid .play-card:nth-child(5) { grid-column: 4 / span 2; }
 }
-.material-card {
+.play-card {
   position: relative;
   background: #fff;
   border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-play);
   border-radius: var(--radius-lg);
   padding: 32px;
   display: flex;
@@ -344,14 +431,13 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 16px;
   transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
 }
-.material-card:not(.is-disabled):hover {
+.play-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-assess);
+  border-color: var(--color-play);
+  border-top-color: var(--color-play);
   box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
 }
-.material-card.is-disabled .material-body { opacity: 0.7; }
-
-.material-badge {
+.play-card-badge {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
@@ -360,12 +446,12 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #FFFFFF;
-  background-color: var(--color-assess);
+  background-color: var(--color-play);
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
 }
-.coming-pill {
+.play-card-soon {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -379,91 +465,287 @@ ul { list-style: none; padding: 0; margin: 0; }
   background: var(--color-bg);
   border: 1px solid var(--color-border);
 }
-
-.material-title {
+.play-card h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(22px, 2.6vw, 26px);
-  line-height: 1.1;
+  font-size: clamp(20px, 2.4vw, 24px);
+  line-height: 1.15;
   letter-spacing: -0.5px;
   margin: 4px 0 0;
   color: var(--color-text);
 }
-.material-body {
+.play-card p {
   font-size: 15px;
   line-height: 1.55;
   color: var(--color-text-muted);
   margin: 0;
   flex: 1;
 }
-.material-format {
+.play-card-tags {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
-  padding: 12px 0;
+  padding-top: 14px;
   border-top: 1px solid var(--color-border);
 }
-.material-foot {
+
+/* =========================================================================
+   INTEGRAZIONE LABS (dark, 3 card)
+   ========================================================================= */
+.labs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 1024px) {
+  .labs-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+.lab-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
+  gap: 16px;
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
 }
-.material-foot .note {
+.lab-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+.lab-desc {
   font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin: 0;
+}
+.lab-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.lab-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid currentColor;
+}
+.lab-pill.assess { color: #d68b81; }
+.lab-pill.play   { color: #a8d4e8; }
+.lab-pill.cast   { color: #e6b886; }
+.lab-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
+  margin: 0;
+  color: var(--color-on-dark);
+}
+.lab-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-on-dark-muted);
+  margin: 0;
+  flex: 1;
+}
+.lab-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.badge-soon-dark {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.lab-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-on-dark);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 160ms var(--ease);
+}
+.lab-text-link:hover { border-bottom-color: var(--color-on-dark); }
+
+/* =========================================================================
+   PRICING (table + bundle card)
+   ========================================================================= */
+.pricing-table-wrap { width: 100%; margin-bottom: 32px; overflow-x: auto; }
+.pricing-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.pricing-table thead th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.pricing-table thead th.num-col { text-align: right; }
+.pricing-table tbody td {
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: baseline;
+}
+.pricing-table tbody tr:last-child td { border-bottom: none; }
+.pricing-table .qty {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  color: var(--color-text);
+}
+.pricing-table .price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  text-align: right;
+  color: var(--color-text);
+}
+.pricing-table .price small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
+  margin-top: 4px;
 }
-.btn-disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: not-allowed;
+.pricing-note {
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 8px auto 48px;
 }
 
-/* =========================================================================
-   COMING SECTION (dark)
-   ========================================================================= */
-.coming-section {
-  background: var(--color-dark);
-  color: var(--color-on-dark);
-  padding: 80px 0;
+.bundle-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-play);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.coming-section h2 {
+@media (min-width: 700px) {
+  .bundle-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+.bundle-text { flex: 1; }
+.bundle-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  background-color: var(--color-play);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.bundle-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 28px;
-  letter-spacing: -0.6px;
-  color: var(--color-on-dark);
-  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--color-text);
+  margin: 10px 0 6px;
 }
-.coming-section p.lead-on-dark {
-  font-size: 16px;
-  line-height: 1.55;
+.bundle-note { font-size: 14px; color: var(--color-text-muted); margin: 0; }
+
+/* =========================================================================
+   CTA FINALE — waitlist form
+   ========================================================================= */
+.final-cta { text-align: center; max-width: 720px; margin: 0 auto; }
+.final-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--color-on-dark);
+  margin: 0 0 20px;
+}
+.final-cta p {
   color: var(--color-on-dark-muted);
-  margin: 0 0 32px;
-  max-width: 60ch;
+  font-size: 18px;
+  margin: 0 0 36px;
 }
-.coming-pills {
+.waitlist-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
+  max-width: 480px;
+  margin: 0 auto 24px;
 }
-.coming-pill-badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-on-dark);
+@media (min-width: 600px) { .waitlist-form { flex-direction: row; } }
+.waitlist-form input[type="email"] {
+  flex: 1;
+  height: 48px;
+  padding: 0 18px;
+  font: inherit;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.4);
-  padding: 10px 16px;
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: var(--radius-pill);
+  color: var(--color-on-dark);
+  transition: border-color 160ms var(--ease);
+}
+.waitlist-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+.waitlist-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-on-dark);
+}
+.waitlist-form button {
+  height: 48px;
+  padding: 0 26px;
+  background: var(--color-on-dark);
+  color: var(--color-dark);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 180ms var(--ease);
+}
+.waitlist-form button:hover { background: #ececec; }
+.final-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  margin: 0;
 }
 
 /* =========================================================================
-   FOOTER (identical to index.html)
+   FOOTER
    ========================================================================= */
 .footer {
   background: var(--color-dark);
@@ -545,7 +827,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .material-card:hover { transform: none; }
+  .btn:hover, .play-card:hover, .lab-card:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
 </style>
@@ -553,9 +835,9 @@ ul { list-style: none; padding: 0; margin: 0; }
 <body>
 
 <!-- =========================================================================
-     NAV
+     NAV (You-Play active in Elements dropdown)
      ========================================================================= -->
-<header class="nav">
+<header class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
 
@@ -579,7 +861,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         </button>
         <div class="nav-dropdown" role="menu">
           <a href="you-disc.html" role="menuitem">You-DISC</a>
-          <a href="you-play.html" role="menuitem">You-Play <span class="soon">Coming soon</span></a>
+          <a href="you-play.html" class="is-active" role="menuitem" aria-current="page">You-Play <span class="soon">Coming soon</span></a>
           <a href="index.html#elements" role="menuitem">You-Cast</a>
           <a href="index.html#elements" role="menuitem">You-Learn</a>
         </div>
@@ -596,7 +878,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="index.html#contact" class="btn btn-outline btn-nav">Inizia →</a>
+      <a href="#waitlist" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Avvisami →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -624,7 +906,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     </button>
     <div class="m-list">
       <a href="you-disc.html">You-DISC</a>
-      <a href="you-play.html">You-Play <span class="soon">Soon</span></a>
+      <a href="you-play.html" class="is-active">You-Play <span class="soon">Soon</span></a>
       <a href="index.html#elements">You-Cast</a>
       <a href="index.html#elements">You-Learn</a>
     </div>
@@ -632,49 +914,148 @@ ul { list-style: none; padding: 0; margin: 0; }
   <div class="m-group">
     <a class="m-head" href="https://you-mans.com" target="_blank" rel="noopener" style="cursor:pointer">You-Mans</a>
   </div>
-  <a href="index.html#contact" class="btn btn-primary m-cta">Inizia →</a>
+  <a href="#waitlist" class="btn btn-primary m-cta">Avvisami →</a>
 </div>
 
 <!-- =========================================================================
-     HERO
+     SEZIONE 1 — HERO
      ========================================================================= -->
-<section class="hero-light">
-  <div class="container">
-    <p class="eyebrow eyebrow-accent">You-Lab · Materiali</p>
-    <h1>Esplora prima di decidere.</h1>
-    <p>Report di esempio, tutorial e risorse per valutare gli Elements You-Lab senza impegno.</p>
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">You-Play · Coming Soon</p>
+    <h1 class="hero-headline">La formazione<br>che si pratica.</h1>
+    <p class="hero-sub">Roleplay AI, card game, quiz e simulazioni per trasformare l'aula in un campo di allenamento. You-Play arriva presto.</p>
+    <div class="hero-ctas">
+      <a href="mailto:info@you-mans.com?subject=Waitlist%20You-Play" class="btn btn-outline-on-dark">Avvisami al lancio →</a>
+    </div>
+    <div class="hero-tagrow">Progettato per gruppi · €8/persona · €6 oltre 10 pax</div>
   </div>
 </section>
 
 <!-- =========================================================================
-     MATERIALS GRID
+     SEZIONE 2 — FILOSOFIA
      ========================================================================= -->
-<section class="section materials-section">
+<section class="section">
   <div class="container">
-    <div class="materials-grid">
+    <div class="philosophy reveal">
+      <h2>Sapere non basta. Bisogna fare.</h2>
+      <p>La ricerca sulle neuroscienze dell'apprendimento è chiara: le competenze si consolidano attraverso la pratica, il feedback e la riflessione. Non attraverso le slide.</p>
+      <p>You-Play porta in aula strumenti che fanno agire i partecipanti — in contesti sicuri, con regole chiare e debriefing integrato. Ogni strumento è progettato per un obiettivo specifico e funziona sia in presenza che online.</p>
+    </div>
+  </div>
+</section>
 
-      <!-- Card 1: Report You-DISC -->
-      <article class="material-card reveal">
-        <span class="material-badge">You-DISC · Sample</span>
-        <h2 class="material-title">Report di esempio</h2>
-        <p class="material-body">Un report You-DISC completo su profilo fittizio. 17 pagine: profilo naturale, profilo adattato, indice di stress e 6 tavole operative.</p>
-        <div class="material-format">PDF · 17 pagine · IT</div>
-        <div class="material-foot">
-          <a href="sample-report.pdf" class="btn btn-assess" download target="_blank" rel="noopener">Scarica il PDF →</a>
-          <span class="note">Nessuna registrazione richiesta</span>
+<!-- =========================================================================
+     SEZIONE 3 — GLI STRUMENTI
+     ========================================================================= -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Strumenti</p>
+      <h2 class="heading-section">Gli strumenti You-Play</h2>
+      <p class="lead">Cinque categorie di attività per ogni fase della formazione.</p>
+    </div>
+
+    <div class="play-grid">
+
+      <article class="play-card reveal">
+        <span class="play-card-soon">Coming soon</span>
+        <span class="play-card-badge">Roleplay AI</span>
+        <h3>Simula conversazioni reali</h3>
+        <p>Personaggi AI con profili comportamentali definiti (DISC, Leadership, Team). Il partecipante allena le proprie competenze relazionali in scenari realistici, senza rischio.</p>
+        <div class="play-card-tags">Individuale · Online · DISC-ready</div>
+      </article>
+
+      <article class="play-card reveal">
+        <span class="play-card-soon">Coming soon</span>
+        <span class="play-card-badge">Card Game</span>
+        <h3>Gioca per riflettere</h3>
+        <p>Mazzi di carte tematici per stimolare discussione, prendere decisioni in gruppo e lavorare su bias, stili di comunicazione e dinamiche di team.</p>
+        <div class="play-card-tags">Gruppo · Presenza · Online</div>
+      </article>
+
+      <article class="play-card reveal">
+        <span class="play-card-soon">Coming soon</span>
+        <span class="play-card-badge">Quiz</span>
+        <h3>Misura quello che sai</h3>
+        <p>Quiz rapidi per verificare la comprensione, attivare la memoria o aprire una sessione con un kick-start interattivo. Risultati in tempo reale.</p>
+        <div class="play-card-tags">Gruppo · Individuale · Tempo reale</div>
+      </article>
+
+      <article class="play-card reveal">
+        <span class="play-card-soon">Coming soon</span>
+        <span class="play-card-badge">Wordcloud</span>
+        <h3>La voce del gruppo in un colpo d'occhio</h3>
+        <p>Raccogli le parole chiave del gruppo in tempo reale. Utile per aprire, chiudere o monitorare una sessione. Immediato, visivo, inclusivo.</p>
+        <div class="play-card-tags">Gruppo · Apertura · Chiusura</div>
+      </article>
+
+      <article class="play-card reveal">
+        <span class="play-card-soon">Coming soon</span>
+        <span class="play-card-badge">Simulazioni</span>
+        <h3>Scenari complessi, decisioni reali</h3>
+        <p>Situazioni simulate con variabili, ruoli e conseguenze. I partecipanti affrontano contesti lavorativi realistici e imparano attraverso le proprie scelte.</p>
+        <div class="play-card-tags">Gruppo · Team · Avanzato</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 4 — INTEGRAZIONE LABS (dark)
+     ========================================================================= -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-on-dark">Nei Labs</p>
+      <h2 class="heading-section">You-Play nei Labs</h2>
+      <p class="lead lead-on-dark">You-Play è il motore di pratica di ogni Lab. Combinato con You-Assess e You-Cast, completa il ciclo assess → practice → reflect.</p>
+    </div>
+
+    <div class="labs-grid">
+
+      <article class="lab-card reveal">
+        <p class="lab-desc">DISC Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3>Il DISC, in pratica.</h3>
+        <p>Roleplay con profili DISC, card game sugli stili comportamentali, scenari di comunicazione adattiva.</p>
+        <div class="lab-foot">
+          <a href="index.html#labs" class="lab-text-link">Scopri il DISC Lab →</a>
         </div>
       </article>
 
-      <!-- Card 2: Tutorial You-DISC (coming soon) -->
-      <article class="material-card is-disabled reveal">
-        <span class="coming-pill">Coming soon</span>
-        <span class="material-badge">You-DISC · Tutorial</span>
-        <h2 class="material-title">Come usare You-DISC in aula</h2>
-        <p class="material-body">Una guida video su come distribuire i codici, gestire la sessione e lavorare con i profili in gruppo.</p>
-        <div class="material-format">Video · ~15 min · IT</div>
-        <div class="material-foot">
-          <span class="btn btn-assess btn-disabled" aria-disabled="true">Guarda il tutorial</span>
-          <span class="note">Disponibile presto</span>
+      <article class="lab-card reveal">
+        <p class="lab-desc">Leadership Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess · SL</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3>Leadership in azione.</h3>
+        <p>Simulazioni di leadership situazionale, role-play con il team.</p>
+        <div class="lab-foot">
+          <span class="badge-soon-dark">Coming soon</span>
+          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
+        </div>
+      </article>
+
+      <article class="lab-card reveal">
+        <p class="lab-desc">Team Lab</p>
+        <div class="lab-pills">
+          <span class="lab-pill assess">You-Assess · Lencioni</span>
+          <span class="lab-pill play">You-Play</span>
+          <span class="lab-pill cast">You-Cast</span>
+        </div>
+        <h3>Team in movimento.</h3>
+        <p>Gamification per la coesione, simulazioni di decision-making collettivo.</p>
+        <div class="lab-foot">
+          <span class="badge-soon-dark">Coming soon</span>
+          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
         </div>
       </article>
 
@@ -683,17 +1064,66 @@ ul { list-style: none; padding: 0; margin: 0; }
 </section>
 
 <!-- =========================================================================
-     COMING (dark)
+     SEZIONE 5 — PRICING
      ========================================================================= -->
-<section class="coming-section">
+<section class="section">
   <div class="container">
-    <p class="eyebrow eyebrow-on-dark">In arrivo</p>
-    <h2>Altri materiali</h2>
-    <p class="lead-on-dark">Materiali demo per You-Play, You-Cast e You-Learn saranno disponibili al lancio di ciascun Element.</p>
-    <div class="coming-pills">
-      <span class="coming-pill-badge">You-Play · Demo</span>
-      <span class="coming-pill-badge">You-Cast · Episodio campione</span>
-      <span class="coming-pill-badge">You-Learn · Programma</span>
+    <div class="section-head reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="heading-section">Prezzi</h2>
+      <p class="lead">You-Play si paga per persona per sessione. Pensato per gruppi.</p>
+    </div>
+
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table" aria-label="Prezzi per persona">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th class="num-col">Prezzo per persona</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qty">Fino a 9 persone</td>
+            <td class="price">€8,00 <small>+ IVA</small></td>
+          </tr>
+          <tr>
+            <td class="qty">10 persone e oltre</td>
+            <td class="price">€6,00 <small>+ IVA</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pricing-note reveal">Il prezzo include accesso completo agli strumenti della sessione. La sessione è configurata dal formatore prima dell'evento.</p>
+
+    <div class="bundle-card reveal">
+      <div class="bundle-text">
+        <span class="bundle-badge">DISC Lab</span>
+        <h3 class="bundle-title">Combina You-Play con You-Assess e You-Cast</h3>
+        <p class="bundle-note">Sconto 15% rispetto agli Elements separati.</p>
+      </div>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-play">Ordina →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 6 — CTA FINALE (waitlist)
+     ========================================================================= -->
+<section class="section section-dark" id="waitlist">
+  <div class="container">
+    <div class="final-cta reveal">
+      <h2>You-Play arriva presto.</h2>
+      <p>Lascia la tua email e ti avvisiamo al lancio. Nessuno spam — solo la notizia che conta.</p>
+
+      <form class="waitlist-form" action="mailto:info@you-mans.com" method="get" enctype="text/plain" aria-label="Waitlist You-Play">
+        <input type="hidden" name="subject" value="Waitlist You-Play">
+        <input type="email" name="body" placeholder="La tua email" required aria-label="Email">
+        <button type="submit">Avvisami →</button>
+      </form>
+
+      <p class="final-note">Disponibile per IT · FR · EN</p>
     </div>
   </div>
 </section>
@@ -751,6 +1181,25 @@ ul { list-style: none; padding: 0; margin: 0; }
 <script>
 (function() {
   'use strict';
+
+  var nav = document.getElementById('nav');
+  function heroH() {
+    var h = document.querySelector('.hero');
+    return h ? h.offsetHeight : 480;
+  }
+  var navCtaDark = document.querySelector('.nav-cta-dark');
+
+  function updateNav() {
+    var scrolled = window.scrollY > (heroH() - 80);
+    nav.classList.toggle('is-light', scrolled);
+    if (navCtaDark) {
+      navCtaDark.classList.toggle('btn-outline-on-dark', !scrolled);
+      navCtaDark.classList.toggle('btn-outline', scrolled);
+    }
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav);
 
   // Desktop dropdowns
   document.querySelectorAll('[data-dropdown]').forEach(function(item) {
