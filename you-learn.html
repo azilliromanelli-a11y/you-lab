@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You-Play — La formazione che si pratica | You-Lab</title>
-<meta name="description" content="You-Play: roleplay AI, card game, quiz, wordcloud e simulazioni per trasformare l'aula in un campo di allenamento. In arrivo.">
+<title>You-Learn — Learning 4.0, il corso intensivo per chi forma | You-Lab</title>
+<meta name="description" content="You-Learn: 3 giornate intensive per chi progetta e gestisce la formazione professionale. Neuroscienze, AI e creatività applicata. Max 12 partecipanti.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
 :root {
   --color-bg:          #F7F7F5;
   --color-dark:        #0E0E0E;
+  --color-dark-2:      #1A1A1A;
   --color-text:        #1A1A1A;
   --color-text-muted:  #6B6B6B;
   --color-border:      #E2E2DC;
@@ -120,8 +121,10 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn-outline { background: transparent; color: var(--color-dark); border-color: var(--color-dark); }
 .btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-nav { height: 36px; padding: 0 16px; font-size: 13px; }
-.btn-play { background: var(--color-play); color: #fff; }
-.btn-play:hover { background: #468ba8; }
+.btn-learn { background: var(--color-learn); color: #fff; }
+.btn-learn:hover { background: #46306e; }
+.btn-on-violet { background: var(--color-on-dark); color: var(--color-learn); }
+.btn-on-violet:hover { background: #ececec; }
 
 /* =========================================================================
    NAV
@@ -210,7 +213,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .nav-dropdown a:hover { background: var(--color-border); }
 .nav-dropdown a.is-active {
   background: var(--color-border);
-  color: var(--color-play);
+  color: var(--color-learn);
   font-weight: 600;
 }
 .nav-dropdown .soon {
@@ -298,7 +301,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: 16px;
   color: var(--color-text);
 }
-.mobile-drawer .m-list a.is-active { color: var(--color-play); font-weight: 600; }
+.mobile-drawer .m-list a.is-active { color: var(--color-learn); font-weight: 600; }
 .mobile-drawer .m-list .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -309,7 +312,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
 /* =========================================================================
-   HERO (dark, 80vh)
+   HERO
    ========================================================================= */
 .hero {
   position: relative;
@@ -335,25 +338,25 @@ ul { list-style: none; padding: 0; margin: 0; }
   position: relative;
   padding-top: 144px;
   padding-bottom: 96px;
-  max-width: 980px;
+  max-width: 1000px;
 }
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-play);
+  color: var(--color-learn);
   margin: 0 0 32px;
 }
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(40px, 7vw, 64px);
-  line-height: 1.02;
+  font-size: clamp(40px, 6.4vw, 64px);
+  line-height: 1.04;
   letter-spacing: -1.5px;
   color: var(--color-on-dark);
   margin: 0 0 24px;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 .hero-sub {
   font-size: clamp(16px, 2vw, 18px);
@@ -377,67 +380,84 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* =========================================================================
-   FILOSOFIA (centered)
+   PER CHI È (split 2 col + 4 profile cards 2x2)
    ========================================================================= */
-.philosophy {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-.philosophy h2 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(28px, 4vw, 36px);
-  letter-spacing: -0.9px;
-  line-height: 1.1;
-  margin: 0 0 32px;
-  color: var(--color-text);
-}
-.philosophy p {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-  margin: 0 0 20px;
-  text-align: left;
-}
-.philosophy p:last-child { margin-bottom: 0; }
-
-/* =========================================================================
-   GRID STRUMENTI (5 card, 3+2 centered)
-   ========================================================================= */
-.play-grid {
+.split-2col {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 56px;
+  align-items: start;
 }
-@media (min-width: 900px) {
-  .play-grid {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 28px;
-  }
-  .play-grid .play-card { grid-column: span 2; }
-  .play-grid .play-card:nth-child(4) { grid-column: 2 / span 2; }
-  .play-grid .play-card:nth-child(5) { grid-column: 4 / span 2; }
+@media (min-width: 900px) { .split-2col { grid-template-columns: 1fr 1fr; gap: 80px; } }
+.split-text p { color: var(--color-text-muted); margin: 0 0 20px; }
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
-.play-card {
-  position: relative;
+.profile-card {
   background: #fff;
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-play);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+.profile-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-learn);
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,0.18);
+}
+.profile-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--color-learn);
+}
+.profile-role {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+  color: var(--color-text);
+}
+.profile-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* =========================================================================
+   PROGRAMMA (dark, 3 day cards)
+   ========================================================================= */
+.days-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 1024px) { .days-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.day-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-top: 3px solid var(--color-learn);
   border-radius: var(--radius-lg);
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
 }
-.play-card:hover {
+.day-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-play);
-  border-top-color: var(--color-play);
-  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
+  border-color: rgba(255,255,255,0.3);
+  border-top-color: var(--color-learn);
+  background: rgba(255,255,255,0.05);
 }
-.play-card-badge {
+.day-badge {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
@@ -446,98 +466,12 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #FFFFFF;
-  background-color: var(--color-play);
+  background-color: var(--color-learn);
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
 }
-.play-card-soon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-}
-.play-card h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.4vw, 24px);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 4px 0 0;
-  color: var(--color-text);
-}
-.play-card p {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-  margin: 0;
-  flex: 1;
-}
-.play-card-tags {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
-  padding-top: 14px;
-  border-top: 1px solid var(--color-border);
-}
-
-/* =========================================================================
-   INTEGRAZIONE LABS (dark, 3 card)
-   ========================================================================= */
-.labs-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-@media (min-width: 1024px) {
-  .labs-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-}
-.lab-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
-}
-.lab-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.05);
-}
-.lab-desc {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  margin: 0;
-}
-.lab-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.lab-pill {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
-  border: 1px solid currentColor;
-}
-.lab-pill.assess { color: #d68b81; }
-.lab-pill.play   { color: #a8d4e8; }
-.lab-pill.cast   { color: #e6b886; }
-.lab-card h3 {
+.day-title {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 22px;
@@ -546,203 +480,242 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0;
   color: var(--color-on-dark);
 }
-.lab-card p {
+.day-list { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+.day-list li {
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--color-on-dark-muted);
-  margin: 0;
-  flex: 1;
+  padding-left: 18px;
+  position: relative;
 }
-.lab-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 8px;
+.day-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 1px;
+  background: var(--color-learn);
 }
-.badge-soon-dark {
+.programma-note {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-on-dark-muted);
-  padding: 5px 9px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255,255,255,0.2);
+  text-align: center;
+  margin: 48px 0 0;
 }
-.lab-text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--color-on-dark);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: border-color 160ms var(--ease);
-}
-.lab-text-link:hover { border-bottom-color: var(--color-on-dark); }
 
 /* =========================================================================
-   PRICING (table + bundle card)
+   STRUMENTI (light, pill grid)
    ========================================================================= */
-.pricing-table-wrap { width: 100%; margin-bottom: 32px; overflow-x: auto; }
-.pricing-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-.pricing-table thead th {
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tool-pill {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.tool-pill:hover {
+  background: rgba(92, 61, 143, 0.08);
+  color: var(--color-learn);
+  border-color: var(--color-learn);
+}
+
+/* =========================================================================
+   DETTAGLI PRATICI (4 stat + 2 info block)
+   ========================================================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 24px;
+  margin-bottom: 40px;
+}
+@media (min-width: 900px) { .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+.stat { display: flex; flex-direction: column; gap: 10px; }
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(48px, 7vw, 72px);
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--color-text);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+.stats-note {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  padding: 24px 0 56px;
+}
+
+.info-blocks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 700px) { .info-blocks { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.info-block {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+}
+.info-block h3 {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  text-align: left;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--color-border);
+  margin: 0 0 18px;
 }
-.pricing-table thead th.num-col { text-align: right; }
-.pricing-table tbody td {
-  padding: 22px 16px;
-  border-bottom: 1px solid var(--color-border);
-  vertical-align: baseline;
-}
-.pricing-table tbody tr:last-child td { border-bottom: none; }
-.pricing-table .qty {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
+.info-block ul li {
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--color-text);
+  padding: 8px 0;
+  border-top: 1px solid var(--color-border);
 }
-.pricing-table .price {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 24px);
-  letter-spacing: -0.5px;
-  text-align: right;
-  color: var(--color-text);
-}
-.pricing-table .price small {
-  display: block;
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
-  margin-top: 4px;
-}
-.pricing-note {
-  text-align: center;
-  color: var(--color-text-muted);
-  max-width: 60ch;
-  margin: 8px auto 48px;
-}
+.info-block ul li:first-child { border-top: none; padding-top: 0; }
 
-.bundle-card {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-play);
+/* =========================================================================
+   PRICING (dark, 2 card)
+   ========================================================================= */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 900px) { .pricing-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+
+.price-card {
+  background: var(--color-dark-2);
+  border: 1px solid var(--color-learn);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+  color: var(--color-on-dark);
 }
-@media (min-width: 700px) {
-  .bundle-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
+.price-card.is-azienda {
+  background: var(--color-learn);
+  border-color: var(--color-learn);
 }
-.bundle-text { flex: 1; }
-.bundle-badge {
+.price-badge {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #FFFFFF;
-  background-color: var(--color-play);
+  background-color: var(--color-learn);
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
 }
-.bundle-title {
+.price-card.is-azienda .price-badge {
+  background-color: #fff;
+  color: var(--color-learn);
+}
+.price-amount {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 22px;
-  letter-spacing: -0.5px;
-  color: var(--color-text);
-  margin: 10px 0 6px;
+  font-size: clamp(44px, 6vw, 56px);
+  line-height: 1;
+  letter-spacing: -1.4px;
+  color: var(--color-on-dark);
 }
-.bundle-note { font-size: 14px; color: var(--color-text-muted); margin: 0; }
+.price-amount-unit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-on-dark-muted);
+  margin-top: 8px;
+}
+.price-card.is-azienda .price-amount-unit { color: rgba(255,255,255,0.85); }
+.price-body { font-size: 15px; line-height: 1.55; color: var(--color-on-dark-muted); margin: 0; }
+.price-card.is-azienda .price-body { color: rgba(255,255,255,0.92); }
+.price-features { margin: 0; }
+.price-features li {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--color-on-dark);
+}
+.price-features li:first-child { border-top: none; padding-top: 0; }
+.price-features .check {
+  color: var(--color-learn);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.price-card.is-azienda .price-features .check { color: #fff; }
+.price-card.is-azienda .price-features li { border-top-color: rgba(255,255,255,0.25); }
+.price-foot-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-on-dark-muted);
+}
+.price-card.is-azienda .price-foot-note { color: rgba(255,255,255,0.8); }
+.price-cta { margin-top: auto; }
+
+.fse-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-on-dark-muted);
+  text-align: center;
+  max-width: 70ch;
+  margin: 48px auto 0;
+  line-height: 1.55;
+}
 
 /* =========================================================================
-   CTA FINALE — waitlist form
+   CTA FINALE (light)
    ========================================================================= */
 .final-cta { text-align: center; max-width: 720px; margin: 0 auto; }
 .final-cta h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(36px, 5vw, 48px);
+  font-size: clamp(32px, 5vw, 48px);
   line-height: 1.05;
   letter-spacing: -1.2px;
-  color: var(--color-on-dark);
+  color: var(--color-text);
   margin: 0 0 20px;
 }
-.final-cta p {
-  color: var(--color-on-dark-muted);
-  font-size: 18px;
-  margin: 0 0 36px;
-}
-.waitlist-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 480px;
-  margin: 0 auto 24px;
-}
-@media (min-width: 600px) { .waitlist-form { flex-direction: row; } }
-.waitlist-form input[type="email"] {
-  flex: 1;
-  height: 48px;
-  padding: 0 18px;
-  font: inherit;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: var(--radius-pill);
-  color: var(--color-on-dark);
-  transition: border-color 160ms var(--ease);
-}
-.waitlist-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
-.waitlist-form input[type="email"]:focus {
-  outline: none;
-  border-color: var(--color-on-dark);
-}
-.waitlist-form button {
-  height: 48px;
-  padding: 0 26px;
-  background: var(--color-on-dark);
-  color: var(--color-dark);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-body);
+.final-cta p { color: var(--color-text-muted); font-size: 18px; margin: 0 0 36px; }
+.final-cta .ctas { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.final-cta .link-muted {
+  color: var(--color-text-muted);
   font-size: 14px;
-  font-weight: 600;
-  transition: background 180ms var(--ease);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2px;
 }
-.waitlist-form button:hover { background: #ececec; }
-.final-note {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  margin: 0;
-}
+.final-cta .link-muted:hover { color: var(--color-text); border-bottom-color: var(--color-text); }
 
 /* =========================================================================
    FOOTER
@@ -758,9 +731,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 48px;
   margin-bottom: 64px;
 }
-@media (min-width: 900px) {
-  .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; }
-}
+@media (min-width: 900px) { .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; } }
 .footer-logo {
   font-family: var(--font-display);
   font-weight: 700;
@@ -827,7 +798,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .play-card:hover, .lab-card:hover { transform: none; }
+  .btn:hover, .profile-card:hover, .day-card:hover, .tool-pill:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
 </style>
@@ -835,7 +806,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 <body>
 
 <!-- =========================================================================
-     NAV (You-Play active in Elements dropdown)
+     NAV
      ========================================================================= -->
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -861,9 +832,9 @@ ul { list-style: none; padding: 0; margin: 0; }
         </button>
         <div class="nav-dropdown" role="menu">
           <a href="you-disc.html" role="menuitem">You-DISC</a>
-          <a href="you-play.html" class="is-active" role="menuitem" aria-current="page">You-Play <span class="soon">Coming soon</span></a>
+          <a href="you-play.html" role="menuitem">You-Play <span class="soon">Coming soon</span></a>
           <a href="you-cast.html" role="menuitem">You-Cast</a>
-          <a href="you-learn.html" role="menuitem">You-Learn</a>
+          <a href="you-learn.html" class="is-active" role="menuitem" aria-current="page">You-Learn</a>
         </div>
       </div>
 
@@ -878,7 +849,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="#waitlist" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Avvisami →</a>
+      <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Prenota →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -906,15 +877,15 @@ ul { list-style: none; padding: 0; margin: 0; }
     </button>
     <div class="m-list">
       <a href="you-disc.html">You-DISC</a>
-      <a href="you-play.html" class="is-active">You-Play <span class="soon">Soon</span></a>
+      <a href="you-play.html">You-Play <span class="soon">Soon</span></a>
       <a href="you-cast.html">You-Cast</a>
-      <a href="you-learn.html">You-Learn</a>
+      <a href="you-learn.html" class="is-active">You-Learn</a>
     </div>
   </div>
   <div class="m-group">
     <a class="m-head" href="https://you-mans.com" target="_blank" rel="noopener" style="cursor:pointer">You-Mans</a>
   </div>
-  <a href="#waitlist" class="btn btn-primary m-cta">Avvisami →</a>
+  <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-primary m-cta">Prenota →</a>
 </div>
 
 <!-- =========================================================================
@@ -922,208 +893,251 @@ ul { list-style: none; padding: 0; margin: 0; }
      ========================================================================= -->
 <section class="hero">
   <div class="container hero-inner">
-    <p class="hero-eyebrow">You-Play · Coming Soon</p>
-    <h1 class="hero-headline">La formazione<br>che si pratica.</h1>
-    <p class="hero-sub">Roleplay AI, card game, quiz e simulazioni per trasformare l'aula in un campo di allenamento. You-Play arriva presto.</p>
+    <p class="hero-eyebrow">You-Learn · Learning 4.0</p>
+    <h1 class="hero-headline">Impara a progettare formazione che funziona davvero.</h1>
+    <p class="hero-sub">3 giornate intensive per chi progetta e gestisce la formazione professionale. Neuroscienze, AI e creatività applicata. Max 12 partecipanti.</p>
     <div class="hero-ctas">
-      <a href="mailto:info@you-mans.com?subject=Waitlist%20You-Play" class="btn btn-outline-on-dark">Avvisami al lancio →</a>
+      <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-primary-on-dark">Prenota il tuo posto →</a>
+      <a href="mailto:info@you-mans.com?subject=You-Learn%20Azienda" class="btn btn-outline-on-dark">Richiedi info per la tua azienda</a>
     </div>
-    <div class="hero-tagrow">Progettato per gruppi · €8/persona · €6 oltre 10 pax</div>
+    <div class="hero-tagrow">3 giorni · Max 12 pax · In presenza + Online · FSE+ eligible · €1.200/persona</div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 2 — FILOSOFIA
+     SEZIONE 2 — PER CHI È
      ========================================================================= -->
 <section class="section">
   <div class="container">
-    <div class="philosophy reveal">
-      <h2>Sapere non basta. Bisogna fare.</h2>
-      <p>La ricerca sulle neuroscienze dell'apprendimento è chiara: le competenze si consolidano attraverso la pratica, il feedback e la riflessione. Non attraverso le slide.</p>
-      <p>You-Play porta in aula strumenti che fanno agire i partecipanti — in contesti sicuri, con regole chiare e debriefing integrato. Ogni strumento è progettato per un obiettivo specifico e funziona sia in presenza che online.</p>
+    <div class="split-2col">
+      <div class="split-text reveal">
+        <p class="eyebrow">Target</p>
+        <h2 class="heading-section">Per chi forma chi forma.</h2>
+        <p>You-Learn non è un corso per chi vuole imparare a usare ChatGPT. È per i professionisti che hanno la responsabilità di rendere la formazione aziendale più efficace, più misurabile e più adatta al modo in cui le persone imparano davvero.</p>
+        <p>Se progetti corsi, gestisci budget formativi o vuoi portare l'AI nella tua funzione L&amp;D — questo corso è costruito per te.</p>
+      </div>
+
+      <div class="profile-grid reveal" aria-label="Profili target">
+        <article class="profile-card">
+          <span class="profile-num">01</span>
+          <div class="profile-role">Learning Manager</div>
+          <p class="profile-desc">Riprogetta l'architettura formativa della tua organizzazione.</p>
+        </article>
+        <article class="profile-card">
+          <span class="profile-num">02</span>
+          <div class="profile-role">HR Specialist</div>
+          <p class="profile-desc">Integra assessment, AI e media nei tuoi percorsi.</p>
+        </article>
+        <article class="profile-card">
+          <span class="profile-num">03</span>
+          <div class="profile-role">Instructional Designer</div>
+          <p class="profile-desc">Porta neuroscienze e creatività nei tuoi learning object.</p>
+        </article>
+        <article class="profile-card">
+          <span class="profile-num">04</span>
+          <div class="profile-role">Responsabile Formazione</div>
+          <p class="profile-desc">Ottimizza il budget, misura l'impatto, usa i fondi.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 3 — GLI STRUMENTI
-     ========================================================================= -->
-<section class="section" style="padding-top: 0;">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Strumenti</p>
-      <h2 class="heading-section">Gli strumenti You-Play</h2>
-      <p class="lead">Cinque categorie di attività per ogni fase della formazione.</p>
-    </div>
-
-    <div class="play-grid">
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Roleplay AI</span>
-        <h3>Simula conversazioni reali</h3>
-        <p>Personaggi AI con profili comportamentali definiti (DISC, Leadership, Team). Il partecipante allena le proprie competenze relazionali in scenari realistici, senza rischio.</p>
-        <div class="play-card-tags">Individuale · Online · DISC-ready</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Card Game</span>
-        <h3>Gioca per riflettere</h3>
-        <p>Mazzi di carte tematici per stimolare discussione, prendere decisioni in gruppo e lavorare su bias, stili di comunicazione e dinamiche di team.</p>
-        <div class="play-card-tags">Gruppo · Presenza · Online</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Quiz</span>
-        <h3>Misura quello che sai</h3>
-        <p>Quiz rapidi per verificare la comprensione, attivare la memoria o aprire una sessione con un kick-start interattivo. Risultati in tempo reale.</p>
-        <div class="play-card-tags">Gruppo · Individuale · Tempo reale</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Wordcloud</span>
-        <h3>La voce del gruppo in un colpo d'occhio</h3>
-        <p>Raccogli le parole chiave del gruppo in tempo reale. Utile per aprire, chiudere o monitorare una sessione. Immediato, visivo, inclusivo.</p>
-        <div class="play-card-tags">Gruppo · Apertura · Chiusura</div>
-      </article>
-
-      <article class="play-card reveal">
-        <span class="play-card-soon">Coming soon</span>
-        <span class="play-card-badge">Simulazioni</span>
-        <h3>Scenari complessi, decisioni reali</h3>
-        <p>Situazioni simulate con variabili, ruoli e conseguenze. I partecipanti affrontano contesti lavorativi realistici e imparano attraverso le proprie scelte.</p>
-        <div class="play-card-tags">Gruppo · Team · Avanzato</div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================================
-     SEZIONE 4 — INTEGRAZIONE LABS (dark)
+     SEZIONE 3 — IL PROGRAMMA (dark)
      ========================================================================= -->
 <section class="section section-dark">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow eyebrow-on-dark">Nei Labs</p>
-      <h2 class="heading-section">You-Play nei Labs</h2>
-      <p class="lead lead-on-dark">You-Play è il motore di pratica di ogni Lab. Combinato con You-Assess e You-Cast, completa il ciclo assess → practice → reflect.</p>
+      <p class="eyebrow eyebrow-on-dark">Struttura</p>
+      <h2 class="heading-section">Il programma</h2>
+      <p class="lead lead-on-dark">3 giornate, 3 blocchi tematici. Ogni giornata alterna teoria, laboratorio pratico e debriefing.</p>
     </div>
 
-    <div class="labs-grid">
+    <div class="days-grid">
 
-      <article class="lab-card reveal">
-        <p class="lab-desc">DISC Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Il DISC, in pratica.</h3>
-        <p>Roleplay con profili DISC, card game sugli stili comportamentali, scenari di comunicazione adattiva.</p>
-        <div class="lab-foot">
-          <a href="index.html#labs" class="lab-text-link">Scopri il DISC Lab →</a>
-        </div>
+      <article class="day-card reveal">
+        <span class="day-badge">Giorno 01</span>
+        <h3 class="day-title">Come funziona il cervello che apprende</h3>
+        <ul class="day-list">
+          <li>Il modello neuroscientifico dell'apprendimento</li>
+          <li>Attenzione, memoria e consolidamento</li>
+          <li>Learning Experience Design: struttura e flow</li>
+          <li>Da obiettivi didattici a esperienze che restano</li>
+          <li>Workshop: riprogettare un modulo esistente</li>
+        </ul>
       </article>
 
-      <article class="lab-card reveal">
-        <p class="lab-desc">Leadership Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess · SL</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Leadership in azione.</h3>
-        <p>Simulazioni di leadership situazionale, role-play con il team.</p>
-        <div class="lab-foot">
-          <span class="badge-soon-dark">Coming soon</span>
-          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
-        </div>
+      <article class="day-card reveal">
+        <span class="day-badge">Giorno 02</span>
+        <h3 class="day-title">Storie, immagini, audio e video</h3>
+        <ul class="day-list">
+          <li>Creatività come processo: tecniche applicabili</li>
+          <li>Podcast e video nella formazione</li>
+          <li>Storytelling manageriale: struttura narrativa</li>
+          <li>Strumenti: ElevenLabs, Suno, Synthesia, Canva, Gamma</li>
+          <li>Workshop: produrre un micro-contenuto formativo</li>
+        </ul>
       </article>
 
-      <article class="lab-card reveal">
-        <p class="lab-desc">Team Lab</p>
-        <div class="lab-pills">
-          <span class="lab-pill assess">You-Assess · Lencioni</span>
-          <span class="lab-pill play">You-Play</span>
-          <span class="lab-pill cast">You-Cast</span>
-        </div>
-        <h3>Team in movimento.</h3>
-        <p>Gamification per la coesione, simulazioni di decision-making collettivo.</p>
-        <div class="lab-foot">
-          <span class="badge-soon-dark">Coming soon</span>
-          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
-        </div>
+      <article class="day-card reveal">
+        <span class="day-badge">Giorno 03</span>
+        <h3 class="day-title">L'AI come partner della progettazione</h3>
+        <ul class="day-list">
+          <li>Prompt engineering per la formazione</li>
+          <li>ChatGPT, Claude, Gemini, NotebookLM in pratica</li>
+          <li>Misurare l'impatto formativo: KPI e ROI</li>
+          <li>Fondi per la formazione: FSE+, Fondimpresa, 4.party</li>
+          <li>Workshop: costruire un piano formativo AI-assisted</li>
+        </ul>
       </article>
 
     </div>
+
+    <p class="programma-note reveal">Disponibile anche in formato online: 8 sessioni da 2h · stessa struttura, stesso livello di pratica</p>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 5 — PRICING
+     SEZIONE 4 — STRUMENTI
      ========================================================================= -->
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Pricing</p>
-      <h2 class="heading-section">Prezzi</h2>
-      <p class="lead">You-Play si paga per persona per sessione. Pensato per gruppi.</p>
+      <p class="eyebrow">Tool stack</p>
+      <h2 class="heading-section">Gli strumenti che usi nel corso</h2>
+      <p class="lead">Non teoria su strumenti che non hai mai visto. Li usi durante le giornate, in laboratorio, su casi reali.</p>
     </div>
 
-    <div class="pricing-table-wrap reveal">
-      <table class="pricing-table" aria-label="Prezzi per persona">
-        <thead>
-          <tr>
-            <th>Quantità</th>
-            <th class="num-col">Prezzo per persona</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="qty">Fino a 9 persone</td>
-            <td class="price">€8,00 <small>+ IVA</small></td>
-          </tr>
-          <tr>
-            <td class="qty">10 persone e oltre</td>
-            <td class="price">€6,00 <small>+ IVA</small></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="pricing-note reveal">Il prezzo include accesso completo agli strumenti della sessione. La sessione è configurata dal formatore prima dell'evento.</p>
-
-    <div class="bundle-card reveal">
-      <div class="bundle-text">
-        <span class="bundle-badge">DISC Lab</span>
-        <h3 class="bundle-title">Combina You-Play con You-Assess e You-Cast</h3>
-        <p class="bundle-note">Sconto 15% rispetto agli Elements separati.</p>
-      </div>
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-play">Ordina →</a>
+    <div class="tools-grid reveal">
+      <span class="tool-pill">ChatGPT</span>
+      <span class="tool-pill">Claude</span>
+      <span class="tool-pill">Gemini</span>
+      <span class="tool-pill">NotebookLM</span>
+      <span class="tool-pill">ElevenLabs</span>
+      <span class="tool-pill">Suno</span>
+      <span class="tool-pill">Synthesia</span>
+      <span class="tool-pill">Canva</span>
+      <span class="tool-pill">Gamma</span>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     SEZIONE 6 — CTA FINALE (waitlist)
+     SEZIONE 5 — DETTAGLI PRATICI
      ========================================================================= -->
-<section class="section section-dark" id="waitlist">
+<section class="section" style="padding-top: 0;">
   <div class="container">
-    <div class="final-cta reveal">
-      <h2>You-Play arriva presto.</h2>
-      <p>Lascia la tua email e ti avvisiamo al lancio. Nessuno spam — solo la notizia che conta.</p>
+    <div class="section-head reveal">
+      <p class="eyebrow">Dettagli</p>
+      <h2 class="heading-section">Come funziona</h2>
+    </div>
 
-      <form class="waitlist-form" action="mailto:info@you-mans.com" method="get" enctype="text/plain" aria-label="Waitlist You-Play">
-        <input type="hidden" name="subject" value="Waitlist You-Play">
-        <input type="email" name="body" placeholder="La tua email" required aria-label="Email">
-        <button type="submit">Avvisami →</button>
-      </form>
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Giornate<br>in presenza</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Partecipanti<br>max</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Learning<br>by doing</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">FSE+</div>
+        <div class="stat-label">Finanziabile</div>
+      </div>
+    </div>
 
-      <p class="final-note">Disponibile per IT · FR · EN</p>
+    <p class="stats-note reveal">Ogni giornata include almeno 3 ore di laboratorio pratico su casi reali. Niente slide da leggere — solo progettazione, feedback e sperimentazione.</p>
+
+    <div class="info-blocks">
+      <div class="info-block reveal">
+        <h3>Formato in presenza</h3>
+        <ul>
+          <li>3 giornate consecutive o distribuite</li>
+          <li>Location: da concordare</li>
+          <li>Materiali e template inclusi</li>
+        </ul>
+      </div>
+      <div class="info-block reveal">
+        <h3>Formato online</h3>
+        <ul>
+          <li>8 sessioni × 2h</li>
+          <li>Zoom / Teams</li>
+          <li>Stessa struttura, stesso materiale</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 6 — PRICING (dark)
+     ========================================================================= -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-on-dark">Pricing</p>
+      <h2 class="heading-section">Prezzi e prenotazioni</h2>
+    </div>
+
+    <div class="pricing-grid">
+
+      <article class="price-card reveal">
+        <span class="price-badge">You-Learn · Individuale</span>
+        <div>
+          <div class="price-amount">€1.200</div>
+          <div class="price-amount-unit">+ IVA / per persona</div>
+        </div>
+        <p class="price-body">Un posto in un'edizione aperta. 3 giornate complete o 8 sessioni online.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> 3 giornate complete (o 8 sessioni online)</li>
+          <li><span class="check">✓</span> Materiali e template</li>
+          <li><span class="check">✓</span> Accesso agli strumenti AI in sessione</li>
+          <li><span class="check">✓</span> Certificato di partecipazione</li>
+          <li><span class="check">✓</span> Follow-up di 30 giorni via email</li>
+        </ul>
+        <p class="price-foot-note">Max 12 posti per edizione</p>
+        <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-learn price-cta">Prenota il tuo posto →</a>
+      </article>
+
+      <article class="price-card is-azienda reveal">
+        <span class="price-badge">You-Learn · Azienda</span>
+        <div>
+          <div class="price-amount">Su richiesta</div>
+          <div class="price-amount-unit">Edizione riservata</div>
+        </div>
+        <p class="price-body">Edizione riservata per il tuo team L&amp;D. Programma personalizzabile, location a scelta, possibilità di finanziamento FSE+ e Fondimpresa.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Tutto del formato individuale</li>
+          <li><span class="check">✓</span> Personalizzazione del programma</li>
+          <li><span class="check">✓</span> Supporto alla richiesta di finanziamento</li>
+          <li><span class="check">✓</span> Possibilità formato blended</li>
+        </ul>
+        <p class="price-foot-note">Massima flessibilità su date e formato</p>
+        <a href="mailto:info@you-mans.com?subject=You-Learn%20Azienda" class="btn btn-on-violet price-cta">Contattaci →</a>
+      </article>
+
+    </div>
+
+    <p class="fse-note reveal">You-Learn è finanziabile tramite FSE+, Fondimpresa e altri fondi interprofessionali. Supportiamo le aziende nella richiesta.</p>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 7 — CTA FINALE
+     ========================================================================= -->
+<section class="section">
+  <div class="container final-cta reveal">
+    <h2>Pronto a riprogettare il tuo modo di formare?</h2>
+    <p>Le edizioni sono limitate a 12 partecipanti. Scrivici per conoscere le date disponibili.</p>
+    <div class="ctas">
+      <a href="mailto:info@you-mans.com?subject=Prenotazione%20You-Learn" class="btn btn-learn">Prenota il tuo posto →</a>
+      <a href="mailto:info@you-mans.com?subject=You-Learn%20Azienda" class="link-muted">Per la tua azienda →</a>
     </div>
   </div>
 </section>
@@ -1261,7 +1275,7 @@ ul { list-style: none; padding: 0; margin: 0; }
           var parent = entry.target.parentElement;
           var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
           var idx = Array.prototype.indexOf.call(siblings, entry.target);
-          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 90);
+          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 80);
           io.unobserve(entry.target);
         }
       });
