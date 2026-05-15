@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You-Lab — Strumenti per la formazione professionale</title>
-<meta name="description" content="You-Lab è il sito umbrella di You-Mans: Elements e Labs per chi progetta formazione. Assessment, roleplay, contenuti audio, corsi.">
+<title>You-Cast — 100 episodi, 12 serie | You-Lab</title>
+<meta name="description" content="You-Cast: contenuti audio e video per estendere l'impatto della formazione. 100 episodi in 12 serie, accesso via QR code, 2 mesi rolling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 /* =========================================================================
-   TOKENS — You-Lab (brief) prevale su Runway dove in conflitto
+   TOKENS
    ========================================================================= */
 :root {
   --color-bg:          #F7F7F5;
@@ -41,9 +41,6 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* =========================================================================
-   RESET
-   ========================================================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
@@ -61,44 +58,22 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 ul { list-style: none; padding: 0; margin: 0; }
 
-/* =========================================================================
-   LAYOUT
-   ========================================================================= */
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-}
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: 100px 0; }
 @media (min-width: 1024px) { .section { padding: 120px 0; } }
+.section-dark { background: var(--color-dark); color: var(--color-on-dark); }
+.section-dark .heading-section { color: var(--color-on-dark); }
+.section-dark .lead { color: var(--color-on-dark-muted); }
+.section-head { margin-bottom: 56px; max-width: 720px; }
 
-/* =========================================================================
-   TYPOGRAPHY UTILITIES
-   ========================================================================= */
-.display {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(44px, 8vw, 72px);
-  line-height: 1.02;
-  letter-spacing: -1.6px;
-  margin: 0;
-}
 .heading-section {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(32px, 4.4vw, 42px);
+  font-size: clamp(28px, 4.4vw, 36px);
   line-height: 1.05;
-  letter-spacing: -1px;
+  letter-spacing: -0.9px;
   margin: 0 0 16px;
 }
-.lead {
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-  margin: 0;
-  max-width: 56ch;
-}
-.lead-on-dark { color: var(--color-on-dark-muted); }
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -108,6 +83,14 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0 0 24px;
 }
 .eyebrow-on-dark { color: var(--color-on-dark-muted); }
+.lead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+.lead-on-dark { color: var(--color-on-dark-muted); }
 
 /* =========================================================================
    BUTTONS
@@ -124,49 +107,21 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-  letter-spacing: 0.01em;
   transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
   border: 1px solid transparent;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn-primary {
-  background: var(--color-dark);
-  color: var(--color-on-dark);
-}
+.btn-primary { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-primary:hover { background: #2a2a2a; }
-.btn-primary-on-dark {
-  background: var(--color-on-dark);
-  color: var(--color-dark);
-}
+.btn-primary-on-dark { background: var(--color-on-dark); color: var(--color-dark); }
 .btn-primary-on-dark:hover { background: #ececec; }
-.btn-outline-on-dark {
-  background: transparent;
-  color: var(--color-on-dark);
-  border-color: var(--color-on-dark);
-}
+.btn-outline-on-dark { background: transparent; color: var(--color-on-dark); border-color: var(--color-on-dark); }
 .btn-outline-on-dark:hover { background: var(--color-on-dark); color: var(--color-dark); }
-.btn-outline {
-  background: transparent;
-  color: var(--color-dark);
-  border-color: var(--color-dark);
-}
+.btn-outline { background: transparent; color: var(--color-dark); border-color: var(--color-dark); }
 .btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
-.btn-nav {
-  height: 36px;
-  padding: 0 16px;
-  font-size: 13px;
-}
-.btn-text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  color: var(--color-dark);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: border-color 160ms var(--ease);
-}
-.btn-text-link:hover { border-bottom-color: var(--color-dark); }
+.btn-nav { height: 36px; padding: 0 16px; font-size: 13px; }
+.btn-cast { background: var(--color-cast); color: #fff; }
+.btn-cast:hover { background: #a3651f; }
 
 /* =========================================================================
    NAV
@@ -182,10 +137,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   background: transparent;
   border-bottom: 1px solid transparent;
 }
-.nav.is-light {
-  background: var(--color-bg);
-  border-bottom-color: var(--color-border);
-}
+.nav.is-light { background: var(--color-bg); border-bottom-color: var(--color-border); }
 .nav-inner {
   width: 100%;
   max-width: var(--container-max);
@@ -205,16 +157,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   transition: color 220ms var(--ease);
 }
 .nav.is-light .nav-logo { color: var(--color-dark); }
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
+.nav-menu { display: flex; align-items: center; gap: 32px; }
 @media (max-width: 900px) { .nav-menu { display: none; } }
 
-.nav-item {
-  position: relative;
-}
+.nav-item { position: relative; }
 .nav-link {
   display: inline-flex;
   align-items: center;
@@ -262,6 +208,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   transition: background 140ms var(--ease);
 }
 .nav-dropdown a:hover { background: var(--color-border); }
+.nav-dropdown a.is-active {
+  background: var(--color-border);
+  color: var(--color-cast);
+  font-weight: 600;
+}
 .nav-dropdown .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -270,11 +221,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   text-transform: uppercase;
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+.nav-right { display: flex; align-items: center; gap: 20px; }
 @media (max-width: 900px) { .nav-right .lang-switch { display: none; } }
 .lang-switch {
   font-family: var(--font-mono);
@@ -283,16 +230,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-on-dark);
 }
 .nav.is-light .lang-switch { color: var(--color-text-muted); }
-.lang-switch button {
-  padding: 4px 6px;
-  opacity: 0.55;
-  transition: opacity 140ms var(--ease);
-}
+.lang-switch button { padding: 4px 6px; opacity: 0.55; transition: opacity 140ms var(--ease); }
 .lang-switch button:hover { opacity: 1; }
 .lang-switch button.is-active { opacity: 1; }
 .lang-switch .sep { opacity: 0.35; }
 
-/* Mobile nav */
 .nav-burger {
   display: none;
   width: 40px; height: 40px;
@@ -306,7 +248,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   width: 22px; height: 1.5px;
   background: var(--color-on-dark);
   position: relative;
-  transition: background 220ms var(--ease);
 }
 .nav-burger span::before,
 .nav-burger span::after {
@@ -315,7 +256,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   left: 0;
   width: 22px; height: 1.5px;
   background: var(--color-on-dark);
-  transition: transform 200ms var(--ease), background 220ms var(--ease);
 }
 .nav-burger span::before { top: -7px; }
 .nav-burger span::after  { top:  7px; }
@@ -358,6 +298,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: 16px;
   color: var(--color-text);
 }
+.mobile-drawer .m-list a.is-active { color: var(--color-cast); font-weight: 600; }
 .mobile-drawer .m-list .soon {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -368,11 +309,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
 /* =========================================================================
-   HERO
+   HERO (dark, 80vh)
    ========================================================================= */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: 80vh;
   background: var(--color-dark);
   color: var(--color-on-dark);
   display: flex;
@@ -383,196 +324,206 @@ ul { list-style: none; padding: 0; margin: 0; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.55;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
   pointer-events: none;
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
 }
 .hero-inner {
   position: relative;
   padding-top: 144px;
-  padding-bottom: 120px;
-  max-width: 1100px;
+  padding-bottom: 96px;
+  max-width: 1000px;
 }
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-on-dark-muted);
-  margin: 0 0 40px;
+  color: var(--color-cast);
+  margin: 0 0 32px;
 }
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(44px, 8vw, 72px);
-  line-height: 1.02;
-  letter-spacing: -1.8px;
+  font-size: clamp(40px, 6.4vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -1.5px;
   color: var(--color-on-dark);
-  margin: 0 0 32px;
-  max-width: 14ch;
+  margin: 0 0 24px;
+  max-width: 18ch;
 }
 .hero-sub {
   font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--color-on-dark-muted);
-  margin: 0 0 48px;
-  max-width: 38ch;
+  margin: 0 0 40px;
+  max-width: 56ch;
 }
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-bottom: 28px;
 }
-.hero-tagline {
-  position: absolute;
-  left: 0; right: 0;
-  bottom: 32px;
-  text-align: center;
+.hero-tagrow {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-on-dark-muted);
-  opacity: 0.8;
 }
 
 /* =========================================================================
-   ELEMENTS GRID
+   FLOW (3 step access)
    ========================================================================= */
-.section-head {
-  margin-bottom: 64px;
-  max-width: 720px;
-}
-.elements-grid {
+.flow {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
+  position: relative;
 }
 @media (min-width: 900px) {
-  .elements-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .flow { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+.flow-step { position: relative; }
+.flow-step .num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-cast);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.flow-step .step-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+.flow-step h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 0 8px;
+  letter-spacing: -0.2px;
+}
+.flow-step p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .flow-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 12px;
+    color: var(--color-border);
+    font-size: 20px;
+  }
+}
+.flow-note {
+  margin: 56px auto 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 70ch;
 }
 
-.element-card {
-  position: relative;
+/* =========================================================================
+   SERIES GRID (12 card, 4 col / 2 col / 1 col)
+   ========================================================================= */
+.series-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 700px) { .series-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+@media (min-width: 1024px) { .series-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+
+.series-card {
   background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
+  border-left: 3px solid var(--color-cast);
+  border-radius: var(--radius-md);
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
-  --accent: var(--color-text);
+  gap: 12px;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
 }
-.element-card:hover {
+.series-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
+  border-color: var(--color-cast);
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,0.25);
 }
-.element-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 32px; bottom: 32px;
-  width: 3px;
-  background: var(--accent);
-  border-radius: 0 2px 2px 0;
-  opacity: 0;
-  transition: opacity 260ms var(--ease);
+.series-num {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--color-cast);
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
-.element-card:hover::before { opacity: 1; }
-
-.element-card-head {
+.series-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  margin: 0;
+  color: var(--color-text);
+  flex: 1;
+}
+.series-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
   flex-wrap: wrap;
 }
-.element-badge {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #FFFFFF;
-  background-color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.badge-soon {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 5px 9px;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-}
-.element-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(24px, 2.8vw, 30px);
-  line-height: 1.1;
-  letter-spacing: -0.6px;
-  margin: 0;
-  color: var(--color-text);
-}
-.element-body {
-  font-size: 16px;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-.element-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
+.series-meta .episodes {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
 }
-.element-tags span { white-space: nowrap; }
-.element-tags .dot { color: var(--color-border); }
-.element-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 8px;
-  border-top: 1px solid var(--color-border);
-}
-.element-price {
+.series-meta .format-pill {
   font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--color-text);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-cast);
+  background: rgba(196, 123, 43, 0.08);
+  border: 1px solid rgba(196, 123, 43, 0.3);
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
 }
-.element-price strong { font-weight: 400; color: var(--accent); }
-
-.element-card.is-assess { --accent: var(--color-assess); }
-.element-card.is-play   { --accent: var(--color-play); }
-.element-card.is-cast   { --accent: var(--color-cast); }
-.element-card.is-learn  { --accent: var(--color-learn); }
+.series-foot {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 40px 0 0;
+}
 
 /* =========================================================================
-   LABS — dark section
+   LABS (dark)
    ========================================================================= */
-.section-dark {
-  background: var(--color-dark);
-  color: var(--color-on-dark);
-}
-.section-dark .heading-section { color: var(--color-on-dark); }
-.section-dark .lead { color: var(--color-on-dark-muted); }
-
 .labs-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -581,16 +532,14 @@ ul { list-style: none; padding: 0; margin: 0; }
 @media (min-width: 1024px) {
   .labs-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 }
-
 .lab-card {
-  position: relative;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-lg);
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
 }
 .lab-card:hover {
@@ -604,12 +553,9 @@ ul { list-style: none; padding: 0; margin: 0; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-on-dark-muted);
+  margin: 0;
 }
-.lab-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.lab-pills { display: flex; flex-wrap: wrap; gap: 6px; }
 .lab-pill {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -622,37 +568,30 @@ ul { list-style: none; padding: 0; margin: 0; }
 .lab-pill.assess { color: #d68b81; }
 .lab-pill.play   { color: #a8d4e8; }
 .lab-pill.cast   { color: #e6b886; }
-.lab-title {
+.lab-card h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 28px;
-  line-height: 1.05;
-  letter-spacing: -0.6px;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
   margin: 0;
   color: var(--color-on-dark);
 }
-.lab-body {
-  font-size: 15px;
+.lab-card p {
+  font-size: 14px;
   line-height: 1.55;
   color: var(--color-on-dark-muted);
   margin: 0;
-}
-.lab-price {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--color-on-dark);
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  flex: 1;
 }
 .lab-foot {
-  margin-top: auto;
-  padding-top: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 8px;
 }
 .badge-soon-dark {
   font-family: var(--font-mono);
@@ -678,109 +617,127 @@ ul { list-style: none; padding: 0; margin: 0; }
 .lab-text-link:hover { border-bottom-color: var(--color-on-dark); }
 
 /* =========================================================================
-   NUMERI / STATS
+   PRICING (table + bundle)
    ========================================================================= */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px 24px;
-  margin-bottom: 56px;
+.pricing-table-wrap { width: 100%; margin-bottom: 24px; overflow-x: auto; }
+.pricing-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.pricing-table thead th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
 }
-@media (min-width: 900px) {
-  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.pricing-table thead th.num-col { text-align: right; }
+.pricing-table tbody td {
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: baseline;
 }
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.stat-num {
+.pricing-table tbody tr:last-child td { border-bottom: none; }
+.pricing-table .qty {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(56px, 8vw, 88px);
-  line-height: 1;
-  letter-spacing: -2.4px;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
   color: var(--color-text);
 }
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-.stats-foot {
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto;
-  color: var(--color-text-muted);
-  padding-top: 32px;
-  border-top: 1px solid var(--color-border);
-}
-
-/* =========================================================================
-   CONTACT — You-Mans
-   ========================================================================= */
-.contact-section {
-  border-top: 1px solid var(--color-border);
-}
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-}
-@media (min-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr 1fr; gap: 96px; }
-}
-.contact-text p { color: var(--color-text-muted); }
-.contact-text .external-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 16px;
+.pricing-table .price {
+  font-family: var(--font-display);
   font-weight: 600;
-  color: var(--color-dark);
-  border-bottom: 1px solid var(--color-text-muted);
-  padding-bottom: 2px;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  text-align: right;
+  color: var(--color-text);
+}
+.pricing-table .price small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+.pricing-note {
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 0 auto 48px;
 }
 
-.form-field {
+.bundle-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-cast);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 28px;
+  gap: 16px;
 }
-.form-field label {
+@media (min-width: 700px) {
+  .bundle-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+.bundle-text { flex: 1; }
+.bundle-badge {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-.form-field input,
-.form-field textarea {
-  font: inherit;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-border);
-  padding: 10px 0;
-  color: var(--color-text);
-  transition: border-color 160ms var(--ease);
-  resize: vertical;
-}
-.form-field textarea { min-height: 96px; }
-.form-field input:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-bottom-color: var(--color-dark);
-}
-.form-field ::placeholder { color: #b8b8b2; }
-.form-note {
   font-size: 13px;
-  color: var(--color-text-muted);
-  margin: 8px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  background-color: var(--color-cast);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
+.bundle-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--color-text);
+  margin: 10px 0 6px;
+}
+.bundle-note { font-size: 14px; color: var(--color-text-muted); margin: 0; }
+
+/* =========================================================================
+   CTA FINALE
+   ========================================================================= */
+.final-cta { text-align: center; max-width: 720px; margin: 0 auto; }
+.final-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--color-on-dark);
+  margin: 0 0 20px;
+}
+.final-cta p {
+  color: var(--color-on-dark-muted);
+  font-size: 18px;
+  margin: 0 0 32px;
+}
+.final-cta .ctas { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.final-cta .link-muted {
+  color: var(--color-on-dark-muted);
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+}
+.final-cta .link-muted:hover { color: var(--color-on-dark); border-bottom-color: var(--color-on-dark); }
 
 /* =========================================================================
    FOOTER
@@ -797,10 +754,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin-bottom: 64px;
 }
 @media (min-width: 900px) {
-  .footer-top {
-    grid-template-columns: 1.2fr 1fr 1fr 1fr;
-    gap: 48px;
-  }
+  .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; }
 }
 .footer-logo {
   font-family: var(--font-display);
@@ -809,11 +763,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   letter-spacing: -0.6px;
   margin-bottom: 16px;
 }
-.footer-tag {
-  font-size: 14px;
-  color: var(--color-on-dark-muted);
-  max-width: 32ch;
-}
+.footer-tag { font-size: 14px; color: var(--color-on-dark-muted); max-width: 32ch; }
 .footer-col h4 {
   font-family: var(--font-mono);
   font-weight: 400;
@@ -839,7 +789,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-on-dark-muted);
   margin-left: 6px;
 }
-
 .footer-bottom {
   display: flex;
   flex-direction: column;
@@ -863,20 +812,17 @@ ul { list-style: none; padding: 0; margin: 0; }
 .footer-lang button.is-active { color: var(--color-on-dark); }
 
 /* =========================================================================
-   SCROLL REVEAL
+   REVEAL
    ========================================================================= */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 720ms var(--ease), transform 720ms var(--ease);
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .element-card:hover, .lab-card:hover { transform: none; }
+  .btn:hover, .series-card:hover, .lab-card:hover { transform: none; }
   html { scroll-behavior: auto; }
 }
 </style>
@@ -884,11 +830,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 <body>
 
 <!-- =========================================================================
-     NAV
+     NAV (You-Cast active in Elements dropdown)
      ========================================================================= -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
+    <a href="index.html" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
 
     <nav class="nav-menu" aria-label="Primary">
       <div class="nav-item" data-dropdown>
@@ -897,9 +843,9 @@ ul { list-style: none; padding: 0; margin: 0; }
           <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="#labs" role="menuitem">DISC Lab</a>
-          <a href="#labs" role="menuitem">Leadership Lab <span class="soon">Coming soon</span></a>
-          <a href="#labs" role="menuitem">Team Lab <span class="soon">Coming soon</span></a>
+          <a href="index.html#labs" role="menuitem">DISC Lab</a>
+          <a href="index.html#labs" role="menuitem">Leadership Lab <span class="soon">Coming soon</span></a>
+          <a href="index.html#labs" role="menuitem">Team Lab <span class="soon">Coming soon</span></a>
         </div>
       </div>
 
@@ -909,10 +855,10 @@ ul { list-style: none; padding: 0; margin: 0; }
           <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="https://disc.you-mans.com" target="_blank" rel="noopener" role="menuitem">You-DISC</a>
+          <a href="you-disc.html" role="menuitem">You-DISC</a>
           <a href="you-play.html" role="menuitem">You-Play <span class="soon">Coming soon</span></a>
-          <a href="you-cast.html" role="menuitem">You-Cast</a>
-          <a href="#elements" role="menuitem">You-Learn</a>
+          <a href="you-cast.html" class="is-active" role="menuitem" aria-current="page">You-Cast</a>
+          <a href="index.html#elements" role="menuitem">You-Learn</a>
         </div>
       </div>
 
@@ -927,7 +873,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="#contact" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Inizia →</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-outline-on-dark btn-nav nav-cta-dark">Ordina →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -943,9 +889,9 @@ ul { list-style: none; padding: 0; margin: 0; }
       <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
     </button>
     <div class="m-list">
-      <a href="#labs">DISC Lab</a>
-      <a href="#labs">Leadership Lab <span class="soon">Soon</span></a>
-      <a href="#labs">Team Lab <span class="soon">Soon</span></a>
+      <a href="index.html#labs">DISC Lab</a>
+      <a href="index.html#labs">Leadership Lab <span class="soon">Soon</span></a>
+      <a href="index.html#labs">Team Lab <span class="soon">Soon</span></a>
     </div>
   </div>
   <div class="m-group" data-m-accordion>
@@ -954,142 +900,207 @@ ul { list-style: none; padding: 0; margin: 0; }
       <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
     </button>
     <div class="m-list">
-      <a href="https://disc.you-mans.com" target="_blank" rel="noopener">You-DISC</a>
+      <a href="you-disc.html">You-DISC</a>
       <a href="you-play.html">You-Play <span class="soon">Soon</span></a>
-      <a href="you-cast.html">You-Cast</a>
-      <a href="#elements">You-Learn</a>
+      <a href="you-cast.html" class="is-active">You-Cast</a>
+      <a href="index.html#elements">You-Learn</a>
     </div>
   </div>
   <div class="m-group">
     <a class="m-head" href="https://you-mans.com" target="_blank" rel="noopener" style="cursor:pointer">You-Mans</a>
   </div>
-  <a href="#contact" class="btn btn-primary m-cta">Inizia →</a>
+  <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary m-cta">Ordina →</a>
 </div>
 
 <!-- =========================================================================
-     HERO
+     SEZIONE 1 — HERO
      ========================================================================= -->
-<section class="hero" id="hero">
+<section class="hero">
   <div class="container hero-inner">
-    <p class="hero-eyebrow">Elements · Labs · You-Mans</p>
-    <h1 class="hero-headline">Progetta esperienze di apprendimento che restano.</h1>
-    <p class="hero-sub">Strumenti professionali per chi forma. Sistemi integrati per chi vuole risultati.</p>
+    <p class="hero-eyebrow">You-Cast · Disponibile</p>
+    <h1 class="hero-headline">100 episodi. 12 serie. Il prima, il durante e il dopo della formazione.</h1>
+    <p class="hero-sub">Contenuti audio e video progettati per estendere l'impatto della formazione oltre l'aula. Accesso via QR code. Sempre aggiornati.</p>
     <div class="hero-ctas">
-      <a href="#elements" class="btn btn-outline-on-dark">Scopri gli Elements</a>
-      <a href="#labs" class="btn btn-primary-on-dark">Costruisci il tuo Lab</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
+      <a href="#serie" class="btn btn-outline-on-dark">Esplora le serie ↓</a>
     </div>
-  </div>
-  <div class="hero-tagline">Explore our Elements. Build your Lab.</div>
-</section>
-
-<!-- =========================================================================
-     ELEMENTS
-     ========================================================================= -->
-<section class="section" id="elements">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Strumenti</p>
-      <h2 class="heading-section">Gli Elements</h2>
-      <p class="lead">Ogni Element è uno strumento autonomo, progettato per agire. Usali singolarmente o combinali in un Lab.</p>
-    </div>
-
-    <div class="elements-grid">
-
-      <!-- You-Assess -->
-      <article class="element-card is-assess reveal">
-        <div class="element-card-head">
-          <span class="element-badge">You-Assess</span>
-        </div>
-        <h3 class="element-title">Misura. Comprendi. Agisci.</h3>
-        <p class="element-body">Strumenti di assessment psicometrico per leggere le persone in profondità. Il primo prodotto è You-DISC, basato sul modello DISC a 4 stili comportamentali.</p>
-        <div class="element-tags">
-          <span>DISC</span><span class="dot">·</span>
-          <span>Lencioni ↗</span><span class="dot">·</span>
-          <span>SL ↗</span>
-        </div>
-        <div class="element-foot">
-          <span class="element-price">Da <strong>€[TBD]</strong> per codice</span>
-          <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn-text-link">Accedi a You-DISC →</a>
-        </div>
-      </article>
-
-      <!-- You-Play -->
-      <article class="element-card is-play reveal">
-        <div class="element-card-head">
-          <span class="element-badge">You-Play</span>
-          <span class="badge-soon">Coming soon</span>
-        </div>
-        <h3 class="element-title">Pratica prima di agire.</h3>
-        <p class="element-body">Roleplay e gamification per allenare le competenze relazionali in contesti sicuri. RolePlay AI, card game, quiz, wordcloud e molto altro.</p>
-        <div class="element-tags">
-          <span>Roleplay AI</span><span class="dot">·</span>
-          <span>Card Games</span><span class="dot">·</span>
-          <span>Quizzes</span><span class="dot">·</span>
-          <span>Wordcloud</span><span class="dot">·</span>
-          <span>Simulazioni</span>
-        </div>
-        <div class="element-foot">
-          <span class="element-price"><strong>€8</strong>/persona · €6 oltre 10 pax</span>
-          <a href="you-play.html#waitlist" class="btn-text-link">Avvisami al lancio →</a>
-        </div>
-      </article>
-
-      <!-- You-Cast -->
-      <article class="element-card is-cast reveal">
-        <div class="element-card-head">
-          <span class="element-badge">You-Cast</span>
-        </div>
-        <h3 class="element-title">Ascolta. Guarda. Approfondisci.</h3>
-        <p class="element-body">100 episodi in 12 serie tematiche. Contenuti audio e video per il prima, il durante e il dopo della formazione. Accesso via QR code, 2 mesi di disponibilità rolling.</p>
-        <div class="element-tags">
-          <span>100 episodi</span><span class="dot">·</span>
-          <span>12 serie</span><span class="dot">·</span>
-          <span>Audio + Video</span><span class="dot">·</span>
-          <span>QR access</span>
-        </div>
-        <div class="element-foot">
-          <span class="element-price"><strong>€8</strong>/persona · €6 oltre 10 pax</span>
-          <a href="you-cast.html" class="btn-text-link">Esplora You-Cast →</a>
-        </div>
-      </article>
-
-      <!-- You-Learn -->
-      <article class="element-card is-learn reveal">
-        <div class="element-card-head">
-          <span class="element-badge">You-Learn</span>
-        </div>
-        <h3 class="element-title">Impara a progettare formazione che funziona.</h3>
-        <p class="element-body">Learning 4.0 è il corso intensivo di 3 giornate per chi progetta e gestisce la formazione. Neuroscienze, AI e creatività applicata. Max 12 partecipanti.</p>
-        <div class="element-tags">
-          <span>3 giorni</span><span class="dot">·</span>
-          <span>Max 12 pax</span><span class="dot">·</span>
-          <span>Learning by Doing</span><span class="dot">·</span>
-          <span>FSE+ eligible</span>
-        </div>
-        <div class="element-foot">
-          <span class="element-price"><strong>€1.200</strong>/persona · Azienda: su richiesta</span>
-          <a href="#contact" class="btn-text-link">Scopri il programma →</a>
-        </div>
-      </article>
-
-    </div>
+    <div class="hero-tagrow">100 episodi · 12 serie · Audio + Video · QR access · 2 mesi rolling</div>
   </div>
 </section>
 
 <!-- =========================================================================
-     LABS
+     SEZIONE 2 — COME FUNZIONA L'ACCESSO
      ========================================================================= -->
-<section class="section section-dark" id="labs">
+<section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow eyebrow-on-dark">Sistemi integrati</p>
-      <h2 class="heading-section">I Labs</h2>
-      <p class="lead lead-on-dark">Combina gli Elements in un sistema completo. Ogni Lab è un percorso integrato — assessment, pratica, contenuti — progettato intorno a un tema.</p>
+      <p class="eyebrow">Accesso</p>
+      <h2 class="heading-section">Un accesso semplice. Un impatto che dura.</h2>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step reveal">
+        <div class="num">1</div>
+        <div class="step-label">Acquisto</div>
+        <h3>Acquisti i QR code</h3>
+        <p>Compri il numero di codici che ti serve per i tuoi partecipanti. Un codice = un partecipante.</p>
+      </div>
+      <div class="flow-step reveal">
+        <div class="num">2</div>
+        <div class="step-label">Distribuzione</div>
+        <h3>Distribuisci via mail, slide o stampa</h3>
+        <p>Inserisci il QR code nei tuoi materiali. Il partecipante lo scansiona quando vuole.</p>
+      </div>
+      <div class="flow-step reveal">
+        <div class="num">3</div>
+        <div class="step-label">Accesso rolling</div>
+        <h3>I partecipanti accedono a tutti i contenuti per 2 mesi</h3>
+        <p>Accesso completo alla libreria. La finestra si ricalcola dall'ultimo episodio caricato.</p>
+      </div>
+    </div>
+
+    <p class="flow-note reveal">La finestra di 2 mesi si calcola dall'ultimo episodio caricato — non dalla data di acquisto. I contenuti crescono, il valore cresce con loro.</p>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 3 — LE 12 SERIE
+     ========================================================================= -->
+<section class="section" id="serie" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Catalogo</p>
+      <h2 class="heading-section">Le 12 serie</h2>
+      <p class="lead">Ogni serie esplora un tema della formazione e dello sviluppo professionale. Episodi da 15 a 30 minuti — pensati per essere usati prima, durante o dopo una sessione.</p>
+    </div>
+
+    <div class="series-grid">
+      <article class="series-card reveal">
+        <div class="series-num">01</div>
+        <h3 class="series-title">DISC e Stili Comportamentali</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">02</div>
+        <h3 class="series-title">Leadership Situazionale</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">03</div>
+        <h3 class="series-title">Team e Disfunzioni</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">04</div>
+        <h3 class="series-title">Comunicazione Efficace</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">05</div>
+        <h3 class="series-title">Gestione del Conflitto</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">06</div>
+        <h3 class="series-title">Feedback e Performance</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">07</div>
+        <h3 class="series-title">Formazione 4.0</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">08</div>
+        <h3 class="series-title">Neuroscienze dell'Apprendimento</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">09</div>
+        <h3 class="series-title">Intelligenza Emotiva</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">10</div>
+        <h3 class="series-title">Diversity &amp; Inclusion</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">11</div>
+        <h3 class="series-title">Benessere Organizzativo</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+
+      <article class="series-card reveal">
+        <div class="series-num">12</div>
+        <h3 class="series-title">Coaching e Sviluppo</h3>
+        <div class="series-meta">
+          <span class="episodes">8 episodi</span>
+          <span class="format-pill">Audio + Video</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="series-foot reveal">100 episodi totali · Nuovi contenuti aggiunti regolarmente</p>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SEZIONE 4 — YOU-CAST NEI LABS (dark)
+     ========================================================================= -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-on-dark">Nei Labs</p>
+      <h2 class="heading-section">You-Cast nei Labs</h2>
+      <p class="lead lead-on-dark">Ogni Lab include una selezione curata di episodi You-Cast allineati al tema. Il QR code è incluso nel bundle.</p>
     </div>
 
     <div class="labs-grid">
 
-      <!-- DISC Lab -->
       <article class="lab-card reveal">
         <p class="lab-desc">DISC Lab</p>
         <div class="lab-pills">
@@ -1097,15 +1108,13 @@ ul { list-style: none; padding: 0; margin: 0; }
           <span class="lab-pill play">You-Play</span>
           <span class="lab-pill cast">You-Cast</span>
         </div>
-        <h3 class="lab-title">Il DISC, in sistema.</h3>
-        <p class="lab-body">Il sistema completo per portare il DISC in azienda. Dal profilo comportamentale al roleplay situazionale, fino ai contenuti audio di approfondimento.</p>
-        <div class="lab-price">Bundle con sconto <strong>15%</strong> rispetto agli Elements separati</div>
+        <h3>Approfondimento DISC.</h3>
+        <p>4 episodi selezionati dalla serie DISC e Stili Comportamentali. Per approfondire dopo la sessione.</p>
         <div class="lab-foot">
-          <a href="#contact" class="lab-text-link">Costruisci il tuo DISC Lab →</a>
+          <a href="index.html#labs" class="lab-text-link">Scopri il DISC Lab →</a>
         </div>
       </article>
 
-      <!-- Leadership Lab -->
       <article class="lab-card reveal">
         <p class="lab-desc">Leadership Lab</p>
         <div class="lab-pills">
@@ -1113,15 +1122,14 @@ ul { list-style: none; padding: 0; margin: 0; }
           <span class="lab-pill play">You-Play</span>
           <span class="lab-pill cast">You-Cast</span>
         </div>
-        <h3 class="lab-title">Leadership che adatta lo stile.</h3>
-        <p class="lab-body">Situational Leadership assessment, simulazioni di leadership situazionale e podcast dedicati. Per sviluppare leader che adattano lo stile al contesto.</p>
+        <h3>Leadership a memoria lunga.</h3>
+        <p>Episodi su leadership situazionale, comunicazione adattiva e gestione del team.</p>
         <div class="lab-foot">
           <span class="badge-soon-dark">Coming soon</span>
-          <a href="#contact" class="lab-text-link">Avvisami →</a>
+          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
         </div>
       </article>
 
-      <!-- Team Lab -->
       <article class="lab-card reveal">
         <p class="lab-desc">Team Lab</p>
         <div class="lab-pills">
@@ -1129,11 +1137,11 @@ ul { list-style: none; padding: 0; margin: 0; }
           <span class="lab-pill play">You-Play</span>
           <span class="lab-pill cast">You-Cast</span>
         </div>
-        <h3 class="lab-title">Team che funzionano davvero.</h3>
-        <p class="lab-body">Assessment Lencioni sulle disfunzioni del team, gamification collaborativa e contenuti per la coesione. Il laboratorio per team che vogliono funzionare davvero.</p>
+        <h3>Team che si raccontano.</h3>
+        <p>Episodi sulle disfunzioni del team, la coesione e il decision-making collettivo.</p>
         <div class="lab-foot">
           <span class="badge-soon-dark">Coming soon</span>
-          <a href="#contact" class="lab-text-link">Avvisami →</a>
+          <a href="index.html#labs" class="lab-text-link">Avvisami →</a>
         </div>
       </article>
 
@@ -1142,73 +1150,60 @@ ul { list-style: none; padding: 0; margin: 0; }
 </section>
 
 <!-- =========================================================================
-     NUMERI / CREDENZIALI
+     SEZIONE 5 — PRICING
      ========================================================================= -->
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">In cifre</p>
-      <h2 class="heading-section">Ciò che You-Lab porta in aula.</h2>
+      <p class="eyebrow">Pricing</p>
+      <h2 class="heading-section">Prezzi</h2>
+      <p class="lead">You-Cast si acquista per persona. Ogni QR code dà accesso a tutta la libreria per 2 mesi dall'ultimo episodio caricato.</p>
     </div>
 
-    <div class="stats-grid reveal">
-      <div class="stat">
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Anni DISC<br>certificato</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100+</div>
-        <div class="stat-label">Episodi<br>You-Cast</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">12</div>
-        <div class="stat-label">Serie<br>tematiche</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Giornate<br>Learning 4.0</div>
-      </div>
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table" aria-label="Prezzi per persona">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th class="num-col">Prezzo per persona</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qty">Fino a 9 persone</td>
+            <td class="price">€8,00 <small>+ IVA</small></td>
+          </tr>
+          <tr>
+            <td class="qty">10 persone e oltre</td>
+            <td class="price">€6,00 <small>+ IVA</small></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <p class="stats-foot reveal">Dietro You-Lab c'è You-Mans — 20 anni di formazione, ricerca e psicologia organizzativa in Italia e Francia.</p>
+    <p class="pricing-note reveal">Il QR code è nominale. Un codice = un partecipante = 2 mesi di accesso completo.</p>
+
+    <div class="bundle-card reveal">
+      <div class="bundle-text">
+        <span class="bundle-badge">DISC Lab</span>
+        <h3 class="bundle-title">You-Cast incluso nel DISC Lab con You-Assess e You-Play</h3>
+        <p class="bundle-note">Sconto 15% rispetto agli Elements separati.</p>
+      </div>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-cast">Ordina →</a>
+    </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     YOU-MANS / CONTATTO
+     SEZIONE 6 — CTA FINALE
      ========================================================================= -->
-<section class="section contact-section" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-
-      <div class="contact-text reveal">
-        <p class="eyebrow">Chi siamo</p>
-        <h2 class="heading-section">You-Mans</h2>
-        <p>You-Lab è il progetto di You-Mans Italia S.R.L. e You-Mans SAS — due aziende, un'unica missione: rendere la formazione professionale più efficace, più misurabile, più umana.</p>
-        <a class="external-link" href="https://you-mans.com" target="_blank" rel="noopener">you-mans.com ↗</a>
-      </div>
-
-      <form class="contact-form reveal" action="mailto:info@you-mans.com" method="post" enctype="text/plain">
-        <p class="eyebrow">Scrivici</p>
-        <h3 class="heading-section" style="font-size:28px;">Parliamone.</h3>
-
-        <div class="form-field">
-          <label for="f-name">Nome</label>
-          <input id="f-name" name="name" type="text" placeholder="Il tuo nome" required>
-        </div>
-        <div class="form-field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" placeholder="email@azienda.it" required>
-        </div>
-        <div class="form-field">
-          <label for="f-msg">Messaggio</label>
-          <textarea id="f-msg" name="message" placeholder="Cosa ti serve: acquisto, demo, info sui Labs…" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Invia →</button>
-        <p class="form-note">Per acquisti, demo o informazioni sui Labs.</p>
-      </form>
-
+<section class="section section-dark">
+  <div class="container final-cta reveal">
+    <h2>Pronti a estendere la formazione oltre l'aula?</h2>
+    <p>Acquista i QR code You-Cast e portali nella tua prossima sessione.</p>
+    <div class="ctas">
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Ordina →</a>
+      <a href="mailto:info@you-mans.com" class="link-muted">Hai domande? Scrivici →</a>
     </div>
   </div>
 </section>
@@ -1226,25 +1221,25 @@ ul { list-style: none; padding: 0; margin: 0; }
       <div class="footer-col">
         <h4>Elements</h4>
         <ul>
-          <li><a href="#elements">You-Assess</a></li>
+          <li><a href="you-disc.html">You-DISC</a></li>
           <li><a href="you-play.html">You-Play <span class="soon">Soon</span></a></li>
           <li><a href="you-cast.html">You-Cast</a></li>
-          <li><a href="#elements">You-Learn</a></li>
+          <li><a href="index.html#elements">You-Learn</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Labs</h4>
         <ul>
-          <li><a href="#labs">DISC Lab</a></li>
-          <li><a href="#labs">Leadership Lab <span class="soon">Soon</span></a></li>
-          <li><a href="#labs">Team Lab <span class="soon">Soon</span></a></li>
+          <li><a href="index.html#labs">DISC Lab</a></li>
+          <li><a href="index.html#labs">Leadership Lab <span class="soon">Soon</span></a></li>
+          <li><a href="index.html#labs">Team Lab <span class="soon">Soon</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Azienda</h4>
         <ul>
           <li><a href="https://you-mans.com" target="_blank" rel="noopener">You-Mans</a></li>
-          <li><a href="#contact">Contatti</a></li>
+          <li><a href="index.html#contact">Contatti</a></li>
           <li><a href="materiali.html">Materiali →</a></li>
         </ul>
       </div>
@@ -1267,12 +1262,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 (function() {
   'use strict';
 
-  // -------- Nav scroll state (dark hero → light on scroll) --------
   var nav = document.getElementById('nav');
-  var heroH = function() {
-    var h = document.getElementById('hero');
-    return h ? h.offsetHeight : 600;
-  };
+  function heroH() {
+    var h = document.querySelector('.hero');
+    return h ? h.offsetHeight : 480;
+  }
   var navCtaDark = document.querySelector('.nav-cta-dark');
 
   function updateNav() {
@@ -1287,14 +1281,13 @@ ul { list-style: none; padding: 0; margin: 0; }
   window.addEventListener('scroll', updateNav, { passive: true });
   window.addEventListener('resize', updateNav);
 
-  // -------- Desktop dropdowns: click-toggle (hover handled in CSS) --------
+  // Desktop dropdowns
   document.querySelectorAll('[data-dropdown]').forEach(function(item) {
     var trigger = item.querySelector('.nav-link');
     trigger.addEventListener('click', function(e) {
       e.preventDefault();
       var open = item.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      // close others
       document.querySelectorAll('[data-dropdown]').forEach(function(other) {
         if (other !== item) {
           other.classList.remove('is-open');
@@ -1314,7 +1307,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     }
   });
 
-  // -------- Mobile drawer --------
+  // Mobile drawer
   var burger = document.getElementById('navBurger');
   var drawer = document.getElementById('mobileDrawer');
   burger.addEventListener('click', function() {
@@ -1331,7 +1324,6 @@ ul { list-style: none; padding: 0; margin: 0; }
       document.body.style.overflow = '';
     });
   });
-  // Mobile accordions
   drawer.querySelectorAll('[data-m-accordion]').forEach(function(group) {
     var head = group.querySelector('.m-head');
     head.addEventListener('click', function() {
@@ -1340,19 +1332,16 @@ ul { list-style: none; padding: 0; margin: 0; }
     });
   });
 
-  // -------- Scroll reveal (staggered) --------
+  // Reveal
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, i) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          // stagger by index within parent
           var parent = entry.target.parentElement;
           var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
           var idx = Array.prototype.indexOf.call(siblings, entry.target);
-          setTimeout(function() {
-            entry.target.classList.add('is-visible');
-          }, Math.max(0, idx) * 90);
+          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 60);
           io.unobserve(entry.target);
         }
       });
@@ -1362,7 +1351,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     revealEls.forEach(function(el) { el.classList.add('is-visible'); });
   }
 
-  // -------- Lang switch (placeholder, non-functional v1) --------
+  // Lang switches
   function bindLang(buttons) {
     buttons.forEach(function(b) {
       b.addEventListener('click', function() {
