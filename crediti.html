@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materiali — You-Lab</title>
-<meta name="description" content="Report di esempio, tutorial e risorse per valutare gli Elements You-Lab senza impegno.">
+<title>Crediti — Come funziona il sistema di acquisto | You-Lab</title>
+<meta name="description" content="Il sistema crediti di You-Lab: 1 credito = €32 + IVA. Welcome Pack 2 crediti a €20. Sconti volume automatici da 10 crediti in su.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-/* =========================================================================
-   TOKENS (shared with index.html / you-disc.html)
-   ========================================================================= */
 :root {
   --color-bg:          #F7F7F5;
+  --color-bg-2:        #EFEFED;
   --color-dark:        #0E0E0E;
   --color-text:        #1A1A1A;
   --color-text-muted:  #6B6B6B;
@@ -60,13 +58,14 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: 80px 0; }
-@media (min-width: 1024px) { .section { padding: 100px 0; } }
+@media (min-width: 1024px) { .section { padding: 96px 0; } }
+.section-dark { background: var(--color-dark); color: var(--color-on-dark); }
 
 .heading-section {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 36px);
-  line-height: 1.05;
+  font-size: clamp(28px, 4.4vw, 32px);
+  line-height: 1.1;
   letter-spacing: -0.9px;
   margin: 0 0 16px;
 }
@@ -79,19 +78,16 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0 0 24px;
 }
 .eyebrow-on-dark { color: var(--color-on-dark-muted); }
-.eyebrow-accent { color: var(--color-assess); }
 .lead {
   font-size: 18px;
   line-height: 1.55;
   color: var(--color-text-muted);
   margin: 0;
-  max-width: 56ch;
+  max-width: 60ch;
 }
 .lead-on-dark { color: var(--color-on-dark-muted); }
 
-/* =========================================================================
-   BUTTONS
-   ========================================================================= */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -110,17 +106,13 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-primary:hover { background: #2a2a2a; }
-.btn-outline-on-dark { background: transparent; color: var(--color-on-dark); border-color: var(--color-on-dark); }
-.btn-outline-on-dark:hover { background: var(--color-on-dark); color: var(--color-dark); }
+.btn-primary-on-dark { background: var(--color-on-dark); color: var(--color-dark); }
+.btn-primary-on-dark:hover { background: #ececec; }
 .btn-outline { background: transparent; color: var(--color-dark); border-color: var(--color-dark); }
 .btn-outline:hover { background: var(--color-dark); color: var(--color-on-dark); }
 .btn-nav { height: 36px; padding: 0 16px; font-size: 13px; }
-.btn-assess { background: var(--color-assess); color: #fff; }
-.btn-assess:hover { background: #6f2d23; }
 
-/* =========================================================================
-   NAV (identical to index.html)
-   ========================================================================= */
+/* Nav */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -128,7 +120,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   height: 72px;
   display: flex;
   align-items: center;
-  transition: background 220ms var(--ease), border-color 220ms var(--ease);
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
@@ -151,7 +142,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .nav-menu { display: flex; align-items: center; gap: 32px; }
 @media (max-width: 900px) { .nav-menu { display: none; } }
-
 .nav-item { position: relative; }
 .nav-link {
   display: inline-flex;
@@ -166,7 +156,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 .nav-link:hover { opacity: 0.7; }
 .nav-link .chev { width: 10px; height: 10px; transition: transform 180ms var(--ease); }
 .nav-item.is-open .nav-link .chev { transform: rotate(180deg); }
-
 .nav-dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -206,7 +195,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text-muted);
   text-transform: uppercase;
 }
-
 .nav-right { display: flex; align-items: center; gap: 20px; }
 @media (max-width: 900px) { .nav-right .lang-switch { display: none; } }
 .lang-switch {
@@ -216,10 +204,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text-muted);
 }
 .lang-switch button { padding: 4px 6px; opacity: 0.55; transition: opacity 140ms var(--ease); }
-.lang-switch button:hover { opacity: 1; }
 .lang-switch button.is-active { opacity: 1; }
 .lang-switch .sep { opacity: 0.35; }
-
 .nav-burger {
   display: none;
   width: 40px; height: 40px;
@@ -289,20 +275,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .mobile-drawer .m-cta { margin-top: 24px; }
 
-/* =========================================================================
-   HERO (light)
-   ========================================================================= */
-.hero-light {
-  padding: 144px 0 64px;
-}
-.hero-light .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-assess);
-  margin: 0 0 28px;
-}
+/* Hero light */
+.hero-light { padding: 144px 0 56px; }
 .hero-light h1 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -311,160 +285,276 @@ ul { list-style: none; padding: 0; margin: 0; }
   letter-spacing: -1.2px;
   margin: 0 0 20px;
   color: var(--color-text);
-  max-width: 18ch;
+  max-width: 16ch;
 }
 .hero-light p {
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.55;
   color: var(--color-text-muted);
   margin: 0;
-  max-width: 56ch;
+  max-width: 60ch;
 }
 
-/* =========================================================================
-   MATERIALS GRID
-   ========================================================================= */
-.materials-section { padding-top: 0; }
-.materials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 900px) {
-  .materials-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-}
-.material-card {
-  position: relative;
+/* Sezione 2 — Card credito centrale */
+.credit-box {
   background: #fff;
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-dark);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 40px;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
+  align-items: center;
 }
-.material-card:not(.is-disabled):hover {
-  transform: translateY(-4px);
-  border-color: var(--color-assess);
-  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.25);
-}
-.material-card.is-disabled .material-body { opacity: 0.7; }
-
-.material-badge {
+.credit-box-badge {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #FFFFFF;
-  background-color: var(--color-assess);
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.credit-box-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(56px, 8vw, 72px);
+  line-height: 1;
+  letter-spacing: -2.2px;
+  color: var(--color-text);
+}
+.credit-box-unit {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: -4px 0 0;
+}
+.credit-box-sep {
+  width: 64px;
+  height: 1px;
+  background: var(--color-border);
+  margin: 4px 0;
+}
+.credit-box-note {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 32ch;
+  margin: 0;
+}
+.credit-box .btn { margin-top: 8px; }
+
+/* Sezione 3 — Composizione Elements */
+.section-head { margin-bottom: 40px; max-width: 720px; }
+.composition-wrap { overflow-x: auto; }
+.composition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  min-width: 520px;
+}
+.composition-table thead th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.composition-table tbody td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: baseline;
+  font-size: 15px;
+}
+.composition-table tbody tr:last-child td { border-bottom: none; }
+.composition-table .element {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.composition-table .credits {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.composition-table .note {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.composition-foot {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 16px 0 0;
+}
+.composition-foot a {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-text-muted);
+  padding-bottom: 1px;
+}
+.composition-foot a:hover { border-bottom-color: var(--color-text); }
+
+/* Sezione 4 — Welcome Pack dark */
+.welcome-section { text-align: center; }
+.welcome-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-on-dark);
+  border: 1px solid rgba(255,255,255,0.35);
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
+  margin-bottom: 24px;
 }
-.coming-pill {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-}
-
-.material-title {
+.welcome-section h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(22px, 2.6vw, 26px);
+  font-size: clamp(28px, 4.4vw, 36px);
+  letter-spacing: -0.9px;
   line-height: 1.1;
+  color: var(--color-on-dark);
+  margin: 0 0 20px;
+}
+.welcome-section p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-on-dark-muted);
+  margin: 0 0 32px;
+  text-align: left;
+}
+
+/* Sezione 5 — Sconti volume */
+.discount-wrap { overflow-x: auto; margin-bottom: 40px; }
+.discount-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.discount-table thead th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.discount-table thead th.num-col { text-align: right; }
+.discount-table tbody td {
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: baseline;
+}
+.discount-table tbody tr:last-child td { border-bottom: none; }
+.discount-table .qty {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 24px);
   letter-spacing: -0.5px;
-  margin: 4px 0 0;
   color: var(--color-text);
 }
-.material-body {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-  margin: 0;
-  flex: 1;
+.discount-table .price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 20px);
+  letter-spacing: -0.3px;
+  text-align: right;
+  color: var(--color-text);
 }
-.material-format {
+.discount-table .save {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  color: var(--color-text);
+  text-align: right;
+}
+.discount-table .save.is-empty { color: var(--color-text-muted); }
+
+/* Esempio pratico box */
+.example-box {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text);
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+.example-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   color: var(--color-text-muted);
-  padding: 12px 0;
-  border-top: 1px solid var(--color-border);
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
-.material-foot {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
+.example-box .calc {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  overflow-x: auto;
 }
-.material-foot .note {
+.example-box .calc strong { font-weight: 600; }
+.example-box .conclusion { margin: 8px 0 0; }
+.discount-note {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
-}
-.btn-disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: not-allowed;
+  text-align: center;
+  max-width: 64ch;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* =========================================================================
-   COMING SECTION (dark)
-   ========================================================================= */
-.coming-section {
-  background: var(--color-dark);
-  color: var(--color-on-dark);
-  padding: 80px 0;
-}
-.coming-section h2 {
+/* CTA finale */
+.final-cta { text-align: center; max-width: 720px; margin: 0 auto; }
+.final-cta h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 28px;
-  letter-spacing: -0.6px;
+  font-size: clamp(30px, 4.6vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -1.1px;
   color: var(--color-on-dark);
-  margin: 0 0 12px;
+  margin: 0 0 20px;
 }
-.coming-section p.lead-on-dark {
-  font-size: 16px;
-  line-height: 1.55;
+.final-cta p {
   color: var(--color-on-dark-muted);
+  font-size: 17px;
   margin: 0 0 32px;
-  max-width: 60ch;
-}
-.coming-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.coming-pill-badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-on-dark);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.4);
-  padding: 10px 16px;
-  border-radius: var(--radius-pill);
 }
 
-/* =========================================================================
-   FOOTER (identical to index.html)
-   ========================================================================= */
+/* Footer */
 .footer {
   background: var(--color-dark);
   color: var(--color-on-dark);
@@ -476,9 +566,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   gap: 48px;
   margin-bottom: 64px;
 }
-@media (min-width: 900px) {
-  .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; }
-}
+@media (min-width: 900px) { .footer-top { grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 48px; } }
 .footer-logo {
   font-family: var(--font-display);
   font-weight: 700;
@@ -533,44 +621,17 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .footer-lang button { color: var(--color-on-dark-muted); padding: 4px 6px; }
 .footer-lang button.is-active { color: var(--color-on-dark); }
-
-/* =========================================================================
-   REVEAL
-   ========================================================================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
-}
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .btn:hover, .material-card:hover { transform: none; }
-  html { scroll-behavior: auto; }
-}
 </style>
 </head>
 <body>
 
-<!-- =========================================================================
-     NAV
-     ========================================================================= -->
+<!-- NAV -->
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="You-Lab home">You-Lab</a>
 
     <nav class="nav-menu" aria-label="Primary">
-      <div class="nav-item" data-dropdown>
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-          Labs
-          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <a href="labs.html#disc-lab" role="menuitem">DISC Lab</a>
-          <a href="labs.html#leadership-lab" role="menuitem">Leadership Lab <span class="soon">Coming soon</span></a>
-          <a href="labs.html#team-lab" role="menuitem">Team Lab <span class="soon">Coming soon</span></a>
-        </div>
-      </div>
+      <a href="labs.html" class="nav-link">Labs</a>
 
       <div class="nav-item" data-dropdown>
         <button class="nav-link" aria-haspopup="true" aria-expanded="false">
@@ -596,7 +657,7 @@ ul { list-style: none; padding: 0; margin: 0; }
         <span class="sep">·</span>
         <button aria-pressed="false">EN</button>
       </div>
-      <a href="index.html#contact" class="btn btn-outline btn-nav">Inizia →</a>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-outline btn-nav">Registrati →</a>
       <button class="nav-burger" id="navBurger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
       </button>
@@ -606,16 +667,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 <!-- Mobile drawer -->
 <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="m-group" data-m-accordion>
-    <button class="m-head" aria-expanded="false">
-      Labs
-      <svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-    </button>
-    <div class="m-list">
-      <a href="labs.html#disc-lab">DISC Lab</a>
-      <a href="labs.html#leadership-lab">Leadership Lab <span class="soon">Soon</span></a>
-      <a href="labs.html#team-lab">Team Lab <span class="soon">Soon</span></a>
-    </div>
+  <div class="m-group">
+    <a class="m-head" href="labs.html" style="cursor:pointer">Labs</a>
   </div>
   <div class="m-group" data-m-accordion>
     <button class="m-head" aria-expanded="false">
@@ -632,75 +685,167 @@ ul { list-style: none; padding: 0; margin: 0; }
   <div class="m-group">
     <a class="m-head" href="you-mans.html" style="cursor:pointer">You-Mans</a>
   </div>
-  <a href="index.html#contact" class="btn btn-primary m-cta">Inizia →</a>
+  <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary m-cta">Registrati →</a>
 </div>
 
-<!-- =========================================================================
-     HERO
-     ========================================================================= -->
+<!-- SEZIONE 1 — HERO LIGHT -->
 <section class="hero-light">
   <div class="container">
-    <p class="eyebrow eyebrow-accent">You-Lab · Materiali</p>
-    <h1>Esplora prima di decidere.</h1>
-    <p>Report di esempio, tutorial e risorse per valutare gli Elements You-Lab senza impegno.</p>
+    <p class="eyebrow">You-Lab · Crediti</p>
+    <h1>Un credito. Tutto chiaro.</h1>
+    <p>You-Lab usa un sistema a crediti. Acquisti crediti, li usi per gli Elements che vuoi. Più ne compri insieme, meno paghi.</p>
   </div>
 </section>
 
-<!-- =========================================================================
-     MATERIALS GRID
-     ========================================================================= -->
-<section class="section materials-section">
+<!-- SEZIONE 2 — IL CREDITO -->
+<section class="section" style="padding-top: 32px;">
   <div class="container">
-    <div class="materials-grid">
-
-      <!-- Card 1: Report You-DISC -->
-      <article class="material-card reveal">
-        <span class="material-badge">You-DISC · Sample</span>
-        <h2 class="material-title">Report di esempio</h2>
-        <p class="material-body">Un report You-DISC completo su profilo fittizio. 17 pagine: profilo naturale, profilo adattato, indice di stress e 6 tavole operative.</p>
-        <div class="material-format">PDF · 17 pagine · IT</div>
-        <div class="material-foot">
-          <a href="sample-report.pdf" class="btn btn-assess" download target="_blank" rel="noopener">Scarica il PDF →</a>
-          <span class="note">Nessuna registrazione richiesta</span>
-        </div>
-      </article>
-
-      <!-- Card 2: Tutorial You-DISC (coming soon) -->
-      <article class="material-card is-disabled reveal">
-        <span class="coming-pill">Coming soon</span>
-        <span class="material-badge">You-DISC · Tutorial</span>
-        <h2 class="material-title">Come usare You-DISC in aula</h2>
-        <p class="material-body">Una guida video su come distribuire i codici, gestire la sessione e lavorare con i profili in gruppo.</p>
-        <div class="material-format">Video · ~15 min · IT</div>
-        <div class="material-foot">
-          <span class="btn btn-assess btn-disabled" aria-disabled="true">Guarda il tutorial</span>
-          <span class="note">Disponibile presto</span>
-        </div>
-      </article>
-
+    <div class="credit-box">
+      <span class="credit-box-badge">1 credito</span>
+      <div class="credit-box-price">€32</div>
+      <p class="credit-box-unit">+ IVA per credito</p>
+      <div class="credit-box-sep"></div>
+      <p class="credit-box-note">Acquistabile su disc.you-mans.com dopo la registrazione gratuita.</p>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary">Registrati →</a>
     </div>
   </div>
 </section>
 
-<!-- =========================================================================
-     COMING (dark)
-     ========================================================================= -->
-<section class="coming-section">
+<!-- SEZIONE 3 — COMPOSIZIONE ELEMENTS -->
+<section class="section">
   <div class="container">
-    <p class="eyebrow eyebrow-on-dark">In arrivo</p>
-    <h2>Altri materiali</h2>
-    <p class="lead-on-dark">Materiali demo per You-Play, You-Cast e You-Learn saranno disponibili al lancio di ciascun Element.</p>
-    <div class="coming-pills">
-      <span class="coming-pill-badge">You-Play · Demo</span>
-      <span class="coming-pill-badge">You-Cast · Episodio campione</span>
-      <span class="coming-pill-badge">You-Learn · Programma</span>
+    <div class="section-head">
+      <p class="eyebrow">Composizione</p>
+      <h2 class="heading-section">Quanto costa ogni Element</h2>
+    </div>
+
+    <div class="composition-wrap">
+      <table class="composition-table" aria-label="Crediti per Element">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Crediti</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="element">You-DISC</td>
+            <td class="credits">1 credito</td>
+            <td class="note">Profilo + report 17 pagine</td>
+          </tr>
+          <tr>
+            <td class="element">You-Cast Selezione</td>
+            <td class="credits">da definire</td>
+            <td class="note">2 episodi a scelta, 2 mesi</td>
+          </tr>
+          <tr>
+            <td class="element">You-Cast Catalogo</td>
+            <td class="credits">0,5 crediti</td>
+            <td class="note">Catalogo completo, 6 mesi</td>
+          </tr>
+          <tr>
+            <td class="element">You-Play + You-Cast</td>
+            <td class="credits">0,5 crediti</td>
+            <td class="note">Bundle roleplay + podcast</td>
+          </tr>
+          <tr>
+            <td class="element">DISC Lab</td>
+            <td class="credits">1,5 crediti</td>
+            <td class="note">You-DISC + You-Play + You-Cast</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="composition-foot">You-Learn (corso Learning 4.0) non usa il sistema crediti — ha un prezzo per seat separato. <a href="you-learn.html">Scopri You-Learn →</a></p>
+  </div>
+</section>
+
+<!-- SEZIONE 4 — WELCOME PACK DARK -->
+<section class="section section-dark welcome-section">
+  <div class="container">
+    <div class="welcome-inner">
+      <span class="welcome-badge">Welcome Pack</span>
+      <h2>Prima volta? 2 crediti a €20.</h2>
+      <p>Alla prima registrazione su disc.you-mans.com hai accesso al Welcome Pack: 2 crediti a €20 totali — invece di €64. Per provare You-Lab senza impegno.</p>
+      <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Registrati e attiva il Welcome Pack →</a>
     </div>
   </div>
 </section>
 
-<!-- =========================================================================
-     FOOTER
-     ========================================================================= -->
+<!-- SEZIONE 5 — SCONTI VOLUME -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Sconti volume</p>
+      <h2 class="heading-section">Più compri, meno paghi</h2>
+      <p class="lead">Gli sconti si applicano automaticamente sul totale crediti acquistati in un singolo ordine — indipendentemente da quali Elements stai comprando.</p>
+    </div>
+
+    <div class="discount-wrap">
+      <table class="discount-table" aria-label="Sconti volume sui crediti">
+        <thead>
+          <tr>
+            <th>Crediti acquistati</th>
+            <th class="num-col">Prezzo per credito</th>
+            <th class="num-col">Sconto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qty">1–9</td>
+            <td class="price">€32,00 + IVA</td>
+            <td class="save is-empty">—</td>
+          </tr>
+          <tr>
+            <td class="qty">10–29</td>
+            <td class="price">€30,40 + IVA</td>
+            <td class="save">−5%</td>
+          </tr>
+          <tr>
+            <td class="qty">30–49</td>
+            <td class="price">€28,80 + IVA</td>
+            <td class="save">−10%</td>
+          </tr>
+          <tr>
+            <td class="qty">50–99</td>
+            <td class="price">€26,67 + IVA</td>
+            <td class="save">−16,7%</td>
+          </tr>
+          <tr>
+            <td class="qty">100+</td>
+            <td class="price">€24,00 + IVA</td>
+            <td class="save">−25%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example-box">
+      <span class="example-badge">Esempio</span>
+      <p>Hai 9 partecipanti e vuoi You-DISC + You-Cast Catalogo per tutti.</p>
+<div class="calc">9 × You-DISC      = 9 crediti
+9 × You-Cast      = 4,5 crediti
+─────────────────────────────
+Totale            = <strong>13,5 crediti</strong>  → fascia 10–29 → −5%</div>
+      <p class="conclusion">Invece di €432 paghi <strong>€409 + IVA</strong>.</p>
+    </div>
+
+    <p class="discount-note">La tabella sconti è disponibile anche nella pagina ordini dopo la registrazione su disc.you-mans.com</p>
+  </div>
+</section>
+
+<!-- SEZIONE 6 — CTA FINALE -->
+<section class="section section-dark">
+  <div class="container final-cta">
+    <h2>Inizia con il Welcome Pack.</h2>
+    <p>2 crediti a €20. Nessun abbonamento. Nessun impegno.</p>
+    <a href="https://disc.you-mans.com" target="_blank" rel="noopener" class="btn btn-primary-on-dark">Registrati →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
@@ -805,26 +950,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     });
   });
 
-  // Reveal
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var parent = entry.target.parentElement;
-          var siblings = parent ? parent.querySelectorAll('.reveal') : [entry.target];
-          var idx = Array.prototype.indexOf.call(siblings, entry.target);
-          setTimeout(function() { entry.target.classList.add('is-visible'); }, Math.max(0, idx) * 90);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    revealEls.forEach(function(el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function(el) { el.classList.add('is-visible'); });
-  }
-
-  // Lang switches
+  // Lang switches (placeholder)
   function bindLang(buttons) {
     buttons.forEach(function(b) {
       b.addEventListener('click', function() {
