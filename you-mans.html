@@ -391,13 +391,48 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin: 0;
 }
 
+.andrea-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .andrea-grid { grid-template-columns: 40% 60%; gap: 48px; }
+}
+.andrea-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.andrea-photo img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: var(--radius-md);
+  flex: 1;
+}
+@media (min-width: 900px) {
+  .andrea-photo img { max-height: none; }
+}
+.photo-credit {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
 .credentials-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
-@media (min-width: 700px) { .credentials-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
-@media (min-width: 1024px) { .credentials-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+@media (min-width: 700px) { .credentials-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
 
 .credential-card {
   background: #fff;
@@ -816,9 +851,9 @@ ul { list-style: none; padding: 0; margin: 0; }
      ========================================================================= -->
 <section class="hero">
   <div class="container hero-inner">
-    <p class="hero-eyebrow">You-Mans · Chi siamo</p>
-    <h1 class="hero-headline">Non vendiamo strumenti. Sappiamo come funziona l'apprendimento.</h1>
-    <p class="hero-sub">You-Lab è la sintesi di 20 anni di pratica organizzativa, ricerca sull'apprendimento e sperimentazione tecnologica.</p>
+    <p class="hero-eyebrow anim-hero-item">You-Mans · Chi siamo</p>
+    <h1 class="hero-headline anim-hero-item">Non vendiamo strumenti. Sappiamo come funziona l'apprendimento.</h1>
+    <p class="hero-sub anim-hero-item">You-Lab è la sintesi di 20 anni di pratica organizzativa, ricerca sull'apprendimento e sperimentazione tecnologica.</p>
   </div>
 </section>
 
@@ -827,43 +862,52 @@ ul { list-style: none; padding: 0; margin: 0; }
      ========================================================================= -->
 <section class="section">
   <div class="container">
-    <div class="credentials-header reveal">
-      <p class="eyebrow">Chi c'è dietro</p>
-      <h2>Andrea Zilli Romanelli</h2>
-      <p class="credentials-sub">Fondatore di You-Mans · Creatore di You-Lab</p>
-    </div>
+    <div class="andrea-grid">
+      <div class="andrea-photo reveal">
+        <img src="andrea.jpg" alt="Andrea Zilli Romanelli — ritratto">
+        <p class="photo-credit">Ph. Alexis Chaillous</p>
+      </div>
 
-    <div class="credentials-grid">
-      <article class="credential-card reveal">
-        <span class="credential-num">01</span>
-        <h3 class="credential-title">VP HR · 20+ anni</h3>
-        <p>Vent'anni come responsabile HR e direttore della formazione in organizzazioni italiane e francesi.</p>
-      </article>
-      <article class="credential-card reveal">
-        <span class="credential-num">02</span>
-        <h3 class="credential-title">PhD · Motivation to Learn</h3>
-        <p>Dottorato di ricerca sulla motivazione all'apprendimento — la base scientifica dietro ogni scelta di design formativo.</p>
-      </article>
-      <article class="credential-card reveal">
-        <span class="credential-num">03</span>
-        <h3 class="credential-title">Docente · 2 Business School Parigi</h3>
-        <p>Docenza in psicologia organizzativa e HR presso due business school parigine, inclusa Université Paris II Assas.</p>
-      </article>
-      <article class="credential-card reveal">
-        <span class="credential-num">04</span>
-        <h3 class="credential-title">DISC Certified Expert · 20+ anni</h3>
-        <p>Tra i professionisti DISC con maggiore anzianità certificata in Europa. Esperto di assessment ipsativi e profili comportamentali.</p>
-      </article>
-      <article class="credential-card reveal">
-        <span class="credential-num">05</span>
-        <h3 class="credential-title">Giornalista &amp; Podcaster</h3>
-        <p>Oltre 100 episodi prodotti su formazione, leadership e sviluppo professionale. You-Cast nasce da qui.</p>
-      </article>
-      <article class="credential-card reveal">
-        <span class="credential-num">06</span>
-        <h3 class="credential-title">EdTech Expert</h3>
-        <p>Progettazione e lancio di strumenti digitali per la formazione professionale. You-Lab è il risultato di anni di sperimentazione.</p>
-      </article>
+      <div class="andrea-content">
+        <div class="credentials-header reveal">
+          <p class="eyebrow">Chi c'è dietro</p>
+          <h2 id="typing-name">Andrea Zilli Romanelli</h2>
+          <p class="credentials-sub">Fondatore di You-Mans · Creatore di You-Lab</p>
+        </div>
+
+        <div class="credentials-grid">
+          <article class="credential-card anim-card">
+            <span class="credential-num">01</span>
+            <h3 class="credential-title">VP HR · 20+ anni</h3>
+            <p>Vent'anni come responsabile HR e direttore della formazione in organizzazioni italiane e francesi.</p>
+          </article>
+          <article class="credential-card anim-card">
+            <span class="credential-num">02</span>
+            <h3 class="credential-title">PhD · Motivation to Learn</h3>
+            <p>Dottorato di ricerca sulla motivazione all'apprendimento — la base scientifica dietro ogni scelta di design formativo.</p>
+          </article>
+          <article class="credential-card anim-card">
+            <span class="credential-num">03</span>
+            <h3 class="credential-title">Docente · 2 Business School Parigi</h3>
+            <p>Docenza in psicologia organizzativa e HR presso due business school parigine, inclusa Université Paris II Assas.</p>
+          </article>
+          <article class="credential-card anim-card">
+            <span class="credential-num">04</span>
+            <h3 class="credential-title">DISC Certified Expert · 20+ anni</h3>
+            <p>Tra i professionisti DISC con maggiore anzianità certificata in Europa. Esperto di assessment ipsativi e profili comportamentali.</p>
+          </article>
+          <article class="credential-card anim-card">
+            <span class="credential-num">05</span>
+            <h3 class="credential-title">Giornalista &amp; Podcaster</h3>
+            <p>Oltre 100 episodi prodotti su formazione, leadership e sviluppo professionale. You-Cast nasce da qui.</p>
+          </article>
+          <article class="credential-card anim-card">
+            <span class="credential-num">06</span>
+            <h3 class="credential-title">EdTech Expert</h3>
+            <p>Progettazione e lancio di strumenti digitali per la formazione professionale. You-Lab è il risultato di anni di sperimentazione.</p>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -885,11 +929,11 @@ ul { list-style: none; padding: 0; margin: 0; }
         <div class="stat-cap">Due paesi</div>
       </div>
       <div class="stat-block">
-        <div class="stat-num">3 lingue</div>
+        <div class="stat-num"><span class="anim-counter" data-target="3">3</span> lingue</div>
         <div class="stat-cap">IT · FR · EN</div>
       </div>
       <div class="stat-block">
-        <div class="stat-num">20+</div>
+        <div class="stat-num"><span class="anim-counter" data-target="20" data-suffix="+">20+</span></div>
         <div class="stat-cap">Anni di aula</div>
       </div>
     </div>
@@ -907,17 +951,17 @@ ul { list-style: none; padding: 0; margin: 0; }
     </div>
 
     <div class="services-grid">
-      <article class="service-card reveal">
+      <article class="service-card anim-card">
         <span class="service-num">01</span>
         <h3>Formazione in aula</h3>
         <p>Programmi su misura per aziende e istituzioni. DISC, Leadership, Team, Well-being, Comunicazione.</p>
       </article>
-      <article class="service-card reveal">
+      <article class="service-card anim-card">
         <span class="service-num">02</span>
         <h3>Consulenza organizzativa</h3>
         <p>Diagnosi, progettazione e accompagnamento nei processi di sviluppo e cambiamento.</p>
       </article>
-      <article class="service-card reveal">
+      <article class="service-card anim-card">
         <span class="service-num">03</span>
         <h3>Docenza e ricerca</h3>
         <p>Corsi universitari, pubblicazioni e ricerca applicata sulla progettazione dell'apprendimento.</p>
@@ -1044,6 +1088,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   </div>
 </footer>
 
+<script src="animations.js"></script>
 <script>
 (function() {
   'use strict';
